@@ -4,3 +4,4 @@ Douglas Proença Rolim de Souza
 Gabriel Machado de Lima
 Rafael Gomes Camilo
 Vinicius Lopes Paz Silva
+Stéfane Cristina Timote
