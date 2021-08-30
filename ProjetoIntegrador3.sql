@@ -29,9 +29,6 @@ obs text
 
 insert into RC_FILIAL values(null, 'Instituto São Paulo', 'Rua Claudinho Peixoto', '356', 'Vila Mascote', 'São Paulo', '05501-041', 'SP', 1, (select curDate()), null);
 
--- select * from RC_FILIAL where id=1; 
-select * from RC_FILIAL;
-
 create table RC_PERFIL_COLABORADOR(
 id bigInt(20)
 primary key auto_increment,
