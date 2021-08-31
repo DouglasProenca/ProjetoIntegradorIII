@@ -1,5 +1,5 @@
 -- criação da database
-create database ProjetoIntegrador3;
+create database if not exists ProjetoIntegrador3;
 
 -- comando para usar a tabela
 use ProjetoIntegrador3;
@@ -152,15 +152,15 @@ insert into RC_PERFIL_COLABORADOR values (null, 'Analista de dados', 'T.I', 'R$ 
 										 (null, 'Designer', 'Marketing', 'R$ 2.050,00', 1, '2021-09-21', null);
                                          
 insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,989.10,1,(select curdate()),'estágiario'),
-									(null,2,'Douglas Proença','1452',2,20000.00,2,(select curdate()), 'Funcionário do Mês'),
-                                    (null,3,'Rafael Camilo','9874',3,10000.00,3,(select curdate()),'Promovido'),
-                                    (null,4,'Vinicius Lopes','7894',4,7800.00,4,(select curdate()),null),
-                                    (null,5,'Stefane Timote','7863',5,15000.00,5,(select curdate()),null),
-                                    (null,6,'Amanda Gavioli','2017',1,5200.00,6,(select curdate()),null),
-									(null,7,'Mateus Silva','0214',2,13000.00,7,(select curdate()),null),
-									(null,8,'Weskley Oliveira','9918',3,2890.00,8,(select curdate()),null),
-									(null,9,'Abnoel Andrade','7122',4,1500.00,9,(select curdate()),null),
-									(null,10,'Nathasa Caldeirão','2005',5,27000.00,10,(select curdate()),null);
+									(null,2,'Douglas Proença','1452',2,20000.00,1,(select curdate()), 'Funcionário do Mês'),
+                                    (null,3,'Rafael Camilo','9874',3,10000.00,1,(select curdate()),'Promovido'),
+                                    (null,4,'Vinicius Lopes','7894',4,7800.00,1,(select curdate()),null),
+                                    (null,5,'Stefane Timote','7863',5,15000.00,1,(select curdate()),null),
+                                    (null,6,'Amanda Gavioli','2017',1,5200.00,1,(select curdate()),null),
+									(null,7,'Mateus Silva','0214',2,13000.00,1,(select curdate()),null),
+									(null,8,'Weskley Oliveira','9918',3,2890.00,1,(select curdate()),null),
+									(null,9,'Abnoel Andrade','7122',4,1500.00,1,(select curdate()),null),
+									(null,10,'Nathasa Caldeirão','2005',5,27000.00,1,(select curdate()),null);
 
 insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2022-11-25', 1500, null);
 
@@ -175,13 +175,15 @@ insert into rc_forma_pagamento VALUES (null,null,'Dinheiro'),
 
 -- Regras das tabelas
 
-alter table rc_filial add constraint regra_user check (user_ = 1);
+alter table rc_filial add constraint filial_user check (user_ = 1);
 alter table rc_filial add constraint fk_Colaborador foreign key (user_) references rc_colaboradores (id);
 
-alter table RC_PERFIL_COLABORADOR add constraint regra_user check (user_ = 1);
-alter table RC_PERFIL_COLABORADOR add constraint fk_Colaboradores foreign key (user_) references rc_colaboradores (id);   
+alter table RC_PERFIL_COLABORADOR add constraint perfil_colaborador_user check (user_ = 1);
+alter table RC_PERFIL_COLABORADOR add constraint fk_perfil_colaborador foreign key (user_) references rc_colaboradores (id);   
 
-alter table rc_forma_pagamento add constraint regra_user_forma check (user_ = 1);
+alter table rc_colaboradores add constraint fk_Colaboradores foreign key (categoria) references RC_PERFIL_COLABORADOR (id);
+
+alter table rc_forma_pagamento add constraint forma_pagamento_user check (user_ = 1);
 
 -- comando para apagar a database 
--- drop database ProjetoIntegrador3;                            
+-- drop database ProjetoIntegrador3;    
