@@ -110,7 +110,7 @@ obs text
 
 create table if not exists rc_endereco_alunos(
 id bigint(20) 
-primary key auto_increment not null,
+primary key auto_increment not null unique,
 rua varChar(250) 
 not null,
 numero varChar(10) 
@@ -133,13 +133,28 @@ obs text
 create table if not exists rc_forma_pagamento(
 id bigint(20) 
 primary key auto_increment not null,
-descricao varchar(250) not null,
-nome varchar(250) not null,
+descricao varchar(250),
+nome varchar(250) not null unique,
 user_ bigInt(20)  
 not null,
 data_ date 
 not null
 );
+
+create table if not exists rc_matricula(
+id bigint(20) 
+primary key auto_increment not null,
+id_turma bigint(20) not null,
+matricula varchar (50) not null,
+ativo bit not null,
+dia_venc_mensalidade date not null,
+dt_matricula date not null,
+user_ bigint(20) not null,
+data_ date not null,
+obs text
+);
+
+
 
 -- inserts na tabelas 
 
@@ -168,13 +183,13 @@ insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,989.10,1,
 
 insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2022-11-25', 1500, null);
 
-insert into rc_forma_pagamento VALUES (null,null,'Dinheiro'),
-								   (null,null,'Cartão de Débito'),
-                                   (null,null,'Cartão de Crédito'),
-                                   (null,null,'Boleto Bancário'),
-                                   (null,null,'Nota Promissória'),
-                                   (null,null,'Cheque'),
-                                   (null,null,'Transf. eletrônica');
+insert into rc_forma_pagamento VALUES (null,null,'Dinheiro',1,(select curdate())),
+								   (null,null,'Cartão de Débito',1,(select curdate())),
+                                   (null,null,'Cartão de Crédito',1,(select curdate())),
+                                   (null,null,'Boleto Bancário',1,(select curdate())),
+                                   (null,null,'Nota Promissória',1,(select curdate())),
+                                   (null,null,'Cheque',1,(select curdate())),
+                                   (null,null,'Transf. eletrônica',1,(select curdate()));
 							
 
 -- Regras das tabelas
