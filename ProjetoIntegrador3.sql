@@ -154,7 +154,25 @@ data_ date not null,
 obs text
 );
 
-
+create table if not exists RC_PAGAMENTO(
+id bigInt(20)
+primary key auto_increment not null,
+ano_ref char(4)
+not null,
+mes_ref char(2)
+not null,
+data_pagamento date
+not null,
+juros float,
+id_forma_pagamento bigInt(20)
+not null,
+valor_pago float,
+user_ bigInt(20)
+not null,
+data_ date 
+not null,
+obs text
+);
 
 -- inserts na tabelas 
 
@@ -204,5 +222,8 @@ alter table rc_colaboradores add constraint fk_Colaboradores foreign key (catego
 
 alter table rc_forma_pagamento add constraint forma_pagamento_user check (user_ = 1);
 
+alter table RC_PAGAMENTOS add constraint pagamentos_user check (user_ = 4);
+
 -- comando para apagar a database 
 -- drop database ProjetoIntegrador3;    
+
