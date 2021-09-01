@@ -133,8 +133,12 @@ obs text
 create table if not exists rc_forma_pagamento(
 id bigint(20) 
 primary key auto_increment not null,
-descricao varchar(250),
-nome varchar(250)
+descricao varchar(250) not null,
+nome varchar(250) not null,
+user_ bigInt(20)  
+not null,
+data_ date 
+not null
 );
 
 -- inserts na tabelas 
@@ -171,7 +175,7 @@ insert into rc_forma_pagamento VALUES (null,null,'Dinheiro'),
                                    (null,null,'Nota Promissória'),
                                    (null,null,'Cheque'),
                                    (null,null,'Transf. eletrônica');
-                                   
+							
 
 -- Regras das tabelas
 
