@@ -78,7 +78,7 @@ valor float not null,
 obs text
 );
 
-create table if not exists rc_alunos(
+create table if not exists rc_aluno(
 id bigint(20) 
 primary key auto_increment,
 empr_id bigint(20) 
@@ -156,6 +156,7 @@ obs text
 create table if not exists RC_PAGAMENTO(
 id bigInt(20)
 primary key auto_increment not null,
+id_matricula bigInt(20) not null,
 ano_ref char(4)
 not null,
 mes_ref char(2)
@@ -191,12 +192,11 @@ insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,989.10,1,
 									(null,2,'Douglas Proença','1452',2,20000.00,1,(select curdate()), 'Funcionário do Mês'),
                                     (null,3,'Rafael Camilo','9874',3,10000.00,1,(select curdate()),'Promovido'),
                                     (null,4,'Vinicius Lopes','7894',4,7800.00,1,(select curdate()),null),
-                                    (null,5,'Stefane Timote','7863',5,15000.00,1,(select curdate()),null),
-                                    (null,6,'Amanda Gavioli','2017',1,5200.00,1,(select curdate()),null),
-									(null,7,'Mateus Silva','0214',2,13000.00,1,(select curdate()),null),
-									(null,8,'Weskley Oliveira','9918',3,2890.00,1,(select curdate()),null),
-									(null,9,'Abnoel Andrade','7122',4,1500.00,1,(select curdate()),null),
-									(null,10,'Nathasa Caldeirão','2005',5,27000.00,1,(select curdate()),null);
+                                    (null,1,'Amanda Gavioli','2017',1,3089.00,6,(select curdate()),null),
+									(null,2,'Mateus Silva','0214',2,3418.00,7,(select curdate()),null),
+									(null,3,'Weskley Oliveira','9918',3,2890.00,8,(select curdate()),null),
+									(null,4,'Abnoel Andrade','7122',4,2900.00,9,(select curdate()),null),
+									(null,5,'Nathasa Caldeirão','2005',5,2640.00,10,(select curdate()),null);
 
 insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2021-11-25', 1500, null),
 							(null, 2, 'C', 2, (select curdate()), '2020-07-01', '2021-05-14', 1900, null),
@@ -204,17 +204,17 @@ insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', 
 							(null, 4, 'B', 4, (select curdate()), '2021-02-12', '2021-09-28', 1150, null),
 							(null, 5, 'D', 5, (select curdate()), '2021-05-11', '2022-06-05', 1350, null);
                             
-insert into rc_alunos values (null, 1,'Carla Moreira',1, 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
+insert into rc_aluno values (null, 1,'Carla Moreira',1, 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
 							 (null, 2,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
 							 (null, 3,'William Homem Igrejas',0, 'whigrejas@hotmail.com', '733.756.951-36', '(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
                              (null, 4,'Bernardo Azambuja Lima',0, 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
                              (null, 5,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null);
 
-insert into rc_endereco_aluno values (null,1,'Amanda Gavioli','2017','Bairro Jamelo',1,3089.00,6,(select curdate()),null),
-									 (null,2,'Mateus Silva','0214',2,'Santa Cecilia',3418.00,7,(select curdate()),null),
-                                     (null,3,'Weskley Oliveira','9918',3,2890.00,8,(select curdate()),null),
-                                     (null,4,'Abnoel Andrade','7122',4,2900.00,9,(select curdate()),null),
-                                     (null,5,'Nathasa Caldeirão','2005',5,2640.00,10,(select curdate()),null);
+insert into rc_endereco_aluno values (null,1, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
+									  (null,2, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
+									  (null,3, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
+									  (null,4, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
+									  (null,5, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null);
 
 insert into rc_forma_pagamento VALUES (null,null,'Dinheiro',1,(select curdate())),
 								   (null,null,'Cartão de Débito',1,(select curdate())),
@@ -223,7 +223,7 @@ insert into rc_forma_pagamento VALUES (null,null,'Dinheiro',1,(select curdate())
                                    (null,null,'Nota Promissória',1,(select curdate())),
                                    (null,null,'Cheque',1,(select curdate())),
                                    (null,null,'Transf. eletrônica',1,(select curdate()));
-							
+
 
 -- Regras das tabelas
 
@@ -241,4 +241,3 @@ alter table RC_PAGAMENTO add constraint pagamentos_user check (user_ = 4);
 
 -- comando para apagar a database 
 -- drop database ProjetoIntegrador3;    
-
