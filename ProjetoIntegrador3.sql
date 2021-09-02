@@ -144,6 +144,7 @@ create table if not exists rc_matricula(
 id bigint(20) 
 primary key auto_increment not null,
 id_turma bigint(20) not null,
+id_aluno bigInt(20) not null,
 matricula varchar (50) not null,
 ativo bit not null,
 dia_venc_mensalidade date not null,
@@ -188,15 +189,16 @@ insert into RC_PERFIL_COLABORADOR values (null, 'Analista de dados', 'T.I', 'R$ 
 										 (null, 'Analista contábil', 'Financeiro', 'R$ 3.000,00', 1, '2021-02-16', null),
 										 (null, 'Designer', 'Marketing', 'R$ 2.050,00', 1, '2021-09-21', null);
                                          
-insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,989.10,1,(select curdate()),'estágiario'),
+insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,5000.00,1,(select curdate()),'estágiario'),
 									(null,2,'Douglas Proença','1452',2,20000.00,1,(select curdate()), 'Funcionário do Mês'),
                                     (null,3,'Rafael Camilo','9874',3,10000.00,1,(select curdate()),'Promovido'),
                                     (null,4,'Vinicius Lopes','7894',4,7800.00,1,(select curdate()),null),
-                                    (null,1,'Amanda Gavioli','2017',1,3089.00,6,(select curdate()),null),
-									(null,2,'Mateus Silva','0214',2,3418.00,7,(select curdate()),null),
-									(null,3,'Weskley Oliveira','9918',3,2890.00,8,(select curdate()),null),
-									(null,4,'Abnoel Andrade','7122',4,2900.00,9,(select curdate()),null),
-									(null,5,'Nathasa Caldeirão','2005',5,2640.00,10,(select curdate()),null);
+                                    (null,5,'Stéane Timote','2324',4,3200.00,1,(select curdate()),null),
+                                    (null,1,'Amanda Gavioli','2017',1,3089.00,1,(select curdate()),null),
+									(null,2,'Mateus Silva','0214',2,3418.00,1,(select curdate()),null),
+									(null,3,'Weskley Oliveira','9918',3,2890.00,1,(select curdate()),null),
+									(null,4,'Abnoel Andrade','7122',4,2900.00,1,(select curdate()),null),
+									(null,5,'Nathasa Caldeirão','2005',5,2640.00,1,(select curdate()),null);
 
 insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2021-11-25', 1500, null),
 							(null, 2, 'C', 2, (select curdate()), '2020-07-01', '2021-05-14', 1900, null),
@@ -208,7 +210,8 @@ insert into rc_aluno values (null, 1,'Carla Moreira',1, 'moreiracarla@hotmail.co
 							 (null, 2,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
 							 (null, 3,'William Homem Igrejas',0, 'whigrejas@hotmail.com', '733.756.951-36', '(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
                              (null, 4,'Bernardo Azambuja Lima',0, 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
-                             (null, 5,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null);
+                             (null, 5,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Sol
+                             teiro', (select curdate()), 5, null);
 
 insert into rc_endereco_aluno values (null,1, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
 									  (null,2, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
@@ -238,6 +241,21 @@ alter table rc_colaboradores add constraint fk_Colaboradores foreign key (catego
 alter table rc_forma_pagamento add constraint forma_pagamento_user check (user_ = 1);
 
 alter table RC_PAGAMENTO add constraint pagamentos_user check (user_ = 4);
+alter table RC_PAGAMENTO add constraint fk_matricula_id foreign key (id_matricula) references RC_MATRICULA (id);
+alter table RC_PAGAMENTO add constraint fk_forma_pagamento foreign key (id_forma_pagamento) references RC_FORMA_PAGAMENTO (id);
+
+alter table RC_MATRICULA add constraint fk_turma_id foreign key (id_turma) references rc_turma (id);
+alter table RC_MATRICULA add constraint fk_id_aluno foreign key (id_aluno) references rc_aluno (id);
+alter table RC_MATRICULA add constraint matricula_user check (user_ = 3 or user_ = 8);
+
+select * from rc_colaboradores c 
+inner join rc_perfil_colaborador p
+on c.id=p.id;
 
 -- comando para apagar a database 
 -- drop database ProjetoIntegrador3;    
+
+-- FALTAM -- insert do pagamento, forma de pagamento e matricula.
+-- Verificar todas as foreign keys.
+-- Verificar todos os check.
+-- Verificar como colocar em um servidor.
