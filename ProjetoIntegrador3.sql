@@ -83,8 +83,6 @@ id bigint(20)
 primary key auto_increment,
 empr_id bigint(20) 
 not null,
-ende bigint(20) 
-not null,
 nome varchar(250) 
 not null,
 sexo bit 
@@ -108,9 +106,10 @@ not null,
 obs text
 );
 
-create table if not exists rc_endereco_alunos(
+create table if not exists rc_endereco_aluno(
 id bigint(20) 
 primary key auto_increment not null unique,
+id_aluno bigint(20) not null,
 rua varChar(250) 
 not null,
 numero varChar(10) 
@@ -199,7 +198,23 @@ insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,989.10,1,
 									(null,9,'Abnoel Andrade','7122',4,1500.00,1,(select curdate()),null),
 									(null,10,'Nathasa Caldeirão','2005',5,27000.00,1,(select curdate()),null);
 
-insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2022-11-25', 1500, null);
+insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2021-11-25', 1500, null),
+							(null, 2, 'C', 2, (select curdate()), '2020-07-01', '2021-05-14', 1900, null),
+							(null, 3, 'A', 3, (select curdate()), '2018-02-18', '2019-12-10', 2300, null),
+							(null, 4, 'B', 4, (select curdate()), '2021-02-12', '2021-09-28', 1150, null),
+							(null, 5, 'D', 5, (select curdate()), '2021-05-11', '2022-06-05', 1350, null);
+                            
+insert into rc_alunos values (null, 1,'Carla Moreira',1, 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
+							 (null, 2,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
+							 (null, 3,'William Homem Igrejas',0, 'whigrejas@hotmail.com', '733.756.951-36', '(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
+                             (null, 4,'Bernardo Azambuja Lima',0, 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
+                             (null, 5,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null);
+
+insert into rc_endereco_aluno values (null,1,'Amanda Gavioli','2017','Bairro Jamelo',1,3089.00,6,(select curdate()),null),
+									 (null,2,'Mateus Silva','0214',2,'Santa Cecilia',3418.00,7,(select curdate()),null),
+                                     (null,3,'Weskley Oliveira','9918',3,2890.00,8,(select curdate()),null),
+                                     (null,4,'Abnoel Andrade','7122',4,2900.00,9,(select curdate()),null),
+                                     (null,5,'Nathasa Caldeirão','2005',5,2640.00,10,(select curdate()),null);
 
 insert into rc_forma_pagamento VALUES (null,null,'Dinheiro',1,(select curdate())),
 								   (null,null,'Cartão de Débito',1,(select curdate())),
@@ -222,7 +237,7 @@ alter table rc_colaboradores add constraint fk_Colaboradores foreign key (catego
 
 alter table rc_forma_pagamento add constraint forma_pagamento_user check (user_ = 1);
 
-alter table RC_PAGAMENTOS add constraint pagamentos_user check (user_ = 4);
+alter table RC_PAGAMENTO add constraint pagamentos_user check (user_ = 4);
 
 -- comando para apagar a database 
 -- drop database ProjetoIntegrador3;    
