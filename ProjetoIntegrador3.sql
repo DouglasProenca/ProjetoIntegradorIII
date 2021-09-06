@@ -6,144 +6,199 @@ use ProjetoIntegrador3;
 
 -- criação da tabelas
 create table if not exists RC_FILIAL(
-	empr_id bigInt(20) primary key auto_increment,
-	nome varChar(250)  not null,
-	rua varChar(250) not null,
-	numero varChar(10) not null,
-	bairro varChar(250) not null,
-	cidade varChar(250) not null,
-	CEP char(10) not null,
-	UF char(2) not null,
-	id_colaborador bigInt(20) not null,
-	data_ date not null,
-	obs text
+empr_id bigInt(20) primary key
+auto_increment,
+nome varChar(250) 
+not null,
+rua varChar(250) 
+not null,
+numero varChar(10) 
+not null,
+bairro varChar(250) 
+not null,
+cidade varChar(250) 
+not null,
+CEP char(10) 
+not null,
+UF char(2) 
+not null,
+user_ bigInt(20) 
+not null,
+data_ date 
+not null,
+obs text
 );
 
 
 create table if not exists RC_PERFIL_COLABORADOR(
-	id bigInt(20) primary key auto_increment,
-	cargo varChar(250) not null,
-	categoria varChar(250) not null,
-	salario_base float not null, -- mudar para float
-	id_colaborador bigInt(20) not null,
-    data_inclusao date not null,
-	obs text
+id bigInt(20) primary key auto_increment,
+cargo varChar(250)
+not null,
+categoria varChar(250)
+not null,
+salario_base varChar(250)
+not null,
+user_ bigInt(20)
+not null,
+data_inclusao date
+not null,
+obs text
 );
 
 
-create table if not exists RC_COLABORADOR(
-	id bigInt(20) primary key auto_increment,
-	empr_id bigint(20) not null,
-	nome varChar(250) not null,
-    senha varChar(250) not null,
-	categoria bigInt(20) not null,
-	salario float(20) not null,
-	id_colaborador bigInt(20) not null,
-	data_ date not null,
-	obs text
+create table if not exists RC_COLABORADORES(
+id bigInt(20) primary key
+auto_increment,
+empr_id bigint(20) 
+not null,
+nome varChar(250)
+not null,
+senha varChar(250)
+not null,
+categoria bigInt(20)
+not null,
+salario float(20)
+not null,
+user_ bigInt(20)
+not null,
+data_ date
+not null,
+obs text
 );
 
 create table if not exists rc_turma(
-	id bigint(20) primary key auto_increment,
-	empr_id  bigint(20) not null,
-	nome varchar(250) not null,
-	id_colaborador bigint(20) not null,
-	data_ date not null,
-	data_inicio date not null,
-	data_fim date not null,
-	valor float not null,
-	obs text
+id bigint(20) primary key auto_increment,
+empr_id  bigint(20) not null,
+nome varchar(250) not null,
+user_ bigint(20) not null,
+data_ date not null,
+data_inicio date not null,
+data_fim date not null,
+valor float not null,
+obs text
 );
 
 create table if not exists rc_aluno(
-	id bigint(20) primary key auto_increment,
-	empr_id bigint(20) not null,
-	nome varchar(250) not null,
-	sexo bit not null,
-	email varchar(250) not null,
-	cpf char(14) unique not null, -- xxx.xxx.xxx-xx
-	celular varchar(20) not null,
-	tel_residencial varchar(20),
-	tel_comercial varchar(20),
-    data_nasc date not null,
-    estado_civil varchar(250) not null,
-    data_ date not null,
-	id_colaborador bigint(20) not null,
-	obs text
+id bigint(20) 
+primary key auto_increment,
+empr_id bigint(20) 
+not null,
+nome varchar(250) 
+not null,
+sexo bit 
+not null,
+email varchar(250) 
+not null,
+cpf char(14) unique 
+not null, -- xxx.xxx.xxx-xx
+celular varchar(20) 
+not null,
+tel_residencial varchar(20) 
+not null,
+tel_comercial varchar(20) 
+not null,
+data_nasc date,
+estado_civil varchar(250) 
+not null,
+data_ date,
+user_ bigint(20) 
+not null,
+obs text
 );
 
 create table if not exists rc_endereco_aluno(
-	id bigint(20) primary key auto_increment,
-	id_aluno bigint(20) not null unique,
-	rua varChar(250) not null,
-	numero varChar(10) not null,
-	bairro varChar(250) not null,
-	cidade varChar(250) not null,
-	CEP char(10) not null,
-	UF char(2) not null,
-	id_colaborador bigInt(20) not null,
-	data_ date not null,
-	obs text
+id bigint(20) 
+primary key auto_increment not null unique,
+id_aluno bigint(20) not null,
+rua varChar(250) 
+not null,
+numero varChar(10) 
+not null,
+bairro varChar(250) 
+not null,
+cidade varChar(250) 
+not null,
+CEP char(10) 
+not null,
+UF char(2) 
+not null,
+user_ bigInt(20) 
+not null,
+data_ date 
+not null,
+obs text
 );
 
 create table if not exists rc_forma_pagamento(
-	id bigint(20) primary key auto_increment,
-	descricao varchar(250),
-	nome varchar(250) not null unique,
-	id_colaborador bigInt(20) not null,
-	data_ date not null
+id bigint(20) 
+primary key auto_increment not null,
+descricao varchar(250),
+nome varchar(250) not null unique,
+user_ bigInt(20)  
+not null,
+data_ date 
+not null
 );
 
 create table if not exists rc_matricula(
-	id bigint(20) primary key auto_increment not null,
-	id_aluno bigint(20) not null,
-	id_turma bigint(20) not null,
-	matricula varchar (50) not null,
-	ativo bit not null,
-	dia_venc_mensalidade date not null,
-	dt_matricula date not null,
-	id_colaborador bigint(20) not null,
-	data_ date not null,
-	obs text
+id bigint(20) 
+primary key auto_increment not null,
+id_turma bigint(20) not null,
+id_aluno bigInt(20) not null,
+matricula varchar (50) not null,
+ativo bit not null,
+dia_venc_mensalidade date not null,
+dt_matricula date not null,
+user_ bigint(20) not null,
+data_ date not null,
+obs text
 );
 
 create table if not exists RC_PAGAMENTO(
-	id bigInt(20) primary key auto_increment not null,
-	id_matricula bigInt(20) not null,
-	ano_ref char(4) not null,	
-	mes_ref char(2) not null,
-	data_pagamento date not null,
-	juros float,
-	id_forma_pagamento bigInt(20) not null,
-	valor_pago float,
-	id_colaborador bigInt(20) not null,
-	data_ date not null,
-	obs text
+id bigInt(20)
+primary key auto_increment not null,
+id_matricula bigInt(20) not null,
+ano_ref char(4)
+not null,
+mes_ref char(2)
+not null,
+data_pagamento date
+not null,
+juros float,
+id_forma_pagamento bigInt(20)
+not null,
+valor_pago float,
+user_ bigInt(20)
+not null,
+data_ date 
+not null,
+obs text
 );
 
 -- inserts na tabelas 
 
-insert into RC_FILIAL values(1, 'Instituto São Paulo', 'Rua Claudinho Peixoto', '356', 'Vila Mascote', 'São Paulo', '05501-041', 'SP', 1, (select curDate()), null),
-							(2, 'Colégio Cornelius', 'Rua do Bom Jesus', '167', 'Jardim Casa Forte', 'Recife', '60882-193', 'PE', 1, (select curdate()), null),
-                            (3, 'Escola Conexão', 'Rua Uruguai', '832', 'Bairro Itajaí', 'Santa Catarina', '13422-246', 'SC', 1, (select curdate()), null),
-                            (4, 'Instituição Edukar', 'Rua Alvim Dias de Arruda', '27', 'Bairro Boa vista', 'Tocantins', '09413-100', 'TO', 1, (select curdate()), null),
-                            (5, 'Centro Educacional Formar', 'Rua Fenelon Müller.', '1003', 'Chácara dos Pinheiros', 'Mato Grosso', '14285-220', 'MT', 1, (select curdate()), null);
+insert into RC_FILIAL values(null, 'Instituto São Paulo', 'Rua Claudinho Peixoto', '356', 'Vila Mascote', 'São Paulo', '05501-041', 'SP', 1, (select curDate()), null),
+							(null, 'Colégio Cornelius', 'Rua do Bom Jesus', '167', 'Jardim Casa Forte', 'Recife', '60882-193', 'PE', 1, (select curdate()), null),
+                            (null, 'Escola Conexão', 'Rua Uruguai', '832', 'Bairro Itajaí', 'Santa Catarina', '13422-246', 'SC', 1, (select curdate()), null),
+                            (null, 'Instituição Edukar', 'Rua Alvim Dias de Arruda', '27', 'Bairro Boa vista', 'Tocantins', '09413-100', 'TO', 1, (select curdate()), null),
+                            (null, 'Centro Educacional Formar', 'Rua Fenelon Müller.', '1003', 'Chácara dos Pinheiros', 'Mato Grosso', '14285-220', 'MT', 1, (select curdate()), null);
 
-insert into RC_PERFIL_COLABORADOR values (null, 'Analista de dados', 'T.I', 3094.00, 1, '2020-10-13', null),
-										 (null, 'Diretor de arte', 'Marketing', 3350.00, 1, '2019-06-03', null),
-										 (null, 'Gestora de operação', 'Vendas', 4000.00, 1, '2020-07-29', null),
-										 (null, 'Analista contábil', 'Financeiro', 3000.00, 1, '2021-02-16', null),
-										 (null, 'Designer', 'Marketing', 2050.00, 1, '2021-09-21', null);
+insert into RC_PERFIL_COLABORADOR values (null, 'Analista de dados', 'T.I', 'R$ 3.094,00', 1, '2020-10-13', null),
+										 (null, 'Diretor de arte', 'Marketing', 'R$ 3.350,00', 1, '2019-06-03', null),
+										 (null, 'Gestora de operação', 'Vendas', 'R$ 4.000,00', 1, '2020-07-29', null),
+										 (null, 'Analista contábil', 'Financeiro', 'R$ 3.000,00', 1, '2021-02-16', null),
+										 (null, 'Designer', 'Marketing', 'R$ 2.050,00', 1, '2021-09-21', null);
                                          
-insert into rc_colaborador values (null,1,'Gabriel Machado','1234',1,989.10,1,(select curdate()),'estágiario'),
+insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,5000.00,1,(select curdate()),'estágiario'),
 									(null,2,'Douglas Proença','1452',2,20000.00,1,(select curdate()), 'Funcionário do Mês'),
                                     (null,3,'Rafael Camilo','9874',3,10000.00,1,(select curdate()),'Promovido'),
                                     (null,4,'Vinicius Lopes','7894',4,7800.00,1,(select curdate()),null),
-                                    (null,1,'Amanda Gavioli','2017',1,3089.00,6,(select curdate()),null),
-									(null,2,'Mateus Silva','0214',2,3418.00,7,(select curdate()),null),
-									(null,3,'Weskley Oliveira','9918',3,2890.00,8,(select curdate()),null),
-									(null,4,'Abnoel Andrade','7122',4,2900.00,9,(select curdate()),null),
-									(null,5,'Nathasa Caldeirão','2005',5,2640.00,10,(select curdate()),null);
+                                    (null,5,'Stéane Timote','2324',4,3200.00,1,(select curdate()),null),
+                                    (null,1,'Amanda Gavioli','2017',1,3089.00,1,(select curdate()),null),
+									(null,2,'Mateus Silva','0214',2,3418.00,1,(select curdate()),null),
+									(null,3,'Weskley Oliveira','9918',3,2890.00,1,(select curdate()),null),
+									(null,4,'Abnoel Andrade','7122',4,2900.00,1,(select curdate()),null),
+									(null,5,'Nathasa Caldeirão','2005',5,2640.00,1,(select curdate()),null);
 
 insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2021-11-25', 1500, null),
 							(null, 2, 'C', 2, (select curdate()), '2020-07-01', '2021-05-14', 1900, null),
@@ -155,7 +210,8 @@ insert into rc_aluno values (null, 1,'Carla Moreira',1, 'moreiracarla@hotmail.co
 							 (null, 2,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
 							 (null, 3,'William Homem Igrejas',0, 'whigrejas@hotmail.com', '733.756.951-36', '(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
                              (null, 4,'Bernardo Azambuja Lima',0, 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
-                             (null, 5,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null);
+                             (null, 5,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Sol
+                             teiro', (select curdate()), 5, null);
 
 insert into rc_endereco_aluno values (null,1, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
 									  (null,2, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
@@ -174,44 +230,32 @@ insert into rc_forma_pagamento VALUES (null,null,'Dinheiro',1,(select curdate())
 
 -- Regras das tabelas
 
-alter table rc_filial add constraint filial_user check (id_colaborador = 1);
-alter table rc_filial add constraint fk_filial_colaborador foreign key (id_colaborador) references rc_colaborador (id);
+alter table rc_filial add constraint filial_user check (user_ = 1);
+alter table rc_filial add constraint fk_Colaborador foreign key (user_) references rc_colaboradores (id);
 
-alter table RC_PERFIL_COLABORADOR add constraint perfil_colaborador_user check (id_colaborador = 1);
-alter table RC_PERFIL_COLABORADOR add constraint fk_perfil_colaborador foreign key (id_colaborador) references rc_colaborador (id);   
+alter table RC_PERFIL_COLABORADOR add constraint perfil_colaborador_user check (user_ = 1);
+alter table RC_PERFIL_COLABORADOR add constraint fk_perfil_colaborador foreign key (user_) references rc_colaboradores (id);   
 
-alter table rc_colaborador add constraint colaborador_user check (id_colaborador = 1);
-alter table rc_colaborador add constraint fk_colaborador_filial foreign key (empr_id) references rc_filial(empr_id);
-alter table rc_colaborador add constraint fk_Colaborador foreign key (categoria) references RC_PERFIL_COLABORADOR (id);
+alter table rc_colaboradores add constraint fk_Colaboradores foreign key (categoria) references RC_PERFIL_COLABORADOR (id);
 
-alter table rc_turma add constraint fk_turma_filial foreign key (empr_id) references rc_filial (empr_id);
-alter table rc_turma add constraint fk_turma_colaborador foreign key (id_colaborador) references rc_colaborador (id);
-alter table rc_turma add constraint turma_user check (id_colaborador = 3);
+alter table rc_forma_pagamento add constraint forma_pagamento_user check (user_ = 1);
 
-alter table rc_aluno add constraint fk_aluno_filial foreign key (empr_id) references rc_filial (empr_id);
-alter table rc_aluno add constraint fk_aluno_colaborador foreign key (id_colaborador) references rc_colaborador (id);
-alter table rc_aluno add constraint aluno_user check (id_colaborador = 3);
+alter table RC_PAGAMENTO add constraint pagamentos_user check (user_ = 4);
+alter table RC_PAGAMENTO add constraint fk_matricula_id foreign key (id_matricula) references RC_MATRICULA (id);
+alter table RC_PAGAMENTO add constraint fk_forma_pagamento foreign key (id_forma_pagamento) references RC_FORMA_PAGAMENTO (id);
 
-alter table rc_endereco_aluno add constraint fk_endereco_aluno foreign key (id_aluno) references rc_aluno (id);
-alter table rc_endereco_aluno add constraint fk_endereco_colaborador foreign key (id_colaborador) references rc_colaborador (id);
-alter table rc_endereco_aluno add constraint endereco_aluno_user check (id_colaborador = 3);
+alter table RC_MATRICULA add constraint fk_turma_id foreign key (id_turma) references rc_turma (id);
+alter table RC_MATRICULA add constraint fk_id_aluno foreign key (id_aluno) references rc_aluno (id);
+alter table RC_MATRICULA add constraint matricula_user check (user_ = 3 or user_ = 8);
 
-alter table rc_forma_pagamento add constraint forma_pagamento_user check (id_colaborador = 1);
-
-alter table rc_matricula add constraint fk_matricula_colaborador foreign key (id_colaborador) references rc_colaborador (id);
-alter table rc_matricula add constraint fk_matricula_aluno foreign key (id_aluno) references rc_aluno(id);
-alter table rc_matricula add constraint fk_matricula_turma foreign key (id_turma) references rc_turma(id);
-alter table rc_matricula add constraint matricula_user check (id_colaborador =3);
-
-alter table rc_pagamento add constraint fk_pagamento_aluno foreign key (id_colaborador) references rc_colaborador (id);
-alter table rc_pagamento add constraint fk_pagamento_forma foreign key (id_forma_pagamento) references rc_forma_pagamento(id);
-alter table rc_pagamento add constraint fk_pagamento_matricula foreign key (id_matricula) references rc_matricula (id);
-alter table RC_PAGAMENTO add constraint pagamento_user check (user_ = 4);
+select * from rc_colaboradores c 
+inner join rc_perfil_colaborador p
+on c.id=p.id;
 
 -- comando para apagar a database 
 -- drop database ProjetoIntegrador3;    
 
--- Pendencias 
-
--- verificar como colocar em um servidor
--- inserts rc_pagamentos
+-- FALTAM -- insert do pagamento, forma de pagamento e matricula.
+-- Verificar todas as foreign keys.
+-- Verificar todos os check.
+-- Verificar como colocar em um servidor.
