@@ -6,173 +6,117 @@ use ProjetoIntegrador3;
 
 -- criação da tabelas
 create table if not exists RC_FILIAL(
-empr_id bigInt(20) primary key
-auto_increment,
-nome varChar(250) 
-not null,
-rua varChar(250) 
-not null,
-numero varChar(10) 
-not null,
-bairro varChar(250) 
-not null,
-cidade varChar(250) 
-not null,
-CEP char(10) 
-not null,
-UF char(2) 
-not null,
-user_ bigInt(20) 
-not null,
-data_ date 
-not null,
-obs text
+	empr_id bigInt(20) primary key auto_increment,
+	nome varChar(250) not null,
+	rua varChar(250) not null,
+	numero varChar(10) not null,
+	bairro varChar(250) not null,
+	cidade varChar(250) not null,
+	CEP char(10) not null,
+	UF char(2) not null,
+	id_colaborador bigInt(20) not null,
+	data_ date not null,
+	obs text
+);
+
+create table if not exists RC_FORMA_PAGAMENTO(
+	id bigint(20) primary key auto_increment,
+	descricao varchar(250),
+	nome varchar(250) not null unique,
+	id_colaborador bigInt(20) not null,
+	data_ date not null
+);
+
+create table if not exists RC_CATEGORIA(
+	id bigint(20) primary key auto_increment,
+	categoria varChar(250) not null,
+	id_colaborador bigInt(20) not null,
+	data_inclusao date not null,
+	obs text
+);
+
+create table if not exists RC_PESSOA(
+	id bigint(20) primary key auto_increment,
+	id_filial bigint(20) not null,
+	id_categoria bigint(20) not null,
+	nome varchar(250) not null,
+	sexo bit not null,
+	email varchar(250) not null,
+	cpf char(14) unique not null, -- xxx.xxx.xxx-xx
+	celular varchar(20) not null,
+	tel_residencial varchar(20) not null,
+	tel_comercial varchar(20) not null,
+	data_nasc date,
+	estado_civil varchar(250) not null,
+	data_ date,
+	id_colaborador bigint(20) not null,
+	obs text
+);
+
+create table if not exists RC_ENDERECO_PESSOA(
+	id bigint(20) primary key auto_increment not null,
+	id_pessoa bigint(20) not null unique,
+	rua varChar(250) not null,
+	numero varChar(10) not null,
+	bairro varChar(250) not null,
+	cidade varChar(250) not null,
+	CEP char(10) not null,
+	UF char(2) not null,
+	id_colaborador bigInt(20) not null,
+	data_ date not null,
+	obs text
 );
 
 
-create table if not exists RC_PERFIL_COLABORADOR(
-id bigInt(20) primary key auto_increment,
-cargo varChar(250)
-not null,
-categoria varChar(250)
-not null,
-salario_base varChar(250)
-not null,
-user_ bigInt(20)
-not null,
-data_inclusao date
-not null,
-obs text
+create table if not exists RC_CARGO(
+	id bigInt(20) primary key auto_increment,
+	id_pessoa bigint(20) not null,
+    id_categoria bigint(20) not null,
+	salario float(20) not null,
+    salario_base float(20) not null,
+	id_colaborador bigInt(20) not null,
+	data_ date not null,
+	obs text
 );
 
-
-create table if not exists RC_COLABORADORES(
-id bigInt(20) primary key
-auto_increment,
-empr_id bigint(20) 
-not null,
-nome varChar(250)
-not null,
-senha varChar(250)
-not null,
-categoria bigInt(20)
-not null,
-salario float(20)
-not null,
-user_ bigInt(20)
-not null,
-data_ date
-not null,
-obs text
+create table if not exists RC_TURMA(
+	id bigint(20) primary key auto_increment,
+	empr_id  bigint(20) not null,
+	nome varchar(250) not null,
+	id_colaborador bigint(20) not null,
+	data_ date not null,
+	data_inicio date not null,
+	data_fim date not null,
+	valor float not null,
+	obs text
 );
 
-create table if not exists rc_turma(
-id bigint(20) primary key auto_increment,
-empr_id  bigint(20) not null,
-nome varchar(250) not null,
-user_ bigint(20) not null,
-data_ date not null,
-data_inicio date not null,
-data_fim date not null,
-valor float not null,
-obs text
-);
-
-create table if not exists rc_aluno(
-id bigint(20) 
-primary key auto_increment,
-empr_id bigint(20) 
-not null,
-nome varchar(250) 
-not null,
-sexo bit 
-not null,
-email varchar(250) 
-not null,
-cpf char(14) unique 
-not null, -- xxx.xxx.xxx-xx
-celular varchar(20) 
-not null,
-tel_residencial varchar(20) 
-not null,
-tel_comercial varchar(20) 
-not null,
-data_nasc date,
-estado_civil varchar(250) 
-not null,
-data_ date,
-user_ bigint(20) 
-not null,
-obs text
-);
-
-create table if not exists rc_endereco_aluno(
-id bigint(20) 
-primary key auto_increment not null unique,
-id_aluno bigint(20) not null,
-rua varChar(250) 
-not null,
-numero varChar(10) 
-not null,
-bairro varChar(250) 
-not null,
-cidade varChar(250) 
-not null,
-CEP char(10) 
-not null,
-UF char(2) 
-not null,
-user_ bigInt(20) 
-not null,
-data_ date 
-not null,
-obs text
-);
-
-create table if not exists rc_forma_pagamento(
-id bigint(20) 
-primary key auto_increment not null,
-descricao varchar(250),
-nome varchar(250) not null unique,
-user_ bigInt(20)  
-not null,
-data_ date 
-not null
-);
-
-create table if not exists rc_matricula(
-id bigint(20) 
-primary key auto_increment not null,
-id_turma bigint(20) not null,
-id_aluno bigInt(20) not null,
-matricula varchar (50) not null,
-ativo bit not null,
-dia_venc_mensalidade date not null,
-dt_matricula date not null,
-user_ bigint(20) not null,
-data_ date not null,
-obs text
+create table if not exists RC_MATRICULA(
+	id bigint(20) primary key auto_increment,
+	id_turma bigint(20) not null,
+	id_pessoa bigInt(20) not null,
+	matricula varchar (50) not null,
+	ativo bit not null,
+	dia_venc_mensalidade date not null,
+	dt_matricula date not null,
+	id_colaborador bigint(20) not null,
+	data_ date not null,
+	obs text
 );
 
 create table if not exists RC_PAGAMENTO(
-id bigInt(20)
-primary key auto_increment not null,
-id_matricula bigInt(20) not null,
-ano_ref char(4)
-not null,
-mes_ref char(2)
-not null,
-data_pagamento date
-not null,
-juros float,
-id_forma_pagamento bigInt(20)
-not null,
-valor_pago float,
-user_ bigInt(20)
-not null,
-data_ date 
-not null,
-obs text
+	id bigInt(20) primary key auto_increment,
+	id_matricula bigInt(20) not null,
+	ano_ref char(4) not null,
+	mes_ref char(2) not null,
+	data_pagamento date not null,
+	juros float,
+	id_forma_pagamento bigInt(20) not null,
+	valor_pago float,
+	id_colaborador bigInt(20)
+	not null,
+	data_ date not null,
+	obs text
 );
 
 -- inserts na tabelas 
@@ -200,7 +144,7 @@ insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,5000.00,1
 									(null,4,'Abnoel Andrade','7122',4,2900.00,1,(select curdate()),null),
 									(null,5,'Nathasa Caldeirão','2005',5,2640.00,1,(select curdate()),null);
 
-insert into rc_turma values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2021-11-25', 1500, null),
+insert into RC_TURMA values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2021-11-25', 1500, null),
 							(null, 2, 'C', 2, (select curdate()), '2020-07-01', '2021-05-14', 1900, null),
 							(null, 3, 'A', 3, (select curdate()), '2018-02-18', '2019-12-10', 2300, null),
 							(null, 4, 'B', 4, (select curdate()), '2021-02-12', '2021-09-28', 1150, null),
