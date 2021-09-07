@@ -285,7 +285,7 @@ alter table RC_CATEGORIA add constraint FORMA_PAGAMENTO_USER check (ID_COLABORAD
 alter table RC_CATEGORIA add constraint FK_CATEGORIA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
 
 alter table RC_PESSOA add constraint PESSOA_USER check (ID_COLABORADOR <= 25);
-alter table RC_PESSOA add constraint FK_PESSOA_FILIAL foreign key (ID_FILIAL) references RC_FILIAL (id);    
+alter table RC_PESSOA add constraint FK_PESSOA_FILIAL foreign key (ID_FILIAL) references RC_FILIAL (EMPR_ID);    
 alter table RC_PESSOA add constraint FK_PESSOA_CATEGORIA foreign key (ID_CATEGORIA) references RC_CATEGORIA (id);   
 alter table RC_PESSOA add constraint FK_PESSOA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
 
