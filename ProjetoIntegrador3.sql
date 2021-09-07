@@ -69,9 +69,10 @@ create table if not exists RC_ENDERECO_PESSOA(
 
 
 create table if not exists RC_CARGO(
-	id bigInt(20) primary key auto_increment,
-	id_pessoa bigint(20) not null,
+	id bigint(20) primary key auto_increment,
+	id_pessoa bigint(20) not null unique,
     id_categoria bigint(20) not null,
+    cargo varchar(250) not null,
 	salario float(20) not null,
     salario_base float(20) not null,
 	id_colaborador bigInt(20) not null,
@@ -127,6 +128,49 @@ insert into RC_FILIAL values(null, 'Instituto São Paulo', 'Rua Claudinho Peixot
                             (null, 'Instituição Edukar', 'Rua Alvim Dias de Arruda', '27', 'Bairro Boa vista', 'Tocantins', '09413-100', 'TO', 1, (select curdate()), null),
                             (null, 'Centro Educacional Formar', 'Rua Fenelon Müller.', '1003', 'Chácara dos Pinheiros', 'Mato Grosso', '14285-220', 'MT', 1, (select curdate()), null);
 
+insert into rc_forma_pagamento VALUES (null,null,'Dinheiro',1,(select curdate())),
+								   (null,null,'Cartão de Débito',1,(select curdate())),
+                                   (null,null,'Cartão de Crédito',1,(select curdate())),
+                                   (null,null,'Boleto Bancário',1,(select curdate())),
+                                   (null,null,'Nota Promissória',1,(select curdate())),
+                                   (null,null,'Cheque',1,(select curdate())),
+                                   (null,null,'Transf. eletrônica',1,(select curdate()));
+
+insert into RC_CATEGORIA values (null,'alunos',1, (select curdate()),null),
+								(null,'TI',1, (select curdate()),null),
+                                (null,'Administrativo',1, (select curdate()),null),
+                                (null,'Vendas',1, (select curdate()),null),
+                                (null,'Produtos/Serviços/Marketing',1, (select curdate()),null);
+				
+insert into RC_PESSOA values (null, 1,1,'Carla Moreira',1, 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
+							 (null, 2,1,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
+							 (null, 3,1,'William Homem Igrejas',0, 'whigrejas@hotmail.com', '733.756.951-36', '(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
+                             (null, 4,1,'Bernardo Azambuja Lima',0, 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
+                             (null, 5,1,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null);
+
+insert into RC_ENDERECO_PESSOA values (null,1, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
+									  (null,2, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
+									  (null,3, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
+									  (null,4, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
+									  (null,5, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null);
+-- 
+
+insert into RC_CARGO values (null,6,2,'Gerente Regional',5000.00, 4800.00, 1, (select curdate()),null),
+							(null,7,2,'Gerente Regional',5000.00, 4800.00, 1, (select curdate()),null),
+                            (null,8,2,'Gerente Regional',5000.00, 4800.00, 1, (select curdate()),null),
+                            (null,9,2,'Gerente Regional',5000.00, 4800.00, 1, (select curdate()),null),
+                            (null,10,2,'Gerente Regional',5000.00, 4800.00, 1, (select curdate()),null),
+                            (null,11,2,'Suporte Tecnico',2500.00, 2200.00, 1, (select curdate()),null),
+							(null,12,2,'Suporte Tecnico',2500.00, 2200.00, 1, (select curdate()),null),
+                            (null,13,2,'Suporte Tecnico',2500.00, 2200.00, 1, (select curdate()),null),
+                            (null,14,2,'Suporte Tecnico',2500.00, 2200.00, 1, (select curdate()),null),
+                            (null,15,2,'Suporte Tecnico',2500.00, 2200.00, 1, (select curdate()),null),
+                            (null,16,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+							(null,17,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+                            (null,18,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+                            (null,19,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+                            (null,20,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null);
+
 insert into RC_PERFIL_COLABORADOR values (null, 'Analista de dados', 'T.I', 'R$ 3.094,00', 1, '2020-10-13', null),
 										 (null, 'Diretor de arte', 'Marketing', 'R$ 3.350,00', 1, '2019-06-03', null),
 										 (null, 'Gestora de operação', 'Vendas', 'R$ 4.000,00', 1, '2020-07-29', null),
@@ -149,27 +193,8 @@ insert into RC_TURMA values (null, 1, 'A', 1, (select curdate()), '2021-02-21', 
 							(null, 3, 'A', 3, (select curdate()), '2018-02-18', '2019-12-10', 2300, null),
 							(null, 4, 'B', 4, (select curdate()), '2021-02-12', '2021-09-28', 1150, null),
 							(null, 5, 'D', 5, (select curdate()), '2021-05-11', '2022-06-05', 1350, null);
-                            
-insert into rc_aluno values (null, 1,'Carla Moreira',1, 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
-							 (null, 2,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
-							 (null, 3,'William Homem Igrejas',0, 'whigrejas@hotmail.com', '733.756.951-36', '(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
-                             (null, 4,'Bernardo Azambuja Lima',0, 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
-                             (null, 5,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Sol
-                             teiro', (select curdate()), 5, null);
+						
 
-insert into rc_endereco_aluno values (null,1, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
-									  (null,2, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
-									  (null,3, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
-									  (null,4, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
-									  (null,5, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null);
-
-insert into rc_forma_pagamento VALUES (null,null,'Dinheiro',1,(select curdate())),
-								   (null,null,'Cartão de Débito',1,(select curdate())),
-                                   (null,null,'Cartão de Crédito',1,(select curdate())),
-                                   (null,null,'Boleto Bancário',1,(select curdate())),
-                                   (null,null,'Nota Promissória',1,(select curdate())),
-                                   (null,null,'Cheque',1,(select curdate())),
-                                   (null,null,'Transf. eletrônica',1,(select curdate()));
 
 
 -- Regras das tabelas
@@ -191,10 +216,6 @@ alter table RC_PAGAMENTO add constraint fk_forma_pagamento foreign key (id_forma
 alter table RC_MATRICULA add constraint fk_turma_id foreign key (id_turma) references rc_turma (id);
 alter table RC_MATRICULA add constraint fk_id_aluno foreign key (id_aluno) references rc_aluno (id);
 alter table RC_MATRICULA add constraint matricula_user check (user_ = 3 or user_ = 8);
-
-select * from rc_colaboradores c 
-inner join rc_perfil_colaborador p
-on c.id=p.id;
 
 -- comando para apagar a database 
 -- drop database ProjetoIntegrador3;    
