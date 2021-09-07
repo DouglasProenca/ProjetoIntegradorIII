@@ -146,7 +146,17 @@ insert into RC_PESSOA values (null, 1,1,'Carla Moreira',1, 'moreiracarla@hotmail
 							 (null, 2,1,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
 							 (null, 3,1,'William Homem Igrejas',0, 'whigrejas@hotmail.com', '733.756.951-36', '(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
                              (null, 4,1,'Bernardo Azambuja Lima',0, 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
-                             (null, 5,1,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null);
+                             (null, 5,1,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null),
+						     (null, 1,2,'Gabriel Machado',0,'GabsMach@gmail.com','552.288.080-51','(11) 98714-2390','(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
+							 (null, 2,2,'Douglas Proença',0,'dprz1606@gmail.com','926.894.450-26','(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Solteiro', (select curdate()), 2, null),
+							 (null, 3,2,'Rafael Camilo',0,'camilorafa@gmail.com','760.686.930-82','(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Casado', (select curdate()), 3, null),
+							 (null, 4,2,'Vinicius Lopes',0,'ViniLopes@outlok.com','895.567.160-17','(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
+							 (null, 5,2,'Stéfane Timote',1,'timoste@yahoo.com.br','930.971.660-68','(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null),
+							 (null, 1,3,'Amanda Gavioli',1,'mandsGavi@terra.com.br','404.936.540-54','(11) 98714-2390','(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
+							 (null, 2,3,'Mateus Silva',0,'mat1998@gmail.com','919.707.560-47','(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
+							 (null, 3,3,'Weskley Oliveira',0,'weskleysantos@outlook.com','395.054.350-37','(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
+							 (null, 4,3,'Abnoel Andrade',0,'abandrade@gmail.com','226.526.880-14','(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
+							 (null, 5,3,'Nathasa Caldeirão',1,'natashacald@terra.com.br','386.164.430-45','(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null);
 
 insert into RC_ENDERECO_PESSOA values (null,1, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
 									  (null,2, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
@@ -165,28 +175,21 @@ insert into RC_CARGO values (null,6,2,'Gerente Regional',5000.00, 4800.00, 1, (s
                             (null,13,2,'Suporte Tecnico',2500.00, 2200.00, 1, (select curdate()),null),
                             (null,14,2,'Suporte Tecnico',2500.00, 2200.00, 1, (select curdate()),null),
                             (null,15,2,'Suporte Tecnico',2500.00, 2200.00, 1, (select curdate()),null),
-                            (null,16,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
-							(null,17,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
-                            (null,18,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
-                            (null,19,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
-                            (null,20,2,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null);
-
-insert into RC_PERFIL_COLABORADOR values (null, 'Analista de dados', 'T.I', 'R$ 3.094,00', 1, '2020-10-13', null),
-										 (null, 'Diretor de arte', 'Marketing', 'R$ 3.350,00', 1, '2019-06-03', null),
-										 (null, 'Gestora de operação', 'Vendas', 'R$ 4.000,00', 1, '2020-07-29', null),
-										 (null, 'Analista contábil', 'Financeiro', 'R$ 3.000,00', 1, '2021-02-16', null),
-										 (null, 'Designer', 'Marketing', 'R$ 2.050,00', 1, '2021-09-21', null);
-                                         
-insert into rc_colaboradores values (null,1,'Gabriel Machado','1234',1,5000.00,1,(select curdate()),'estágiario'),
-									(null,2,'Douglas Proença','1452',2,20000.00,1,(select curdate()), 'Funcionário do Mês'),
-                                    (null,3,'Rafael Camilo','9874',3,10000.00,1,(select curdate()),'Promovido'),
-                                    (null,4,'Vinicius Lopes','7894',4,7800.00,1,(select curdate()),null),
-                                    (null,5,'Stéane Timote','2324',4,3200.00,1,(select curdate()),null),
-                                    (null,1,'Amanda Gavioli','2017',1,3089.00,1,(select curdate()),null),
-									(null,2,'Mateus Silva','0214',2,3418.00,1,(select curdate()),null),
-									(null,3,'Weskley Oliveira','9918',3,2890.00,1,(select curdate()),null),
-									(null,4,'Abnoel Andrade','7122',4,2900.00,1,(select curdate()),null),
-									(null,5,'Nathasa Caldeirão','2005',5,2640.00,1,(select curdate()),null);
+                            (null,16,4,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+							(null,17,4,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+                            (null,18,4,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+                            (null,19,4,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+                            (null,20,4,'Vendedor Regional',1500.00, 1200.00, 1, (select curdate()),null),
+                            (null,21,3,'RH',4100.00, 3800.00, 1, (select curdate()),null),
+							(null,22,3,'RH',4100.00, 3800.00, 1, (select curdate()),null),
+                            (null,23,3,'RH',4100.00, 3800.00, 1, (select curdate()),null),
+                            (null,24,3,'RH',4100.00, 3800.00, 1, (select curdate()),null),
+                            (null,25,3,'RH',4100.00, 3800.00, 1, (select curdate()),null),
+                            (null,26,3,'Administrativo',2500.00, 2000.00, 1, (select curdate()),null),
+							(null,27,3,'Administrativo',2500.00, 2000.00, 1, (select curdate()),null),
+                            (null,28,3,'Administrativo',2500.00, 2000.00, 1, (select curdate()),null),
+                            (null,29,3,'Administrativo',2500.00, 2000.00, 1, (select curdate()),null),
+                            (null,30,3,'Administrativo',2500.00, 2000.00, 1, (select curdate()),null);
 
 insert into RC_TURMA values (null, 1, 'A', 1, (select curdate()), '2021-02-21', '2021-11-25', 1500, null),
 							(null, 2, 'C', 2, (select curdate()), '2020-07-01', '2021-05-14', 1900, null),
