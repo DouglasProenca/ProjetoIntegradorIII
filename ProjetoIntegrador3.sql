@@ -81,11 +81,11 @@ create table if not exists RC_CARGO(
 );
 
 create table if not exists RC_USUARIO(
-id_rule bigInt(20) primary key auto_increment,
-id_pessoa bigInt(20) not null unique,
-senha varchar (250) not null,
-id_colaborador bigInt(20) not null,
-data_ date not null
+	id_rule bigInt(20) primary key auto_increment,
+	id_pessoa bigInt(20) not null unique,
+	senha varchar (250) not null,
+	id_colaborador bigInt(20) not null,
+	data_ date not null
 );
 
 create table if not exists RC_TURMA(
@@ -106,7 +106,7 @@ create table if not exists RC_MATRICULA(
 	id_pessoa bigInt(20) not null,
 	matricula varchar (50) not null,
 	ativo bit not null,
-	dia_venc_mensalidade date not null,
+	dia_venc_mensalidade int not null,
 	dt_matricula date not null,
 	id_colaborador bigint(20) not null,
 	data_ date not null,
@@ -270,6 +270,17 @@ insert into RC_TURMA values (null, 1, 'A', 1, (select curdate()), '2021-02-21', 
 							(null, 4, 'B', 4, (select curdate()), '2021-02-12', '2021-09-28', 1150, null),
 							(null, 5, 'D', 5, (select curdate()), '2021-05-11', '2022-06-05', 1350, null);
 						
+insert into RC_MATRICULA values (null, 1, 1, 'PA1', 0, 10,'2019-01-14', (select curdate()),(select curdate()), null),
+								(null, 2, 2, 'PC1', 1, 5,'2020-01-02', (select curdate()),(select curdate()), null),
+								(null, 1, 3, 'PA1', 1, 15,'2019-02-03', (select curdate()),(select curdate()), null),
+								(null, 4, 4, 'PB1', 0, 10,'2017-02-08', (select curdate()),(select curdate()), null),
+								(null, 2, 5, 'PC2', 1, 5,'2020-01-14', (select curdate()),(select curdate()), null);
+
+insert into rc_pagamento values (null, '2020', '04', '2020-04-12', '5%', 4, '2500', 1, (select curdate()), null),
+								(null, '2019', '09', '2021-03-10', '2,5%', 2, '900', 2, (select curdate()), null),
+								(null, '2020', '11', '2020-12-15', '3%', 2, '1500', 3, (select curdate()), null),
+								(null, '2017', '02', '2017-03-20', '2,25%', 1, '800', 4, (select curdate()), null),
+								(null, '2018', '10', '2018-11-05', '3,5%', 3, '1900', 5, (select curdate()), null);
 
 
 
@@ -307,6 +318,9 @@ alter table RC_MATRICULA add constraint matricula_user check (user_ = 3 or user_
 
 -- comando para apagar a database 
 -- drop database ProjetoIntegrador3;    
+
+-- site para gerar informações:
+-- https://www.4devs.com.br/
 
 -- FALTAM -- insert do pagamento e matricula.
 -- Verificar todas as foreign keys.
