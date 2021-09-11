@@ -1,3 +1,9 @@
+package view;
+
+
+import Classes.menuBarra;
+import javax.swing.JMenuBar;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +21,10 @@ public class cadastroDeAlunos extends javax.swing.JFrame {
      */
     public cadastroDeAlunos() {
         initComponents();
+        setLocationRelativeTo(null);
+        menuBarra cb = new menuBarra();
+        cb.montaMenu();
+        setJMenuBar((JMenuBar) cb.montaMenu());
     }
 
     /**
@@ -47,7 +57,7 @@ public class cadastroDeAlunos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));

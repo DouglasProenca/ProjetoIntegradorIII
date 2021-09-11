@@ -1,3 +1,12 @@
+package view;
+
+
+import Classes.menuBarra;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JMenuBar;
+import view.cadastroDeAlunos;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +25,10 @@ public class telaPrincipal extends javax.swing.JFrame {
     public telaPrincipal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+        setTitle("Tela Principal");
+        menuBarra cb = new menuBarra();
+        cb.montaMenu();
+        setJMenuBar((JMenuBar) cb.montaMenu());
     }
 
     /**
@@ -27,53 +40,34 @@ public class telaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        lblData = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jMenu1.setText("Paginas");
-
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Cadastro de alunos");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jCheckBoxMenuItem1);
-
-        jCheckBoxMenuItem2.setSelected(true);
-        jCheckBoxMenuItem2.setText("Cadastro de colaboradores");
-        jMenu1.add(jCheckBoxMenuItem2);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        lblData.setText("Data");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(414, Short.MAX_VALUE)
+                .addComponent(lblData)
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(lblData)
+                .addContainerGap(393, Short.MAX_VALUE))
         );
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        lblData.setText(sdf.format(new Date()));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,10 +105,6 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel lblData;
     // End of variables declaration//GEN-END:variables
 }
