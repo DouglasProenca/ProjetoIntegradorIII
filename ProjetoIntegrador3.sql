@@ -326,3 +326,4 @@ alter table RC_MATRICULA add constraint matricula_user check (user_ = 3 or user_
 -- Verificar todas as foreign keys.
 -- Verificar todos os check.
 -- Verificar como colocar em um servidor.
+-- Atualizando BD.
