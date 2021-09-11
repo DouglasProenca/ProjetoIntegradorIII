@@ -27,6 +27,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         setTitle("Tela Principal");
         menuBarra cb = new menuBarra();
+        cb.jMenuTelaPrincipal.setVisible(false);
         cb.montaMenu();
         setJMenuBar((JMenuBar) cb.montaMenu());
     }

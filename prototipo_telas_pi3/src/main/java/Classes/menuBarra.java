@@ -26,16 +26,17 @@ import view.telaPrincipal;
 public class menuBarra extends JMenuBar {
 
  JMenuBar menuBar = new JMenuBar();
+ JMenu jMenuArquivo = new JMenu("Paginas");
+ public JMenuItem jMenuTelaPrincipal = new JMenuItem("Tela Principal");
+ public JMenuItem jMenuCadastrodealunos = new JMenuItem("Cadastro de alunos");
+ JMenuItem jMenuCadastrodecolaboradores = new JMenuItem("Cadastro de colaboradores");
 
  public Component montaMenu(){
  //criação da barra de menu
  JMenuBar jMenuBar = new JMenuBar();
 
  //criação dos menus
- JMenu jMenuArquivo = new JMenu("Paginas");
- JMenuItem jMenuTelaPrincipal = new JMenuItem("Tela Principal");
- JMenuItem jMenuCadastrodealunos = new JMenuItem("Cadastro de alunos");
- JMenuItem jMenuCadastrodecolaboradores = new JMenuItem("Cadastro de colaboradores");
+
 
  jMenuArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/62866-page-with-curl-icon.png")));
  

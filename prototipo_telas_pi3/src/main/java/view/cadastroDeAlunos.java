@@ -23,6 +23,7 @@ public class cadastroDeAlunos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         menuBarra cb = new menuBarra();
+        cb.jMenuCadastrodealunos.setVisible(false);
         cb.montaMenu();
         setJMenuBar((JMenuBar) cb.montaMenu());
     }
