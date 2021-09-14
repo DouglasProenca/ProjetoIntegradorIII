@@ -1,7 +1,5 @@
 package Classes;
 
-
-
 import view.cadastroDeAlunos;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -25,56 +23,52 @@ import view.telaPrincipal;
  */
 public class menuBarra extends JMenuBar {
 
- JMenuBar menuBar = new JMenuBar();
- JMenu jMenuArquivo = new JMenu("Paginas");
- public JMenuItem jMenuTelaPrincipal = new JMenuItem("Tela Principal");
- public JMenuItem jMenuCadastrodealunos = new JMenuItem("Cadastro de alunos");
- JMenuItem jMenuCadastrodecolaboradores = new JMenuItem("Cadastro de colaboradores");
+    JMenuBar menuBar = new JMenuBar();
+    JMenu jMenuArquivo = new JMenu("Paginas");
+    public JMenuItem jMenuTelaPrincipal = new JMenuItem("Tela Principal");
+    public JMenuItem jMenuCadastrodealunos = new JMenuItem("Cadastro de alunos");
+    JMenuItem jMenuCadastrodecolaboradores = new JMenuItem("Cadastro de colaboradores");
 
- public Component montaMenu(){
- //criação da barra de menu
- JMenuBar jMenuBar = new JMenuBar();
+    public Component montaMenu() {
+        //criação da barra de menu
+        JMenuBar jMenuBar = new JMenuBar();
 
- //criação dos menus
+        //criação dos menus
+        jMenuArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/62866-page-with-curl-icon.png")));
 
+        //adicionando menus à barra de menu
+        jMenuBar.add(jMenuArquivo);
 
- jMenuArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/62866-page-with-curl-icon.png")));
- 
- //adicionando menus à barra de menu
- jMenuBar.add(jMenuArquivo);
+        //adicionando itens de menu ao menu arquivo
+        jMenuArquivo.add(jMenuTelaPrincipal);
+        jMenuArquivo.add(jMenuCadastrodealunos);
+        //jMenuArquivo.addSeparator();
+        jMenuArquivo.add(jMenuCadastrodecolaboradores);
 
+        jMenuTelaPrincipal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaPrincipal cadAlun = new telaPrincipal();
+                cadAlun.setVisible(true);
+            }
+        });
 
- //adicionando itens de menu ao menu arquivo
- jMenuArquivo.add(jMenuTelaPrincipal);
- jMenuArquivo.add(jMenuCadastrodealunos);
- //jMenuArquivo.addSeparator();
- jMenuArquivo.add(jMenuCadastrodecolaboradores);
+        jMenuCadastrodealunos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cadastroDeAlunos cadAlun = new cadastroDeAlunos();
+                cadAlun.setVisible(true);
+            }
+        });
 
- jMenuTelaPrincipal.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        telaPrincipal cadAlun = new telaPrincipal();
-        cadAlun.setVisible(true);
+        jMenuCadastrodecolaboradores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        //adicionando a barra de menu ao aplicativo
+        return jMenuBar;
     }
-});
- 
- jMenuCadastrodealunos.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        cadastroDeAlunos cadAlun = new cadastroDeAlunos();
-        cadAlun.setVisible(true);
-    }
-});
-
-jMenuCadastrodecolaboradores.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-     
-    }
-}); 
- 
- //adicionando a barra de menu ao aplicativo
- return jMenuBar;
-}
-
 }
