@@ -1,6 +1,6 @@
 package Classes;
 
-import view.cadastroDeAlunos;
+//import view.cadastroDeAlunos;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,8 +56,8 @@ public class menuBarra extends JMenuBar {
         jMenuCadastrodealunos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cadastroDeAlunos cadAlun = new cadastroDeAlunos();
-                cadAlun.setVisible(true);
+                //cadastroDeAlunos cadAlun = new cadastroDeAlunos();
+                //cadAlun.setVisible(true);
             }
         });
 
