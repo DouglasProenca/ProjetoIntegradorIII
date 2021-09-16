@@ -13,7 +13,7 @@ public class GerenciadorConexao {
     public static String DRIVER = "com.mysql.cj.jdbc.Driver";  //A partir da versao 8.0, mudou para com.mysql.cj.jdbc.Driver (Connector/J)                   
     
     public static String SERVER = "localhost";
-    public static String DATABASE = "ibcp";              //nome do seu banco de dados
+    public static String DATABASE = "ProjetoIntegrador3";              //nome do seu banco de dados
     
     public static String LOGIN = "root";                     //nome de um usuário de seu BD      
     public static String SENHA = "1234";                         //sua senha de acesso
