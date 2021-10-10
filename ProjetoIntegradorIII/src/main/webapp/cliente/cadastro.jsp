@@ -151,10 +151,10 @@
                     <label>Estado Civil</label>
                     <c:if test="${empty clienteAtualizacao}">
                         <select name="time" class="form-control">
-                            <option value="bota">Solteiro(a)</option>
-                            <option value="fla">Casado(a)</option>
-                            <option value="fla">Viúvo(a)</option>
-                            <option value="fla">União Estavel</option>
+                            <option value="Solteiro">Solteiro(a)</option>
+                            <option value="Casado">Casado(a)</option>
+                            <option value="Viuvo">Viúvo(a)</option>
+                            <option value="Uniao">União Estavel</option>
                         </select>
                     </c:if>
                 </div>

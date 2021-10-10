@@ -63,14 +63,7 @@
                                class="form-control"
                                />
                     </c:if>
-                    <c:if test="${not empty clienteAtualizacao}">
-                        <label>${clienteAtualizacao.cpf}</label>
-                        <input type="hidden" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
-                               required
-                               class="form-control"
-                               />
-                    </c:if>           
+                           
 
                 </div>
                 <br>
@@ -83,14 +76,7 @@
                                class="form-control"
                                />
                     </c:if>
-                    <c:if test="${not empty clienteAtualizacao}">
-                        <label>${clienteAtualizacao.cpf}</label>
-                        <input type="hidden" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
-                               required
-                               class="form-control"
-                               />
-                    </c:if>           
+                        
 
                 </div>
                 <br>
@@ -102,15 +88,7 @@
                                required
                                class="form-control"
                                />
-                    </c:if>
-                    <c:if test="${not empty clienteAtualizacao}">
-                        <label>${clienteAtualizacao.cpf}</label>
-                        <input type="hidden" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
-                               required
-                               class="form-control"
-                               />
-                    </c:if>           
+                    </c:if>      
 
                 </div>
                 <br>
@@ -130,21 +108,21 @@
                     <label>UF</label>
                     <c:if test="${empty clienteAtualizacao}">
                         <select name="time" class="form-control">
-                            <option value="bota">SP</option>
-                            <option value="fla">MG</option>
-                            <option value="fla">RS</option>
-                            <option value="fla">RJ</option>
-                            <option value="bota">PR</option>
-                            <option value="fla">AM</option>
-                            <option value="fla">AC</option>
-                            <option value="fla">BA</option>
-                            <option value="fla">SC</option>
-                            <option value="fla">PB</option>
-                            <option value="fla">GO</option>
-                            <option value="fla">RO</option>
-                            <option value="fla">MS</option>
-                            <option value="fla">AL</option>
-                            <option value="fla">DF</option>
+                            <option value="SP">SP</option>
+                            <option value="MG">MG</option>
+                            <option value="RS">RS</option>
+                            <option value="RJ">RJ</option>
+                            <option value="PR">PR</option>
+                            <option value="AM">AM</option>
+                            <option value="AC">AC</option>
+                            <option value="BA">BA</option>
+                            <option value="SC">SC</option>
+                            <option value="PB">PB</option>
+                            <option value="GO">GO</option>
+                            <option value="RO">RO</option>
+                            <option value="MS">MS</option>
+                            <option value="AL">AL</option>
+                            <option value="DF">DF</option>
                         </select>
                     </c:if>
                 </div>
