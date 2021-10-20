@@ -1,7 +1,7 @@
 <%-- 
     Document   : cadastro
-    Created on : 06/08/2019, 22:11:28
-    Author     : Lucas Ribeiro
+    Created on : 20/10/2021, 22:11:28
+    Author     : Douglas Proença
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -56,62 +56,29 @@
                 </div>
                 <div class="form-group">
                     <label>CPF</label>
-                    <c:if test="${empty clienteAtualizacao}">
                         <input type="text" name="cpfCliente"
                                value="${clienteAtualizacao.cpf}" placeholder="000.000.000-00"
                                required=""
                                class="form-control"
                                />
-                    </c:if>
-                    <c:if test="${not empty clienteAtualizacao}">
-                        <label>${clienteAtualizacao.cpf}</label>
-                        <input type="hidden" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
-                               required
-                               class="form-control"
-                               />
-                    </c:if>           
-
                 </div>
                 <br>
                 <div class="form-group">
                     <label>Celular</label>
-                    <c:if test="${empty clienteAtualizacao}">
                         <input type="text" name="CelularCliente"
                                value="${clienteAtualizacao.cpf}" placeholder="(00)00000-0000"
                                required
                                class="form-control"
-                               />
-                    </c:if>
-                    <c:if test="${not empty clienteAtualizacao}">
-                        <label>${clienteAtualizacao.cpf}</label>
-                        <input type="hidden" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
-                               required
-                               class="form-control"
-                               />
-                    </c:if>           
-
+                               />        
                 </div>
                 <br>
                 <div class="form-group">
                 <label>Telefone Residencial</label>
-                    <c:if test="${empty clienteAtualizacao}">
                         <input type="text" name="CelularCliente"
                                value="${clienteAtualizacao.cpf}" placeholder="(00)0000-0000"
                                required
                                class="form-control"
                                />
-                    </c:if>
-                    <c:if test="${not empty clienteAtualizacao}">
-                        <label>${clienteAtualizacao.cpf}</label>
-                        <input type="hidden" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
-                               required
-                               class="form-control"
-                               />
-                    </c:if>           
-
                 </div>
                 <br>
                 <div class="form-group">
@@ -123,7 +90,6 @@
                                class="form-control"
                                />
                     </c:if>
- 
                 </div>
                 <br>
                 <div class="form-group">
@@ -140,7 +106,7 @@
                 <div class="form-group">
                     <label>Sexo</label>
                     <c:if test="${empty clienteAtualizacao}">
-                        <select name="time" class="form-control">
+                        <select name="sexo" class="form-control">
                             <option value="bota">Masculino</option>
                             <option value="fla">Feminino</option>
                         </select>
@@ -161,8 +127,8 @@
                 <br/>
                 <div  class="form-group">
                     <label>Observação</label>
-                    <input type="text" name="nomeCliente" value="${clienteAtualizacao.nome}"
-                           required class="form-control"/><br/> 
+                    <input type="text" name="observacao" value="${clienteAtualizacao.nome}"
+                           class="form-control"/><br/> 
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>

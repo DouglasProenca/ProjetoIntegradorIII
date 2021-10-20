@@ -1,72 +1,63 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor. Teste Visual Studio code!
- */
 package br.senac.conexaobd;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
- * @author Tiago Scarton
+ * 20/10/2021
+ * @author Douglas Proença
  */
 public class Conexao {
-    
-    // CONEXAO COM MYSQL LOCAL
-    static { // Design Patterns -> Singleton
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+    public Conexao() {
     }
 
-    /*public static Connection getConexao() {
+    public static Connection abrirConexao() throws ClassNotFoundException, SQLException {
+        String STATUS = "Não conectado";
+        String DRIVER = "com.mysql.cj.jdbc.Driver"; 
+        String SERVER = "localhost";
+        String DATABASE = "projetointegrador3";           
+        String LOGIN = "root";                         
+        String SENHA = "1234";                    
+        String URL = "";
+        Connection CONEXAO = null;
 
-        String url = "jdbc:mysql://localhost:3306/projetointegrador3?useSSL=false&allowPublicKeyRetrieval=true";
-        String user = "root";
-        String password = "1234";
+        URL = "jdbc:mysql://" + SERVER + ":3306/" + DATABASE + "?useTimezone=true&serverTimezone=UTC&useSSL=false";
 
-        Connection con = null;
-        try {
-            con = DriverManager.getConnection(url, user, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        if (CONEXAO == null) {
+            try {
+
+                //Carrega a classe responsável pelo driver
+                Class.forName(DRIVER);
+                CONEXAO = DriverManager.getConnection(URL, LOGIN, SENHA);
+
+                if (CONEXAO != null) {
+                    STATUS = "Conexão realizada com sucesso!";
+                } else {
+                    STATUS = "Não foi possivel realizar a conexão";
+                }
+
+            } catch (ClassNotFoundException e) {  //Driver não encontrado
+
+                throw new ClassNotFoundException("O driver expecificado nao foi encontrado.");
+
+            } catch (SQLException e) {  //Erro ao estabelecer a conexão (Ex: login ou senha errados)
+
+                //Outra falha de conexão
+                throw new SQLException("Erro ao estabelecer a conexão (Ex: login ou senha errados).");
+            }
+
+        } else {
+            try {
+                //Se a conexão estiver fechada, reabro a conexão
+                if (CONEXAO.isClosed()) {
+                    CONEXAO = DriverManager.getConnection(URL, LOGIN, SENHA);
+                }
+            } catch (SQLException ex) {
+                throw new SQLException("Falha ao fechar a conexão.");
+            }
         }
-        return con;
-
-    }*/
-    
-    // CONEXAO COM JAVADB
-  // CONEXAO COM JAVADB
-    static { // Design Patterns -> Singleton
-        try {
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return CONEXAO;
     }
-
-    public static Connection getConexao() {
-
-        String url = "jdbc:derby://localhost:1527/senac";
-        String user = "senac";
-        String password = "senac";
-
-        Connection con = null;
-        try {
-            con = DriverManager.getConnection(url, user, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return con;
-
-    }
-
-
 }

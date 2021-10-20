@@ -10,6 +10,7 @@ import br.senac.conexaobd.entidades.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,11 @@ public class CadastroClienteServlet extends HttpServlet {
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {
-               ClienteDAO.atualizarCliente(cliente);
+                try {
+                    ClienteDAO.atualizarCliente(cliente);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                ClienteDAO.inserirCliente(cliente);
             }
@@ -55,13 +60,25 @@ public class CadastroClienteServlet extends HttpServlet {
         String ope = req.getParameter("ope");
         //OPE = 1 => Atualização
         if ("1".equals(ope)) {
-            Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
-            req.setAttribute("clienteAtualizacao", cliente);
-            req.getRequestDispatcher("/cliente/cadastro.jsp").forward(req, resp);
+            try {
+                Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
+                req.setAttribute("clienteAtualizacao", cliente);
+                req.getRequestDispatcher("/cliente/cadastro.jsp").forward(req, resp);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
-            ClienteDAO.deletarCliente(cpf);
-            resp.sendRedirect(req.getContextPath() + "/cliente/ListarClienteServlet");
-            resp.sendRedirect(req.getContextPath() + "/cliente/BuscarClienteServlet");
+            try {
+                ClienteDAO.deletarCliente(cpf);
+                resp.sendRedirect(req.getContextPath() + "/cliente/ListarClienteServlet");
+                resp.sendRedirect(req.getContextPath() + "/cliente/BuscarClienteServlet");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         

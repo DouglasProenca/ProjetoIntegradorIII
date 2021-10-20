@@ -10,8 +10,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
- * @author Tiago Scarton
+ * 20/10/2021
+ * @author Douglas Proença
  */
 @Getter
 @Setter

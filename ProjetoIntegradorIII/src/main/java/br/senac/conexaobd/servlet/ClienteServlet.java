@@ -9,7 +9,10 @@ import br.senac.conexaobd.dao.ClienteDAO;
 import br.senac.conexaobd.entidades.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +35,21 @@ public class ClienteServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("Lista de Clientes");
-        out.println("<br/>");
-        ClienteDAO clienteDAO = new ClienteDAO();
-        List<Cliente> clientes = clienteDAO.getClientes();
-        for(Cliente cliente : clientes) {
-            out.println(cliente);
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("Lista de Clientes");
             out.println("<br/>");
+            ClienteDAO clienteDAO = new ClienteDAO();
+            List<Cliente> clientes = clienteDAO.getClientes();
+            for(Cliente cliente : clientes) {
+                out.println(cliente);
+                out.println("<br/>");
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }

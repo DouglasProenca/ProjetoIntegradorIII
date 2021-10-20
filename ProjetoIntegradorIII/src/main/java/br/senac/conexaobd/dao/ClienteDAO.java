@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.conexaobd.dao;
 
 import br.senac.conexaobd.Conexao;
@@ -12,36 +7,53 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * 20/10/2021
  *
- * @author Tiago Scarton
+ * @author Douglas Proença
  */
 public class ClienteDAO {
 
     public static void inserirCliente(Cliente cliente) throws SQLException {
-        boolean ok = true;
-        String query = "insert into cliente(nome,cpf,email) values (?,?,?)";
-        Connection con = Conexao.getConexao();
-        PreparedStatement ps;
-        ps = con.prepareStatement(query);
-        ps.setString(1, cliente.getNome());
-        ps.setString(2, cliente.getCPF());
-        ps.setString(3, cliente.getEmail());
-        ps.execute();
+        try {
+            boolean ok = true;
+            String query = "insert into cliente(nome,cpf,email) values (?,?,?)";
+            Connection con = Conexao.abrirConexao();
+            PreparedStatement ps;
+            ps = con.prepareStatement(query);
+            ps.setInt(1, cliente.getId_filial());
+            ps.setInt(1, cliente.getId_categoria());
+            ps.setInt(2, cliente.getId_colaborador());
+            ps.setString(3, cliente.getNome());
+            ps.setString(4, cliente.getSexo());
+            ps.setString(5, cliente.getEmail());
+            ps.setString(6, cliente.getCPF());
+            ps.setString(10, cliente.getCelular());
+            ps.setString(10, cliente.getTelResidencial());
+            ps.setString(10, cliente.getTelComercial());
+            ps.setString(11, cliente.getEstadoCivil());
+            ps.setString(12, cliente.getObs());
+            ps.setDate(12, (java.sql.Date) cliente.getDataNascimento());
+            ps.setDate(12, (java.sql.Date) cliente.getData_());
+            ps.execute();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
-    public static List<Cliente> getClientes() {
-        List<Cliente> clientes = new ArrayList<>();
-        String query = "select * from rc_pessoa";
+    public static List<Cliente> getClientes() throws ClassNotFoundException, SQLException {
 
-        Connection con = Conexao.getConexao();
+        List<Cliente> clientes = new ArrayList<>();
+        String query = "select id,id_filial,id_categoria,nome,case when sexo = 0 then 'Masculino' else 'Feminino' end as sexo,\n"
+                + "email,cpf,celular,tel_residencial,tel_comercial,data_nasc,estado_civil,data_,id_colaborador,obs from rc_pessoa;";
+
+        Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -89,11 +101,11 @@ public class ClienteDAO {
 
     }
 
-    public static Cliente getClientePorCPF(String cpf) {
+    public static Cliente getClientePorCPF(String cpf) throws ClassNotFoundException, SQLException {
         Cliente cliente = null;
         String query = "select * from cliente where cpf=?";
 
-        Connection con = Conexao.getConexao();
+        Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, cpf);
@@ -112,13 +124,12 @@ public class ClienteDAO {
                     .getName()).log(Level.SEVERE, null, ex);
         }
         return cliente;
-
     }
 
-    public static boolean deletarCliente(String cpf) {
+    public static boolean deletarCliente(String cpf) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "delete from cliente where cpf=?";
-        Connection con = Conexao.getConexao();
+        Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, cpf);
@@ -132,10 +143,10 @@ public class ClienteDAO {
         return ok;
     }
 
-    public static boolean atualizarCliente(Cliente cliente) {
+    public static boolean atualizarCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "update cliente set nome=?,email=? where cpf=?";
-        Connection con = Conexao.getConexao();
+        Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, cliente.getNome());
@@ -151,14 +162,14 @@ public class ClienteDAO {
         return ok;
     }
 
-    public static List<Cliente> pesquisar(String pesquisa) {
+    public static List<Cliente> pesquisar(String pesquisa) throws ClassNotFoundException, SQLException {
         if (pesquisa.length() < 3) {
             System.out.println("teste");
         }
         List<Cliente> clientes = new ArrayList<>();
         String query = "select * from cliente where nome like ?";
 
-        Connection con = Conexao.getConexao();
+        Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, "%" + pesquisa + "%");

@@ -32,8 +32,8 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filial</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-               <button class="dropdown-item"><a href="cliente/cadastroFilial.jsp">Cadastrar Filial</a></button>
-               <button class="dropdown-item"><a href=#>Listar Filial</a></button>
+               <button class="dropdown-item"><a href="filial/cadastroFilial.jsp">Cadastrar Filial</a></button>
+               <button class="dropdown-item"><a href="cliente/ListarFilialServlet">Listar Filial</a></button>
             </div>
             
           </li>

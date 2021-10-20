@@ -1,7 +1,7 @@
 <%-- 
     Document   : cadastro
-    Created on : 17/09/2021, 21:00:14
-    Author     : tiago.bscarton
+    Created on : 20/10/2021, 21:00:14
+    Author     : Douglas Proença
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -85,9 +85,9 @@
             </div>
         </div>
     <fildset>
-        <table class="table-bordered" aling="center" border="2px" width="80%">
+        <table class="table-bordered" aling="left" border="2px" width="100%">
             <thead>
-            <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Ativo</td><td>Obs</td>
+            <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Email</td><td>Celular</td><td>Obs</td>
         </thead>
         <tbody>
             <c:forEach var="cliente" items="${listaClientes}">
@@ -95,6 +95,10 @@
                     <td>${cliente.nome}</td>
                     <td>${cliente.email}</td>
                     <td>${cliente.CPF}</td>
+                    <td>${cliente.sexo}</td>
+                    <td>${cliente.email}</td>
+                    <td>${cliente.celular}</td>
+                    <td>${cliente.obs}</td>
                     <td><a href="CadastroClienteServlet?cpfUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
                     <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
                 </tr>

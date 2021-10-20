@@ -12,6 +12,10 @@
         <servlet-name>ListarClienteServlet</servlet-name>
         <servlet-class>br.senac.conexaobd.servlet.ListarClienteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarFilialServlet</servlet-name>
+        <servlet-class>br.senac.conexaobd.servlet.ListarFilialServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ListarClienteServlet</servlet-name>
         <url-pattern>/cliente/ListarClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarFilialServlet</servlet-name>
+        <url-pattern>/cliente/ListarFilialServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
