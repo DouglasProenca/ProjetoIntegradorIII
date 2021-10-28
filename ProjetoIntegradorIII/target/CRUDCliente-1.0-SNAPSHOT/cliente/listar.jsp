@@ -99,7 +99,7 @@
                     <td>${cliente.email}</td>
                     <td>${cliente.celular}</td>
                     <td>${cliente.obs}</td>
-                    <td><a href="CadastroClienteServlet?cpfUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
+                    <td><a href="CadastroClienteServlet?CPFUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
                     <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
                 </tr>
             </c:forEach>

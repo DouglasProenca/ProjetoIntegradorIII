@@ -35,6 +35,7 @@ public class FilialDAO {
                     String nome = rs.getString("nome");
                     String uf = rs.getString("uf");
                     String rua = rs.getString("rua");
+                    String bairro = rs.getString("bairro");
                     String numero = rs.getString("numero");
                     String CEP = rs.getString("CEP");
                     String obs = rs.getString("obs");
@@ -43,6 +44,7 @@ public class FilialDAO {
                     filial.setEmpr_id(id);
                     filial.setNome(nome);
                     filial.setRua(rua);
+                    filial.setBairro(bairro);
                     filial.setNumero(numero);
                     filial.setCidade(nome);
                     filial.setCEP(CEP);
@@ -50,6 +52,7 @@ public class FilialDAO {
                     filial.setId_colaborador(id_colaborador);
                     filial.setData_(data_);
                     filial.setObs(obs);
+                    Filiais.add(filial);
                 }
                 
             } catch (SQLException ex) {

@@ -12,6 +12,7 @@
         <script src="${pageContext.request.contextPath}/lib/jquery-3.6.0.min.js" type="text/javascript"></script>
         <link href="${pageContext.request.contextPath}/lib/bootstrap-4.1.3-dist/css/bootstrap.min.css"
               rel="stylesheet" type="text/css"/>
+        <%-- <script src="${pageContext.request.contextPath}/js/uteis.js"/>--%>
     </head>
     <body>
         <h1>Olá, seja bem vindo!</h1>

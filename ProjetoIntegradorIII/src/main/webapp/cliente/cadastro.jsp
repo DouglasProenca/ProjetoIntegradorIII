@@ -56,8 +56,8 @@
                 </div>
                 <div class="form-group">
                     <label>CPF</label>
-                        <input type="text" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" placeholder="000.000.000-00"
+                        <input type="text" name="CPFCliente"
+                               value="${clienteAtualizacao.CPF}" placeholder="000.000.000-00"
                                required=""
                                class="form-control"
                                />
@@ -66,7 +66,7 @@
                 <div class="form-group">
                     <label>Celular</label>
                         <input type="text" name="CelularCliente"
-                               value="${clienteAtualizacao.cpf}" placeholder="(00)00000-0000"
+                               value="${clienteAtualizacao.celular}" placeholder="(00)00000-0000"
                                required
                                class="form-control"
                                />        
@@ -74,8 +74,8 @@
                 <br>
                 <div class="form-group">
                 <label>Telefone Residencial</label>
-                        <input type="text" name="CelularCliente"
-                               value="${clienteAtualizacao.cpf}" placeholder="(00)0000-0000"
+                        <input type="text" name="ResidencialCliente"
+                               value="${clienteAtualizacao.telResidencial}" placeholder="(00)0000-0000"
                                required
                                class="form-control"
                                />
@@ -83,51 +83,42 @@
                 <br>
                 <div class="form-group">
                     <label>Telefone Comercial</label>
-                    <c:if test="${empty clienteAtualizacao}">
-                        <input type="text" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
-                               required
+                        <input type="text" name="TelefoneComercial"
+                               value="${clienteAtualizacao.telComercial}" 
                                class="form-control"
                                />
-                    </c:if>
                 </div>
                 <br>
                 <div class="form-group">
                     <label>Data de Nascimento</label>
-                    <c:if test="${empty clienteAtualizacao}">
-                        <input type="Month" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
+                        <input type="Month" name="DataNascimento"
+                               value="${clienteAtualizacao.dataNascimento}" 
                                required
                                class="form-control"
                                />
-                    </c:if>
                 </div>
                 <br/>
                 <div class="form-group">
                     <label>Sexo</label>
-                    <c:if test="${empty clienteAtualizacao}">
                         <select name="sexo" class="form-control">
                             <option value="bota">Masculino</option>
                             <option value="fla">Feminino</option>
                         </select>
-                    </c:if>
                 </div>
                 <br/>
                 <div class="form-group">
                     <label>Estado Civil</label>
-                    <c:if test="${empty clienteAtualizacao}">
-                        <select name="time" class="form-control">
+                        <select name="EstadoCivil" class="form-control">
                             <option value="Solteiro">Solteiro(a)</option>
                             <option value="Casado">Casado(a)</option>
                             <option value="Viuvo">Viúvo(a)</option>
                             <option value="Uniao">União Estavel</option>
                         </select>
-                    </c:if>
                 </div>
                 <br/>
                 <div  class="form-group">
                     <label>Observação</label>
-                    <input type="text" name="observacao" value="${clienteAtualizacao.nome}"
+                    <input type="text" name="observacao" value="${clienteAtualizacao.obs}"
                            class="form-control"/><br/> 
                 </div>
                 <br/>

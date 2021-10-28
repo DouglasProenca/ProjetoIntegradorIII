@@ -22,7 +22,7 @@ public class ClienteDAO {
     public static void inserirCliente(Cliente cliente) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into cliente(nome,cpf,email) values (?,?,?)";
+            String query = "insert into rc_pessoa values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
@@ -38,8 +38,8 @@ public class ClienteDAO {
             ps.setString(10, cliente.getTelComercial());
             ps.setString(11, cliente.getEstadoCivil());
             ps.setString(12, cliente.getObs());
-            ps.setDate(12, (java.sql.Date) cliente.getDataNascimento());
-            ps.setDate(12, (java.sql.Date) cliente.getData_());
+            ps.setDate(13, (java.sql.Date) cliente.getDataNascimento());
+            ps.setDate(14, (java.sql.Date) cliente.getData_());
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -103,7 +103,8 @@ public class ClienteDAO {
 
     public static Cliente getClientePorCPF(String cpf) throws ClassNotFoundException, SQLException {
         Cliente cliente = null;
-        String query = "select * from cliente where cpf=?";
+        String query = "select id,id_filial,id_categoria,nome,case when sexo = 0 then 'Masculino' else 'Feminino' end as sexo,\n"
+                + "email,cpf,celular,tel_residencial,tel_comercial,data_nasc,estado_civil,data_,id_colaborador,obs from rc_pessoa where cpf = ?;";
 
         Connection con = Conexao.abrirConexao();
         try {
@@ -114,9 +115,23 @@ public class ClienteDAO {
                 cliente = new Cliente();
                 String nome = rs.getString("nome");
                 String email = rs.getString("email");
+                String celular = rs.getString("celular");
+                String telResidencial = rs.getString("tel_residencial");
+                String telComercial = rs.getString("tel_comercial");
+                String estadoCivil = rs.getString("estado_civil");
+                String obs = rs.getString("obs");
+                Date dataNascimento = rs.getDate("data_nasc");
+                Date data_ = rs.getDate("data_");
                 cliente.setNome(nome);
                 cliente.setEmail(email);
                 cliente.setCPF(cpf);
+                cliente.setCelular(celular);
+                cliente.setTelResidencial(telResidencial);
+                cliente.setTelComercial(telComercial);
+                cliente.setEstadoCivil(estadoCivil);
+                cliente.setObs(obs);
+                cliente.setDataNascimento(dataNascimento);
+                cliente.setData_(data_);
 
             }
         } catch (SQLException ex) {
@@ -128,7 +143,7 @@ public class ClienteDAO {
 
     public static boolean deletarCliente(String cpf) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "delete from cliente where cpf=?";
+        String query = "delete from rc_pessoa where cpf=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -145,7 +160,7 @@ public class ClienteDAO {
 
     public static boolean atualizarCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update cliente set nome=?,email=? where cpf=?";
+        String query = "update rc_pessoa set nome=?,email=? where cpf=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -162,34 +177,55 @@ public class ClienteDAO {
         return ok;
     }
 
-    public static List<Cliente> pesquisar(String pesquisa) throws ClassNotFoundException, SQLException {
-        if (pesquisa.length() < 3) {
-            System.out.println("teste");
-        }
-        List<Cliente> clientes = new ArrayList<>();
-        String query = "select * from cliente where nome like ?";
-
-        Connection con = Conexao.abrirConexao();
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, "%" + pesquisa + "%");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Cliente cliente = new Cliente();
+     public static List<Cliente> getClientePorNome(String nomeParam) throws ClassNotFoundException, SQLException {
+       nomeParam = nomeParam.toUpperCase();
+       List<Cliente> clientes = new ArrayList<>();
+       String query = "select * from rc_pessoa where UPPER(nome) like ?";
+       
+       Connection con = Conexao.abrirConexao(); 
+       try {
+           PreparedStatement ps = con.prepareStatement(query);
+           ps.setString(1, nomeParam+"%");
+           ResultSet rs = ps.executeQuery();
+           while (rs.next()) {
+               Cliente cliente = new Cliente();
+                int id = rs.getInt("id");
+                int id_filial = rs.getInt("id_filial");
+                int id_categoria = rs.getInt("id_categoria");
+                int id_colaborador = rs.getInt("id_colaborador");
                 String nome = rs.getString("nome");
+                String sexo = rs.getString("sexo");
                 String email = rs.getString("email");
                 String cpf = rs.getString("cpf");
+                String celular = rs.getString("celular");
+                String telResidencial = rs.getString("tel_residencial");
+                String telComercial = rs.getString("tel_comercial");
+                String estadoCivil = rs.getString("estado_civil");
+                String obs = rs.getString("obs");
+                Date dataNascimento = rs.getDate("data_nasc");
+                Date data_ = rs.getDate("data_");
+
+                cliente.setId(id);
+                cliente.setId_filial(id_filial);
+                cliente.setId_categoria(id_categoria);
+                cliente.setId_colaborador(id_colaborador);
                 cliente.setNome(nome);
+                cliente.setSexo(sexo);
                 cliente.setEmail(email);
                 cliente.setCPF(cpf);
+                cliente.setCelular(celular);
+                cliente.setTelResidencial(telResidencial);
+                cliente.setTelComercial(telComercial);
+                cliente.setEstadoCivil(estadoCivil);
+                cliente.setObs(obs);
+                cliente.setDataNascimento(dataNascimento);
+                cliente.setData_(data_);
                 clientes.add(cliente);
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        return clientes;
-
-    }
+           }
+       } catch (SQLException ex) {
+           Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       return clientes;
+       
+   }
 }

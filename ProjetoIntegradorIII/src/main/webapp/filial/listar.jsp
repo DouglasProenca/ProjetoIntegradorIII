@@ -20,11 +20,11 @@
                 cpfRemocao = CPF;
                 var paragrafoCliente = $("#campoTextoExclusao");
                 paragrafoCliente.html(nome + " - " + CPF);
-                
+
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.show();
             }
-            
+
             function fecharModal() {
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.hide();
@@ -38,9 +38,9 @@
                     console.log("Cliente removido!");
                     var alerta = $("#alerta");
                     alerta.css("display", "block");
-                    setTimeout(function(){
-                         alerta.css("display", "none");
-                         location.reload();
+                    setTimeout(function () {
+                        alerta.css("display", "none");
+                        location.reload();
                     }, 1000)
                 }).fail(function () {
                     console.log("Erro ao remover o cliente!");
@@ -62,7 +62,7 @@
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
-           Cliente removido com sucesso!
+            Cliente removido com sucesso!
         </div>
         <br>
         <h1><center>Filiais</center></h1>
@@ -88,20 +88,23 @@
         <table class="table-bordered" aling="center" border="2px" width="80%">
             <thead>
             <td>Nome</td><td>Rua</td><td>Numero</td><td>Bairro</td><td>Cidade</td><td>UF</td>
-        </thead>
-        <tbody>
-            <c:forEach var="cliente" items="${listaClientes}">
-                <tr>
-                    <td>${cliente.nome}</td>
-                    <td>${cliente.email}</td>
-                    <td>${cliente.CPF}</td>
-                    <td><a href="CadastroClienteServlet?cpfUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
-                    <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</fildset>
+            </thead>
+            <tbody>
+                <c:forEach var="filial" items="${listaFiliais}">
+                    <tr>
+                        <td>${filial.nome}</td>
+                        <td>${filial.rua}</td>
+                        <td>${filial.numero}</td>
+                        <td>${filial.bairro}</td>
+                        <td>${filial.cidade}</td>
+                        <td>${filial.uf}</td>
+                        <td><a href="CadastroClienteServlet?cpfUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
+                        <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </fildset>
 </body>
 <a href="${pageContext.request.contextPath}/index.jsp">Voltar</a>
 </html>
