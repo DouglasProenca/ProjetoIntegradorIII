@@ -47,7 +47,7 @@ public class CadastroClienteServlet extends HttpServlet {
         cliente.setSexo(sexo);
         cliente.setEstadoCivil(estadoCivil);
         cliente.setObs(obs);
-        
+
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {
@@ -62,6 +62,7 @@ public class CadastroClienteServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
         } catch (SQLException ex) {
             response.sendRedirect(request.getContextPath() + "/uteis/erro.jsp");
+            System.out.println(ex);
         }
     }
 
@@ -70,6 +71,7 @@ public class CadastroClienteServlet extends HttpServlet {
         String cpf = req.getParameter("CPFUsuario");
         String ope = req.getParameter("ope");
         //OPE = 1 => Atualização
+        System.out.println(ope);
         if ("1".equals(ope)) {
             try {
                 Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
@@ -84,11 +86,14 @@ public class CadastroClienteServlet extends HttpServlet {
             try {
                 ClienteDAO.deletarCliente(cpf);
                 resp.sendRedirect(req.getContextPath() + "/cliente/ListarClienteServlet");
-                resp.sendRedirect(req.getContextPath() + "/cliente/BuscarClienteServlet");
+
+                //resp.sendRedirect(req.getContextPath() + "/cliente/BuscarClienteServlet");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+
             } catch (SQLException ex) {
                 Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+
             }
         }
 

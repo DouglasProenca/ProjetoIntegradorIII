@@ -22,23 +22,23 @@ public class ClienteDAO {
     public static void inserirCliente(Cliente cliente) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into rc_pessoa values (null,1,2,?,?,?,?,?,?,?,?,?,'2021-09-09',1,?)";
+            String query = "insert into rc_pessoa values (null,1,2,?,0,?,?,?,?,?,'2021-09-09','Solteiro','2021-09-09',1,?)";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
             //ps.setInt(1, cliente.getId_filial());
             //ps.setInt(2, cliente.getId_categoria());
-            //ps.setInt(2, cliente.getId_colaborador());
+            //ps.setInt(2, cliente.getId_colaborador()); 
             ps.setString(1, cliente.getNome());
-            ps.setString(2, cliente.getSexo());
-            ps.setString(3, cliente.getEmail());
-            ps.setString(4, cliente.getCPF());
-            ps.setString(5, cliente.getCelular());
-            ps.setString(6, cliente.getTelResidencial());
-            ps.setString(7, cliente.getTelComercial());
-            ps.setDate(8, (java.sql.Date) cliente.getDataNascimento());
-            ps.setString(9, cliente.getEstadoCivil());
-            ps.setString(10, cliente.getObs());
+            //ps.setString(2, cliente.getSexo());
+            ps.setString(2, cliente.getEmail());
+            ps.setString(3, cliente.getCPF());
+            ps.setString(4, cliente.getCelular());
+            ps.setString(5, cliente.getTelResidencial());
+            ps.setString(6, cliente.getTelComercial());
+            //ps.setDate(8, (java.sql.Date) cliente.getDataNascimento());
+            //ps.setString(8, cliente.getEstadoCivil());
+            ps.setString(7, cliente.getObs());
             //ps.setDate(14, (java.sql.Date) cliente.getData_());
             ps.execute();
         } catch (ClassNotFoundException ex) {
@@ -173,6 +173,7 @@ public class ClienteDAO {
             Logger.getLogger(ClienteDAO.class
                     .getName()).log(Level.SEVERE, null, ex);
             ok = false;
+            System.out.println(ex);
         }
         return ok;
     }

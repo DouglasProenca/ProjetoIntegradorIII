@@ -16,7 +16,7 @@
         <script type="text/javascript">
             var cpfRemocao;
             function confirmarRemocao(nome, CPF) {
-                console.log("Confirmar exclusao ", nome, CPF);
+                console.log("Confirmar exclusao", nome, CPF);
                 cpfRemocao = CPF;
                 var paragrafoCliente = $("#campoTextoExclusao");
                 paragrafoCliente.html(nome + " - " + CPF);
@@ -33,7 +33,7 @@
             function deletar() {
                 console.log("Excluindo cliente ", cpfRemocao);
                 fecharModal();
-                var url = "CadastroClienteServlet?cpfUsuario=" + cpfRemocao;
+                var url = "CadastroClienteServlet?CPFUsuario=" + cpfRemocao;
                 $.ajax(url).done(function () {
                     console.log("Cliente removido!");
                     var alerta = $("#alerta");
