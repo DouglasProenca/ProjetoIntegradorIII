@@ -100,9 +100,10 @@
                 <br/>
                 <div class="form-group">
                     <label>Sexo</label>
-                        <select name="sexo" class="form-control">
-                            <option value="bota">Masculino</option>
-                            <option value="fla">Feminino</option>
+                        <select name="sexo" value="${clienteAtualizacao.sexo}"
+                                class="form-control">
+                            <option value="0">Masculino</option>
+                            <option value="1">Feminino</option>
                         </select>
                 </div>
                 <br/>
@@ -112,7 +113,7 @@
                             <option value="Solteiro">Solteiro(a)</option>
                             <option value="Casado">Casado(a)</option>
                             <option value="Viuvo">Viúvo(a)</option>
-                            <option value="Uniao">União Estavel</option>
+                            <option value="União">União Estavel</option>
                         </select>
                 </div>
                 <br/>

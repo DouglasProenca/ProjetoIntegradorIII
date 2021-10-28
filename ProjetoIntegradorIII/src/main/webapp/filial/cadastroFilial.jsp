@@ -1,7 +1,7 @@
 <%-- 
-    Document   : cadastro
-    Created on : 06/08/2019, 22:11:28
-    Author     : Lucas Ribeiro
+    Document   : Listar Filial
+    Created on : 28/10/2019, 22:11:28
+    Author     : Douglas Proença
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -89,7 +89,8 @@
                 <br>
                 <div class="form-group">
                     <label>UF</label>
-                        <select name="time" class="form-control">
+                        <select name="time" value="${filialAtualizacao.uf}"
+                                class="form-control">
                             <option value="SP">SP</option>
                             <option value="MG">MG</option>
                             <option value="RS">RS</option>
@@ -111,7 +112,7 @@
                 <div  class="form-group">
                     <label>Observação</label>
                     <input type="text" name="nomeCliente" value="${filialAtualizacao.obs}"
-                           required class="form-control"/><br/> 
+                           class="form-control"/><br/> 
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>

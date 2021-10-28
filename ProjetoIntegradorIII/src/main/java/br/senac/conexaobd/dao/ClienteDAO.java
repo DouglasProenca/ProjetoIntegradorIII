@@ -22,24 +22,24 @@ public class ClienteDAO {
     public static void inserirCliente(Cliente cliente) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into rc_pessoa values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "insert into rc_pessoa values (null,1,2,?,?,?,?,?,?,?,?,?,'2021-09-09',1,?)";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
-            ps.setInt(1, cliente.getId_filial());
-            ps.setInt(1, cliente.getId_categoria());
-            ps.setInt(2, cliente.getId_colaborador());
-            ps.setString(3, cliente.getNome());
-            ps.setString(4, cliente.getSexo());
-            ps.setString(5, cliente.getEmail());
-            ps.setString(6, cliente.getCPF());
-            ps.setString(10, cliente.getCelular());
-            ps.setString(10, cliente.getTelResidencial());
-            ps.setString(10, cliente.getTelComercial());
-            ps.setString(11, cliente.getEstadoCivil());
-            ps.setString(12, cliente.getObs());
-            ps.setDate(13, (java.sql.Date) cliente.getDataNascimento());
-            ps.setDate(14, (java.sql.Date) cliente.getData_());
+            //ps.setInt(1, cliente.getId_filial());
+            //ps.setInt(2, cliente.getId_categoria());
+            //ps.setInt(2, cliente.getId_colaborador());
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getSexo());
+            ps.setString(3, cliente.getEmail());
+            ps.setString(4, cliente.getCPF());
+            ps.setString(5, cliente.getCelular());
+            ps.setString(6, cliente.getTelResidencial());
+            ps.setString(7, cliente.getTelComercial());
+            ps.setDate(8, (java.sql.Date) cliente.getDataNascimento());
+            ps.setString(9, cliente.getEstadoCivil());
+            ps.setString(10, cliente.getObs());
+            //ps.setDate(14, (java.sql.Date) cliente.getData_());
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -37,6 +37,7 @@ public class FilialDAO {
                 String rua = rs.getString("rua");
                 String bairro = rs.getString("bairro");
                 String numero = rs.getString("numero");
+                String cidade = rs.getString("cidade");
                 String CEP = rs.getString("CEP");
                 String obs = rs.getString("obs");
                 Date data_ = rs.getDate("data_");
@@ -46,7 +47,7 @@ public class FilialDAO {
                 filial.setRua(rua);
                 filial.setBairro(bairro);
                 filial.setNumero(numero);
-                filial.setCidade(nome);
+                filial.setCidade(cidade);
                 filial.setCEP(CEP);
                 filial.setUf(uf);
                 filial.setId_colaborador(id_colaborador);
