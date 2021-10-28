@@ -1,7 +1,7 @@
 <%-- 
-    Document   : cadastro
+    Document   : Lista Filial
     Created on : 17/09/2021, 21:00:14
-    Author     : tiago.bscarton
+    Author     : Douglas
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,11 +15,11 @@
         <title>Listar de Clientes</title>
         <script type="text/javascript">
             var cpfRemocao;
-            function confirmarRemocao(nome, CPF) {
-                console.log("Confirmar exclusao ", nome, CPF);
+            function confirmarRemocao(nome, empr_id) {
+                console.log("Confirmar exclusao ", nome, empr_id);
                 cpfRemocao = CPF;
                 var paragrafoCliente = $("#campoTextoExclusao");
-                paragrafoCliente.html(nome + " - " + CPF);
+                paragrafoCliente.html(nome + " - " + empr_id);
 
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.show();
@@ -92,14 +92,15 @@
             <tbody>
                 <c:forEach var="filial" items="${listaFiliais}">
                     <tr>
+                        <td>${filial.empr_id}</td>
                         <td>${filial.nome}</td>
                         <td>${filial.rua}</td>
                         <td>${filial.numero}</td>
                         <td>${filial.bairro}</td>
                         <td>${filial.cidade}</td>
                         <td>${filial.uf}</td>
-                        <td><a href="CadastroClienteServlet?cpfUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
+                        <td><a href="CadastroFilialServlet?idFilial=${filial.empr_id}&ope=1" >Atualizar</a></td>
+                        <td><button onclick="confirmarRemocao('${filial.nome}', '${filial.empr_id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>
             </tbody>

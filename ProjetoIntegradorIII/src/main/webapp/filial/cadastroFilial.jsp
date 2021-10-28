@@ -15,12 +15,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
               crossorigin="anonymous" />
     </head>
-    <style>
-
-        body {
-            background-color:darkgrey;
-        }
-    </style>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
@@ -39,74 +33,62 @@
             <h1><center>Cadastrar Filial</center></h1>
             <br>
             <br>
-            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroClienteServlet" method="POST">
+            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroFilial
+                  Servlet" method="POST">
 
-                <c:if test="${not empty clienteAtualizacao}">
+                <c:if test="${not empty filialAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>
                 <div  class="form-group">
                     <label>Nome</label>
-                    <input type="text" name="nomeCliente" value="${clienteAtualizacao.nome}"
+                    <input type="text" name="nomeCliente" value="${filialAtualizacao.nome}"
                            required class="form-control"/><br/> 
                 </div>
                 <div class="form-group">
                     <label>Rua</label>
-                    <input type="text" name="emailCliente" value="${clienteAtualizacao.email}"
+                    <input type="text" name="emailCliente" value="${filialAtualizacao.rua}"
                            required class="form-control"/><br/>
                 </div>
                 <div class="form-group">
                     <label>Número</label>
-                    <c:if test="${empty clienteAtualizacao}">
                         <input type="text" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" 
+                               value="${filialAtualizacao.numero}" 
                                required=""
                                class="form-control"
                                />
-                    </c:if>
-                           
-
                 </div>
                 <br>
                 <div class="form-group">
                     <label>Bairro</label>
-                    <c:if test="${empty clienteAtualizacao}">
-                        <input type="text" name="CelularCliente"
-                               value="${clienteAtualizacao.cpf}" 
+                   
+                        <input type="text" name="bairro"
+                               value="${filialAtualizacao.bairro}" 
                                required
                                class="form-control"
-                               />
-                    </c:if>
-                        
+                               />            
 
                 </div>
                 <br>
                 <div class="form-group">
                 <label>Cidade</label>
-                    <c:if test="${empty clienteAtualizacao}">
                         <input type="text" name="CelularCliente"
-                               value="${clienteAtualizacao.cpf}" 
+                               value="${filialAtualizacao.cidade}" 
                                required
                                class="form-control"
-                               />
-                    </c:if>      
-
+                               />     
                 </div>
                 <br>
                 <div class="form-group">
                     <label>CEP</label>
-                    <c:if test="${empty clienteAtualizacao}">
                         <input type="text" name="cpfCliente"
-                               value="${clienteAtualizacao.cpf}" placeholder="00000-000"
+                               value="${filialAtualizacao.CEP}" placeholder="00000-000"
                                required
                                class="form-control"
                                />
-                    </c:if>
- 
                 </div>
                 <br>
                 <div class="form-group">
                     <label>UF</label>
-                    <c:if test="${empty clienteAtualizacao}">
                         <select name="time" class="form-control">
                             <option value="SP">SP</option>
                             <option value="MG">MG</option>
@@ -124,12 +106,11 @@
                             <option value="AL">AL</option>
                             <option value="DF">DF</option>
                         </select>
-                    </c:if>
                 </div>
                 <br/>
                 <div  class="form-group">
                     <label>Observação</label>
-                    <input type="text" name="nomeCliente" value="${clienteAtualizacao.nome}"
+                    <input type="text" name="nomeCliente" value="${filialAtualizacao.obs}"
                            required class="form-control"/><br/> 
                 </div>
                 <br/>
