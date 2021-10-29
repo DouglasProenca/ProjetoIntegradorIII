@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.FilialDAO;
@@ -25,67 +20,56 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CadastroFilialServlet", urlPatterns = {"/cliente/CadastroFilialServlet"})
 public class CadastroFilialServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     */
-     // @Override
-   /* protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      @Override
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String ope = request.getParameter("ope");
         // Passo 1 - Recuperar os parametros
         String nome = request.getParameter("nomeCliente");
-        String email = request.getParameter("emailCliente");
-        String cpf = request.getParameter("CPFCliente");
-        String celularCliente = request.getParameter("CelularCliente");
-        String residencial = request.getParameter("ResidencialCliente");
-        String comercial = request.getParameter("TelefoneComercial");
-        String dataNasc = request.getParameter("DataNascimento");
-        String sexo = request.getParameter("sexo");
-        String estadoCivil = request.getParameter("EstadoCivil");
-        String obs = request.getParameter("observacao");
+        String rua = request.getParameter("rua");
+        String numero = request.getParameter("numero");
+        String bairro = request.getParameter("bairro");
+        String cidade = request.getParameter("cidade");
+        String cep = request.getParameter("CEP");
+        String uf = request.getParameter("uf");
+        String obs = request.getParameter("obs");
 
         // Passo 2 - Inserir no BD
-        Filial cliente = new Filial();
-        cliente.setNome(nome);
-        cliente.setCPF(cpf);
-        cliente.setEmail(email);
-        cliente.setCelular(celularCliente);
-        cliente.setTelResidencial(residencial);
-        cliente.setTelComercial(comercial);
-        //cliente.setDataNascimento(dataNasc);
-        cliente.setSexo(sexo);
-        cliente.setEstadoCivil(estadoCivil);
-        cliente.setObs(obs);
-        
+        Filial filial = new Filial();
+        filial.setNome(nome);
+        filial.setRua(rua);
+        filial.setNumero(numero);
+        filial.setBairro(bairro);
+        filial.setCidade(cidade);
+        filial.setCEP(cep);
+        filial.setUf(uf);
+        filial.setObs(obs);
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {
                 try {
-                    FilialDAO.atualizarCliente(cliente);
+                    FilialDAO.atualizarFilial(filial);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex); 
+                    System.out.println(ex);
                 }
             } else {
-                ClienteDAO.inserirCliente(cliente);
+                FilialDAO.inserirFilial(filial);
             }
             response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
         } catch (SQLException ex) {
             response.sendRedirect(request.getContextPath() + "/uteis/erro.jsp");
         }
-    }*/
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String cpf = req.getParameter("idFilial");
+        String id = req.getParameter("idFilial");
         String ope = req.getParameter("ope");
         //OPE = 1 => Atualização
         if ("1".equals(ope)) {
             try {
-                Filial filial = FilialDAO.getFilialPorID(cpf);
+                Filial filial = FilialDAO.getFilialPorID(id);
                 req.setAttribute("filialAtualizacao", filial);
                 req.getRequestDispatcher("/filial/cadastroFilial.jsp").forward(req, resp);
             } catch (ClassNotFoundException ex) {
@@ -94,9 +78,14 @@ public class CadastroFilialServlet extends HttpServlet {
                 Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            //FilialDAO.deletarCliente(cpf);
-            resp.sendRedirect(req.getContextPath() + "/cliente/ListarClienteServlet");
-            resp.sendRedirect(req.getContextPath() + "/cliente/BuscarClienteServlet");
+            try {
+                FilialDAO.deletarFilial(id);
+                resp.sendRedirect(req.getContextPath() + "/cliente/ListarFilialServlet");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }

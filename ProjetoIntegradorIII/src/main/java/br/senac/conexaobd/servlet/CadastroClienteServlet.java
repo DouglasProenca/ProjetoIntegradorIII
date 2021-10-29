@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author tiago.bscarton
+ * @author Douglas Proença
  */
 public class CadastroClienteServlet extends HttpServlet {
 

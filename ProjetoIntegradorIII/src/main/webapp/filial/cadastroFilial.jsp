@@ -33,8 +33,7 @@
             <h1><center>Cadastrar Filial</center></h1>
             <br>
             <br>
-            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroFilial
-                  Servlet" method="POST">
+            <form class="col-md-6 offset-md-3 jumbotron" action="../cliente/CadastroFilialServlet" method="POST">
 
                 <c:if test="${not empty filialAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
@@ -46,72 +45,72 @@
                 </div>
                 <div class="form-group">
                     <label>Rua</label>
-                    <input type="text" name="emailCliente" value="${filialAtualizacao.rua}"
+                    <input type="text" name="rua" value="${filialAtualizacao.rua}"
                            required class="form-control"/><br/>
                 </div>
                 <div class="form-group">
                     <label>Número</label>
-                        <input type="text" name="cpfCliente"
-                               value="${filialAtualizacao.numero}" 
-                               required=""
-                               class="form-control"
-                               />
+                    <input type="text" name="numero"
+                           value="${filialAtualizacao.numero}" 
+                           required=""
+                           class="form-control"
+                           />
                 </div>
                 <br>
                 <div class="form-group">
                     <label>Bairro</label>
-                   
-                        <input type="text" name="bairro"
-                               value="${filialAtualizacao.bairro}" 
-                               required
-                               class="form-control"
-                               />            
+
+                    <input type="text" name="bairro"
+                           value="${filialAtualizacao.bairro}" 
+                           required
+                           class="form-control"
+                           />            
 
                 </div>
                 <br>
                 <div class="form-group">
-                <label>Cidade</label>
-                        <input type="text" name="CelularCliente"
-                               value="${filialAtualizacao.cidade}" 
-                               required
-                               class="form-control"
-                               />     
+                    <label>Cidade</label>
+                    <input type="text" name="cidade"
+                           value="${filialAtualizacao.cidade}" 
+                           required
+                           class="form-control"
+                           />     
                 </div>
                 <br>
                 <div class="form-group">
                     <label>CEP</label>
-                        <input type="text" name="cpfCliente"
-                               value="${filialAtualizacao.CEP}" placeholder="00000-000"
-                               required
-                               class="form-control"
-                               />
+                    <input type="text" name="CEP"
+                           value="${filialAtualizacao.CEP}" placeholder="00000-000"
+                           required
+                           class="form-control"
+                           />
                 </div>
                 <br>
                 <div class="form-group">
                     <label>UF</label>
-                        <select name="time" value="${filialAtualizacao.uf}"
-                                class="form-control">
-                            <option value="SP">SP</option>
-                            <option value="MG">MG</option>
-                            <option value="RS">RS</option>
-                            <option value="RJ">RJ</option>
-                            <option value="PR">PR</option>
-                            <option value="AM">AM</option>
-                            <option value="AC">AC</option>
-                            <option value="BA">BA</option>
-                            <option value="SC">SC</option>
-                            <option value="PB">PB</option>
-                            <option value="GO">GO</option>
-                            <option value="RO">RO</option>
-                            <option value="MS">MS</option>
-                            <option value="AL">AL</option>
-                            <option value="DF">DF</option>
-                        </select>
+                    <select name="uf" value="${filialAtualizacao.uf}"
+                            class="form-control">
+                        <option value="SP">SP</option>
+                        <option value="MG">MG</option>
+                        <option value="RS">RS</option>
+                        <option value="RJ">RJ</option>
+                        <option value="PR">PR</option>
+                        <option value="AM">AM</option>
+                        <option value="AC">AC</option>
+                        <option value="BA">BA</option>
+                        <option value="SC">SC</option>
+                        <option value="PB">PB</option>
+                        <option value="GO">GO</option>
+                        <option value="RO">RO</option>
+                        <option value="MS">MS</option>
+                        <option value="AL">AL</option>
+                        <option value="DF">DF</option>
+                    </select>
                 </div>
                 <br/>
                 <div  class="form-group">
                     <label>Observação</label>
-                    <input type="text" name="nomeCliente" value="${filialAtualizacao.obs}"
+                    <input type="text" name="obs" value="${filialAtualizacao.obs}"
                            class="form-control"/><br/> 
                 </div>
                 <br/>

@@ -160,13 +160,25 @@ public class ClienteDAO {
 
     public static boolean atualizarCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update rc_pessoa set nome=?,email=? where cpf=?";
+        String query = "update rc_pessoa set nome=?,email=?,celular=?,tel_residencial=?, "
+                + "tel_comercial=?,obs=? where cpf=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
+            //ps.setInt(1, cliente.getId_filial());
+            //ps.setInt(2, cliente.getId_categoria());
+            //ps.setInt(2, cliente.getId_colaborador()); 
             ps.setString(1, cliente.getNome());
+            //ps.setString(2, cliente.getSexo());
             ps.setString(2, cliente.getEmail());
-            ps.setString(3, cliente.getCPF());
+            ps.setString(7, cliente.getCPF());
+            ps.setString(3, cliente.getCelular());
+            ps.setString(4, cliente.getTelResidencial());
+            ps.setString(5, cliente.getTelComercial());
+            //ps.setDate(8, (java.sql.Date) cliente.getDataNascimento());
+            //ps.setString(8, cliente.getEstadoCivil());
+            ps.setString(6, cliente.getObs());
+            //ps.setDate(14, (java.sql.Date) cliente.getData_());
             ps.executeUpdate();
 
         } catch (SQLException ex) {

@@ -1,9 +1,13 @@
 -- criação da database
 create database if not exists ProjetoIntegrador3;
-
+ 
 -- comando para usar a tabela
 use ProjetoIntegrador3;
 
+desc rc_pessoa;
+
+select id,id_filial,id_categoria,nome,case when sexo = 0 then 'Masculino' else 'Feminino' end as sexo,
+email,cpf,celular,tel_residencial,tel_comercial,data_nasc,estado_civil,data_,id_colaborador,obs from rc_pessoa; 
 -- criação da tabelas
 create table if not exists RC_FILIAL(
 	empr_id bigInt(20) primary key auto_increment,
@@ -150,6 +154,7 @@ insert into RC_CATEGORIA values (null,'alunos',1, (select curdate()),null),
                                 (null,'Vendas',1, (select curdate()),null),
                                 (null,'Produtos/Serviços/Marketing',1, (select curdate()),null);
 				
+    
 insert into RC_PESSOA values (null, 1,1,'Carla Moreira',1, 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
 							 (null, 2,1,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
 							 (null, 3,1,'William Homem Igrejas',0, 'whigrejas@hotmail.com', '733.756.951-36', '(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),

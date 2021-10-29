@@ -17,7 +17,7 @@
             var cpfRemocao;
             function confirmarRemocao(nome, empr_id) {
                 console.log("Confirmar exclusao ", nome, empr_id);
-                cpfRemocao = CPF;
+                idFilial = empr_id;
                 var paragrafoCliente = $("#campoTextoExclusao");
                 paragrafoCliente.html(nome + " - " + empr_id);
 
@@ -31,11 +31,11 @@
             }
 
             function deletar() {
-                console.log("Excluindo cliente ", cpfRemocao);
+                console.log("Excluindo Filial ", idFilial);
                 fecharModal();
-                var url = "CadastroClienteServlet?cpfUsuario=" + cpfRemocao;
+                var url = "CadastroFilialServlet?idFilial=" + idFilial;
                 $.ajax(url).done(function () {
-                    console.log("Cliente removido!");
+                    console.log("Filial removida!");
                     var alerta = $("#alerta");
                     alerta.css("display", "block");
                     setTimeout(function () {
@@ -43,7 +43,7 @@
                         location.reload();
                     }, 1000)
                 }).fail(function () {
-                    console.log("Erro ao remover o cliente!");
+                    console.log("Erro ao remover a Filial!");
                 })
             }
 

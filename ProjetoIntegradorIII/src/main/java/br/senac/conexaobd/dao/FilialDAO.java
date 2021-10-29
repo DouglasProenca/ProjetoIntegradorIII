@@ -106,4 +106,67 @@ public class FilialDAO {
         }
         return filial;
     }
+
+    public static void inserirFilial(Filial filial) throws SQLException {
+        try {
+            boolean ok = true;
+            String query = "insert into rc_filial values (null,?,?,?,?,?,?,'?',1,'2021-09-09',?)";
+            Connection con = Conexao.abrirConexao();
+            PreparedStatement ps;
+            ps = con.prepareStatement(query);
+            ps.setString(1, filial.getNome());
+            ps.setString(2, filial.getRua());
+            ps.setString(3, filial.getNumero());
+            ps.setString(4, filial.getBairro());
+            ps.setString(5, filial.getCidade());
+            ps.setString(6, filial.getCEP());
+            ps.setString(7, filial.getObs());
+            ps.execute();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static boolean atualizarFilial(Filial filial) throws ClassNotFoundException, SQLException {
+        boolean ok = true;
+        String query = "update rc_filial set nome=?,rua=?,numero=?,bairro=?, "
+                + "cidade=?,CEP=?,obs=? where empr_id=?";
+        Connection con = Conexao.abrirConexao();
+        try {
+           PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, filial.getNome());
+            ps.setString(2, filial.getRua());
+            ps.setString(3, filial.getNumero());
+            ps.setString(4, filial.getBairro());
+            ps.setString(5, filial.getCidade());
+            ps.setString(6, filial.getCEP());
+            ps.setString(7, filial.getObs());
+            ps.setInt(8, filial.getEmpr_id());
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+            ok = false;
+            System.out.println(ex);
+        }
+        return ok;
+    }
+    
+    public static boolean deletarFilial(String id) throws ClassNotFoundException, SQLException {
+        boolean ok = true;
+        String query = "delete from rc_filial where empr_id=?";
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+            ok = false;
+        }
+        return ok;
+    }
 }
