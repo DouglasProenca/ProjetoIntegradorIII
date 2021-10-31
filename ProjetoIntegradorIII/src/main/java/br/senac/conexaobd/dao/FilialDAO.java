@@ -169,4 +169,48 @@ public class FilialDAO {
         }
         return ok;
     }
+    
+     public static List<Filial> getFilialPorNome(String nomeParam) throws ClassNotFoundException, SQLException {
+       nomeParam = nomeParam.toUpperCase();
+       List<Filial> Filiais = new ArrayList<>();
+       String query = "select * from rc_filial where nome like ?";
+       
+       Connection con = Conexao.abrirConexao(); 
+       try {
+           PreparedStatement ps = con.prepareStatement(query);
+           ps.setString(1, nomeParam+"%");
+           ResultSet rs = ps.executeQuery();
+           while (rs.next()) {
+               Filial filial = new Filial();
+                int id = rs.getInt("empr_id");
+                int id_colaborador = rs.getInt("id_colaborador");
+                String nome = rs.getString("nome");
+                String uf = rs.getString("uf");
+                String rua = rs.getString("rua");
+                String bairro = rs.getString("bairro");
+                String numero = rs.getString("numero");
+                String cidade = rs.getString("cidade");
+                String CEP = rs.getString("CEP");
+                String obs = rs.getString("obs");
+                Date data_ = rs.getDate("data_");
+
+                filial.setEmpr_id(id);
+                filial.setNome(nome);
+                filial.setRua(rua);
+                filial.setBairro(bairro);
+                filial.setNumero(numero);
+                filial.setCidade(cidade);
+                filial.setCEP(CEP);
+                filial.setUf(uf);
+                filial.setId_colaborador(id_colaborador);
+                filial.setData_(data_);
+                filial.setObs(obs);
+                Filiais.add(filial);
+           }
+       } catch (SQLException ex) {
+           Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       return Filiais;
+       
+   }
 }

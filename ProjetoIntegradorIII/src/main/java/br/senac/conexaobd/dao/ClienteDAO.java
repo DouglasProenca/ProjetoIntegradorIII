@@ -51,7 +51,7 @@ public class ClienteDAO {
 
         List<Cliente> clientes = new ArrayList<>();
         String query = "select id,id_filial,id_categoria,nome,case when sexo = 0 then 'Masculino' else 'Feminino' end as sexo,\n"
-                + "email,cpf,celular,tel_residencial,tel_comercial,data_nasc,estado_civil,data_,id_colaborador,obs from rc_pessoa;";
+                + "email,cpf,celular,tel_residencial,tel_comercial,data_nasc,estado_civil,data_,id_colaborador,obs from rc_pessoa order by nome;";
 
         Connection con = Conexao.abrirConexao();
         try {

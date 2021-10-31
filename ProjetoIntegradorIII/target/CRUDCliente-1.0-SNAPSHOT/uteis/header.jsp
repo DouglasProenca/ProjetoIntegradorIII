@@ -1,7 +1,7 @@
 <%-- 
     Document   : header
     Created on : 01/10/2021, 19:35:46
-    Author     : tiago.bscarton
+    Author     : Douglas Proença
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +14,4 @@
               rel="stylesheet" type="text/css"/>
         <script src="${pageContext.request.contextPath}/js/uteis.js" type="text/javascript"></script>
     </head>
-    <body>
-        <h1>Olá, seja bem vindo!</h1>
-    </body>
 </html>

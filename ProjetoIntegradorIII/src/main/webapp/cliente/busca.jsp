@@ -1,5 +1,5 @@
 <%-- 
-    Document   : cadastro
+    Document   : Buscar Cliente
     Created on : 31/10/2021, 21:00:14
     Author     : Douglas Proença
 --%>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listar de Clientes</title>
+        <title>Buscar Pessoas</title>
     </head>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
@@ -28,7 +28,7 @@
         <br>
         <input type="text" id="nomeCliente" class="form-control"/><br/>
         <button onclick="buscar()" class="btn btn-primary">Buscar</button>
-        
+
         <div id="msgAlerta" class="alert alert-warning" role="alert" style="display:none">
             <span id="txtAlerta"></span>
         </div>
@@ -36,14 +36,14 @@
         <br>
         <table id="tabelaClientes" class="table">
             <thead>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>CPF</th>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CPF</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
 
 </body>
 </html>

@@ -35,7 +35,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdown01">
                <button class="dropdown-item"><a href="filial/cadastroFilial.jsp">Cadastrar Filial</a></button>
                <button class="dropdown-item"><a href="cliente/ListarFilialServlet">Listar Filial</a></button>
-               <button class="dropdown-item"><a href="filial/busca.jsp">Buscar Filial</a></button>
+               <button class="dropdown-item"><a href="filial/buscaFilial.jsp">Buscar Filial</a></button>
             </div>
             
           </li>
