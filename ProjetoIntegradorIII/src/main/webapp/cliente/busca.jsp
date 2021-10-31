@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Busca
-    Created on : 28/10/2021, 21:00:14
+    Document   : cadastro
+    Created on : 31/10/2021, 21:00:14
     Author     : Douglas Proença
 --%>
 
@@ -10,9 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buscar Clientes</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-              crossorigin="anonymous" />
+        <title>Listar de Clientes</title>
     </head>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
@@ -24,32 +22,28 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
-    <body>
-        <div class="container">
-            <br>
-            <br>
-            <br>
-            <br>
-            <%-- <c:import url="../js/uteis.js"/>--%>
-            <input type="text" id="nomeCliente" class="form-control"/><br/>
-
-            <button onclick="buscar()" class="btn btn-primary">Buscar</button>
-
-            <div id="msgAlerta" class="alert alert-warning" role="alert" style="display:none">
-                <span id="txtAlerta"></span>
-            </div>
-            <br>
-            <br>
-            <table id="tabelaClientes" class="table">
-                <thead>
+    <body class="container">
+        <c:import url="../uteis/header.jsp"/>
+        <br>
+        <br>
+        <input type="text" id="nomeCliente" class="form-control"/><br/>
+        <button onclick="buscar()" class="btn btn-primary">Buscar</button>
+        
+        <div id="msgAlerta" class="alert alert-warning" role="alert" style="display:none">
+            <span id="txtAlerta"></span>
+        </div>
+        <br>
+        <br>
+        <table id="tabelaClientes" class="table">
+            <thead>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>CPF</th>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
 
-                </tbody>
-            </table>
-        </div>
-    </body>
+</body>
 </html>

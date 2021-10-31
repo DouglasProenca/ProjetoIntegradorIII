@@ -193,7 +193,7 @@ public class ClienteDAO {
      public static List<Cliente> getClientePorNome(String nomeParam) throws ClassNotFoundException, SQLException {
        nomeParam = nomeParam.toUpperCase();
        List<Cliente> clientes = new ArrayList<>();
-       String query = "select * from rc_pessoa where UPPER(nome) like ?";
+       String query = "select * from rc_pessoa where nome like ?";
        
        Connection con = Conexao.abrirConexao(); 
        try {

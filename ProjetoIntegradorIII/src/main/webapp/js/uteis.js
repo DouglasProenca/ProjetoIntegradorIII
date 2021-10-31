@@ -15,7 +15,7 @@ function buscar() {
         mostrarTelaAlerta("Digite, pelo menos, 3 caracteres");
     } else {
         $('#tabelaClientes tbody').empty();
-        var url = "BuscaCliente?nomeCliente=" + nomeCliente;
+        var url = "../cliente/BuscaCliente?nomeCliente=" + nomeCliente;
         $.ajax(url).done(function (resposta) {
             // Retorno do servlet
             var jsonClientes = JSON.parse(resposta);
