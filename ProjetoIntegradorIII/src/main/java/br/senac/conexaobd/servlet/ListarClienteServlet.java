@@ -14,19 +14,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author tiago.bscarton
+ * @author Douglas Proença
  */
+@WebServlet(name = "ListarClienteServlet", urlPatterns = {"/protegido/cliente/ListarClienteServlet"})
 public class ListarClienteServlet extends HttpServlet {
 
     
 
-      @Override
+      @Override   
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -34,7 +36,7 @@ public class ListarClienteServlet extends HttpServlet {
               List<Cliente> clientes = ClienteDAO.getClientes();
               request.setAttribute("listaClientes", clientes);
               // RequestDispatcher reaproveita os objetos Request e Response
-              String url = "/cliente/listar.jsp";
+              String url = "/protegido/cliente/listar.jsp";
               request.getRequestDispatcher(url).forward(request, response);
               
               //sendRedirect sempre cria um novo request/response

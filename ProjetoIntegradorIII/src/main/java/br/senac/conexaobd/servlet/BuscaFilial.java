@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Douglas Proença
  */
-@WebServlet(name = "BuscaFilial", urlPatterns = {"/cliente/BuscaFilial"})
+@WebServlet(name = "BuscaFilial", urlPatterns = {"/protegido/cliente/BuscaFilial"})
 public class BuscaFilial extends HttpServlet {
 
     @Override

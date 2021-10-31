@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Douglas Proença
  */
-@WebServlet(name = "BuscaCliente", urlPatterns = {"/cliente/BuscaCliente"})
+
 public class BuscaCliente extends HttpServlet {
 
     @Override

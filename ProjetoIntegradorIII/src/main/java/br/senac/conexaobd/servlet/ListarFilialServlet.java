@@ -30,7 +30,7 @@ public class ListarFilialServlet extends HttpServlet {
               List<Filial> Filiais = FilialDAO.getFilial();
               request.setAttribute("listaFiliais", Filiais);
               // RequestDispatcher reaproveita os objetos Request e Response
-              String url = "/filial/listar.jsp";
+              String url = "/protegido/filial/listar.jsp";
               request.getRequestDispatcher(url).forward(request, response);
               
               //sendRedirect sempre cria um novo request/response
