@@ -1,5 +1,6 @@
 package br.senac.conexaobd.dao.filter;
 
+import br.senac.conexaobd.entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -43,6 +44,23 @@ public class AutorizacaoFilter implements Filter {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/Login.jsp");
         }
         
+        //Passo 2 - Usuario Não tem Permissão
+        Usuario usuarioSistema = (Usuario) usuario;
+        String url = httpServletRequest.getRequestURI();
+        if(url.contains("/protegido/cliente/cadastro.jsp") && usuarioSistema.isAdministrativo()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/filial/") && usuarioSistema.isVendas()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/pagamento/") && usuarioSistema.isVendas()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/colaboradores/") && usuarioSistema.isVendas()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        //Depois colocar if do vendedor na turma para cadastro 
+        System.out.println(url);
     }    
     
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
