@@ -1,6 +1,5 @@
 package br.senac.conexaobd.entidades;
 
-import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,12 +9,14 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Usuario extends Cargo {
-
+public class Pessoa {
+    
     private int id;
-    private String senha;
-
-    public Usuario() {
-        super();
+    private String Nome;
+    private int id_colaborador;
+    private int Empr_id;
+    
+    public Pessoa(){
+        
     }
 }

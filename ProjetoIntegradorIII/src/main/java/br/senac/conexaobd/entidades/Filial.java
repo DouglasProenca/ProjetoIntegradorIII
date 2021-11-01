@@ -10,16 +10,14 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Filial {
+public class Filial extends Pessoa {
 
-    private int empr_id;
     private String rua;
     private String numero;
     private String bairro;
     private String cidade;
     private String cep;
     private String uf;
-    private int id_colaborador;
     private Date data_lançamento;
     
     public Filial(){

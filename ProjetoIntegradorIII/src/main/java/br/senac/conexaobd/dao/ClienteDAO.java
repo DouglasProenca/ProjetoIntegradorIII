@@ -25,7 +25,7 @@ public class ClienteDAO {
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
-            ps.setInt(1, cliente.getId_filial());
+            ps.setInt(1, cliente.getEmpr_id());
             ps.setString(2, cliente.getNome());
             ps.setString(3, cliente.getSexo());
             ps.setString(4, cliente.getEmail());
@@ -63,7 +63,7 @@ public class ClienteDAO {
                 String telResidencial = rs.getString("tel_residencial");
 
                 cliente.setId(id);
-                cliente.setId_filial(id_filial);
+                cliente.setEmpr_id(id_filial);
                 cliente.setId_colaborador(id_colaborador);
                 cliente.setNome(nome);
                 cliente.setSexo(sexo);
@@ -178,7 +178,7 @@ public class ClienteDAO {
                 String telResidencial = rs.getString("tel_residencial");
 
                 cliente.setId(id);
-                cliente.setId_filial(id_filial);
+                cliente.setEmpr_id(id_filial);
                 cliente.setId_colaborador(id_colaborador);
                 cliente.setNome(nome);
                 cliente.setSexo(sexo);

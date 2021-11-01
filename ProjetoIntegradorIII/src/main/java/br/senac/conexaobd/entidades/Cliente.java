@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.conexaobd.entidades;
 
 import lombok.Getter;
@@ -14,12 +9,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Cliente {
+public class Cliente extends Pessoa {
 
-  private int id;
-  private int id_filial;
-  private int id_colaborador;
-  private String nome;
   private String sexo;
   private String email;
   private String CPF;

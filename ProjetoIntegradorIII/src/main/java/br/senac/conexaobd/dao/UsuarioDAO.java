@@ -30,12 +30,11 @@ public class UsuarioDAO {
         if (rs.next()) {
             int id_rule = rs.getInt("id_rule");
             int id_colaborador = rs.getInt("id_colaborador");
-            Date data = rs.getDate("data_");
             usuario = new Usuario();
-            usuario.setPessoa(login);
-            usuario.setId_rule(id_rule);
+            usuario.setNome(login);
+            usuario.setId(id_rule);
             usuario.setId_colaborador(id_colaborador);
-            usuario.setData_(data);
+
         }
         return usuario;
     }

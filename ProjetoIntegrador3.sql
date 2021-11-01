@@ -21,7 +21,7 @@ create table if not exists RC_FILIAL(
 create table if not exists RC_CARGO(
 	id bigint(20) primary key auto_increment,
     id_filial bigint(20) not null,
-	Nome varchar(250) not null unique,
+	Nome varchar(250) not null,
     categoria varchar(250) not null,
     cargo varchar(250) not null,
 	salario float(20) not null,
@@ -62,28 +62,27 @@ create table if not exists RC_MATRICULA(
 	id_colaborador bigint(20) not null
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 create table if not exists RC_USUARIO(
-	id_rule bigInt(20) primary key auto_increment,
-	id_pessoa bigInt(20) not null unique,
+	id bigInt(20) primary key auto_increment,
+	id_cargo bigInt(20) not null unique,
 	senha varchar (250) not null,
-	id_colaborador bigInt(20) not null,
-	data_ date not null
+	id_colaborador bigInt(20) not null
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 create table if not exists RC_PAGAMENTO(
@@ -165,31 +164,31 @@ insert into RC_ALUNO values (null, 1,'Carla Moreira','Feminino', 'moreiracarla@h
 
 
 
-insert into RC_USUARIO values(null,6,'0bqE',1,(select curdate())),
-							 (null,7,'6OdG',1,(select curdate())),
-                             (null,8,'ejEl',1,(select curdate())),
-                             (null,9,'PGAL',1,(select curdate())),
-                             (null,10,'sblf',1,(select curdate())),
-                             (null,11,'kRW4',1,(select curdate())),
-                             (null,12,'UtoK',1,(select curdate())),
-                             (null,13,'ryN8',1,(select curdate())),
-                             (null,14,'uKwQ',1,(select curdate())),
-                             (null,15,'Swk1',1,(select curdate())),
-                             (null,16,'QX4Q',1,(select curdate())),
-                             (null,17,'q1gu',1,(select curdate())),
-                             (null,18,'TCab',1,(select curdate())),
-                             (null,19,'qqC6',1,(select curdate())),
-                             (null,20,'GBRD',1,(select curdate())),
-                             (null,21,'WHaf',1,(select curdate())),
-                             (null,22,'An2C',1,(select curdate())),
-                             (null,23,'8jkx',1,(select curdate())),
-                             (null,24,'bEE0',1,(select curdate())),
-                             (null,25,'AiY5',1,(select curdate())),
-                             (null,26,'DBmI',1,(select curdate())),
-                             (null,27,'eGRF',1,(select curdate())),
-                             (null,28,'wUxP',1,(select curdate())),
-                             (null,29,'5hCa',1,(select curdate())),
-                             (null,30,'pS8F',1,(select curdate()));
+insert into RC_USUARIO values(null,1,'0bqE',1),
+							 (null,2,'6OdG',1),
+                             (null,3,'ejEl',1),
+                             (null,4,'PGAL',1),
+                             (null,5,'sblf',1),
+                             (null,6,'kRW4',1),
+                             (null,7,'UtoK',1),
+                             (null,8,'ryN8',1),
+                             (null,9,'uKwQ',1),
+                             (null,10,'Swk1',1),
+                             (null,11,'QX4Q',1),
+                             (null,12,'q1gu',1),
+                             (null,13,'TCab',1),
+                             (null,14,'qqC6',1),
+                             (null,15,'GBRD',1),
+                             (null,16,'WHaf',1),
+                             (null,17,'An2C',1),
+                             (null,18,'8jkx',1),
+                             (null,19,'bEE0',1),
+                             (null,20,'AiY5',1),
+                             (null,21,'DBmI',1),
+                             (null,22,'eGRF',1),
+                             (null,23,'wUxP',1),
+                             (null,24,'5hCa',1),
+                             (null,35,'pS8F',1);
                              
 
 insert into rc_pagamento values (null, '2020', '04', '2020-04-12', '5%', 'Dinheiro', '2500', 1, (select curdate()), null),

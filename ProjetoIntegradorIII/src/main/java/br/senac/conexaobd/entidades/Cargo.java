@@ -10,12 +10,14 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Usuario extends Cargo {
+public class Cargo extends Pessoa {
 
-    private int id;
-    private String senha;
+    private String categoria;
+    private String cargo;
+    private float salario;
+    private Date data_ingresso;
 
-    public Usuario() {
+    public Cargo() {
         super();
     }
 }
