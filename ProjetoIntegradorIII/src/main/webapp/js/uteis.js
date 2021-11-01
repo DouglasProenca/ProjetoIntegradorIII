@@ -30,6 +30,9 @@ function buscar() {
                                 .append($('<td>').append(cliente.nome))
                                 .append($('<td>').append(cliente.email))
                                 .append($('<td>').append(cliente.cpf))
+                                .append($('<td>').append(cliente.sexo))
+                                .append($('<td>').append(cliente.celular))
+                                .append($('<td>').append(cliente.telResidencial))
                                 );
             })
 

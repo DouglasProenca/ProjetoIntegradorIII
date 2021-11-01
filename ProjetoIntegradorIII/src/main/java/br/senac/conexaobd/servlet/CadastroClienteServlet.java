@@ -27,8 +27,6 @@ public class CadastroClienteServlet extends HttpServlet {
         String cpf = request.getParameter("CPFCliente");
         String celularCliente = request.getParameter("CelularCliente");
         String residencial = request.getParameter("ResidencialCliente");
-        String comercial = request.getParameter("TelefoneComercial");
-        String dataNasc = request.getParameter("DataNascimento");
         String sexo = request.getParameter("sexo");
 
         // Passo 2 - Inserir no BD
@@ -38,8 +36,6 @@ public class CadastroClienteServlet extends HttpServlet {
         cliente.setEmail(email);
         cliente.setCelular(celularCliente);
         cliente.setTelResidencial(residencial);
-        cliente.setTelComercial(comercial);
-        //cliente.setDataNascimento(dataNasc);
         cliente.setSexo(sexo);
 
 
@@ -70,7 +66,7 @@ public class CadastroClienteServlet extends HttpServlet {
             try {
                 Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
                 req.setAttribute("clienteAtualizacao", cliente);
-                req.getRequestDispatcher("/cliente/cadastro.jsp").forward(req, resp);
+                req.getRequestDispatcher("/protegido/cliente/cadastro.jsp").forward(req, resp);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

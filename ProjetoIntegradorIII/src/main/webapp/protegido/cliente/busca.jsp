@@ -30,6 +30,9 @@
             <th>Nome</th>
             <th>Email</th>
             <th>CPF</th>
+            <th>Sexo</th>
+            <th>Celular</th>
+            <th>Fixo</th>
         </thead>
         <tbody>
 

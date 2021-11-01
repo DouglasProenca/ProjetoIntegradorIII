@@ -15,12 +15,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
               crossorigin="anonymous" />
     </head>
-    <style>
-
-        body {
-            background-color:darkgrey;
-        }
-    </style>
     <body>
         <div class="container">
             <c:import url="../uteis/header.jsp"/>
@@ -46,72 +40,43 @@
                            required class="form-control"/><br/>
                 </div>
                 <div class="form-group">
-                    <label>CPF</label>
+                    <c:if test="${empty clienteAtualizacao}">
+                        <label>CPF</label>
                         <input type="text" name="CPFCliente"
                                value="${clienteAtualizacao.CPF}" placeholder="000.000.000-00"
                                required=""
                                class="form-control"
                                />
+                    </c:if>
                 </div>
                 <br>
                 <div class="form-group">
                     <label>Celular</label>
-                        <input type="text" name="CelularCliente"
-                               value="${clienteAtualizacao.celular}" placeholder="(00)00000-0000"
-                               required
-                               class="form-control"
-                               />        
+                    <input type="text" name="CelularCliente"
+                           value="${clienteAtualizacao.celular}" placeholder="(00)00000-0000"
+                           required
+                           class="form-control"
+                           />        
                 </div>
                 <br>
                 <div class="form-group">
-                <label>Telefone Residencial</label>
-                        <input type="text" name="ResidencialCliente"
-                               value="${clienteAtualizacao.telResidencial}" placeholder="(00)0000-0000"
-                               required
-                               class="form-control"
-                               />
+                    <label>Telefone Residencial</label>
+                    <input type="text" name="ResidencialCliente"
+                           value="${clienteAtualizacao.telResidencial}" placeholder="(00)0000-0000"
+                           required
+                           class="form-control"
+                           />
                 </div>
                 <br>
                 <div class="form-group">
-                    <label>Telefone Comercial</label>
-                        <input type="text" name="TelefoneComercial"
-                               value="${clienteAtualizacao.telComercial}" 
-                               class="form-control"
-                               />
-                </div>
-                <br>
-                <div class="form-group">
-                    <label>Data de Nascimento</label>
-                        <input type="Month" name="DataNascimento"
-                               value="${clienteAtualizacao.dataNascimento}" 
-                               required
-                               class="form-control"
-                               />
-                </div>
-                <br/>
-                <div class="form-group">
-                    <label>Sexo</label>
+                    <c:if test="${empty clienteAtualizacao}">
+                        <label>Sexo</label>
                         <select name="sexo" value="${clienteAtualizacao.sexo}"
                                 class="form-control">
-                            <option value="0">Masculino</option>
-                            <option value="1">Feminino</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
                         </select>
-                </div>
-                <br/>
-                <div class="form-group">
-                    <label>Estado Civil</label>
-                        <select name="EstadoCivil" class="form-control">
-                            <option value="Solteiro">Solteiro(a)</option>
-                            <option value="Casado">Casado(a)</option>
-                            <option value="Viuvo">Viúvo(a)</option>
-                            <option value="União">União Estavel</option>
-                        </select>
-                </div>
-                <br/>
-                <div  class="form-group">
-                    <label>Observação</label>
-                    <input type="text" name="observacao" value="${clienteAtualizacao.obs}"
-                           class="form-control"/><br/> 
+                    </c:if>
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>

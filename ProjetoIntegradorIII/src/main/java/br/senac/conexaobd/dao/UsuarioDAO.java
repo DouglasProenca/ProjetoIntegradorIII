@@ -18,7 +18,7 @@ public class UsuarioDAO {
         Connection con = Conexao.abrirConexao();
         Usuario usuario = null;
         String query = "select p.nome, u.data_,u.id_colaborador, u.senha, u.id_rule from rc_usuario u \n"
-                + "inner join rc_pessoa p\n"
+                + "inner join rc_cargo p\n"
                 + "on u.id_pessoa = p.id\n"
                 + "where p.nome = ? and u.senha = ?;";
 

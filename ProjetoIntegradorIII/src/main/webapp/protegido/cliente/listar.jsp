@@ -57,7 +57,7 @@
         <br>
         <br>
         <br>
-        <h1><center>Pessoas</center></h1>
+        <h1><center>Todos Os Alunos</center></h1>
         <br>
         <div class="modal" tabindex="-1" role="dialog" id="modalExclusao">
             <div class="modal-dialog" role="document">
@@ -79,7 +79,7 @@
     <fildset>
         <table class="table-bordered" aling="left" border="2px" width="100%">
             <thead>
-            <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Email</td><td>Celular</td>
+            <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Celular</td><td>Fixo</td>
         </thead>
         <tbody>
             <c:forEach var="cliente" items="${listaClientes}">
@@ -88,9 +88,9 @@
                     <td>${cliente.email}</td>
                     <td>${cliente.CPF}</td>
                     <td>${cliente.sexo}</td>
-                    <td>${cliente.email}</td>
                     <td>${cliente.celular}</td>
-                    <td><a href="CadastroClienteServlet?CPFUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
+                    <td>${cliente.telResidencial}</td>
+                    <td><a href="../protegido/cliente/CadastroClienteServlet?CPFUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
                     <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
                 </tr>
             </c:forEach>

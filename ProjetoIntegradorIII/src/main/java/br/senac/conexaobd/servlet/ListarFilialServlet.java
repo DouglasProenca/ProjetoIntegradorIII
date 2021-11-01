@@ -1,12 +1,9 @@
 
 package br.senac.conexaobd.servlet;
 
-import br.senac.conexaobd.dao.ClienteDAO;
 import br.senac.conexaobd.dao.FilialDAO;
-import br.senac.conexaobd.entidades.Cliente;
 import br.senac.conexaobd.entidades.Filial;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;

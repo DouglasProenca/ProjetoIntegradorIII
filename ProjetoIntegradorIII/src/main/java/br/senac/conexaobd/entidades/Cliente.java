@@ -5,7 +5,6 @@
  */
 package br.senac.conexaobd.entidades;
 
-import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +18,6 @@ public class Cliente {
 
   private int id;
   private int id_filial;
-  private int id_categoria;
   private int id_colaborador;
   private String nome;
   private String sexo;
@@ -27,8 +25,8 @@ public class Cliente {
   private String CPF;
   private String celular;
   private String telResidencial;
-  private String telComercial;
-  private Date dataNascimento;
-  private Date data_;
       
+  public Cliente(){
+      
+  }
 }
