@@ -3,7 +3,6 @@ package br.senac.conexaobd.servlet;
 import br.senac.conexaobd.dao.FilialDAO;
 import br.senac.conexaobd.entidades.Filial;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Douglas
  */
-@WebServlet(name = "CadastroFilialServlet", urlPatterns = {"/cliente/CadastroFilialServlet"})
+@WebServlet(name = "CadastroFilialServlet", urlPatterns = {"/protegido/cliente/CadastroFilialServlet"})
 public class CadastroFilialServlet extends HttpServlet {
 
       @Override
@@ -56,9 +55,9 @@ public class CadastroFilialServlet extends HttpServlet {
             } else {
                 FilialDAO.inserirFilial(filial);
             }
-            response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
         } catch (SQLException ex) {
-            response.sendRedirect(request.getContextPath() + "/uteis/erro.jsp");
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
         }
     }
 
