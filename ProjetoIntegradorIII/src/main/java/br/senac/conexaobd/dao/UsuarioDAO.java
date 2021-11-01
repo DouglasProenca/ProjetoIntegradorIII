@@ -17,9 +17,9 @@ public class UsuarioDAO {
     public static Usuario getUsuario(String login, String senha) throws ClassNotFoundException, SQLException {
         Connection con = Conexao.abrirConexao();
         Usuario usuario = null;
-        String query = "select p.nome, u.data_,u.id_colaborador, u.senha, u.id_rule from rc_usuario u \n"
+        String query = "select p.nome,u.id_colaborador, u.senha, u.id from rc_usuario u \n"
                 + "inner join rc_cargo p\n"
-                + "on u.id_pessoa = p.id\n"
+                + "on u.id_colaborador = p.id\n"
                 + "where p.nome = ? and u.senha = ?;";
 
         PreparedStatement ps = con.prepareStatement(query);
@@ -28,7 +28,7 @@ public class UsuarioDAO {
         ResultSet rs = ps.executeQuery();
 
         if (rs.next()) {
-            int id_rule = rs.getInt("id_rule");
+            int id_rule = rs.getInt("id");
             int id_colaborador = rs.getInt("id_colaborador");
             usuario = new Usuario();
             usuario.setNome(login);

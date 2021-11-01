@@ -159,11 +159,6 @@ insert into RC_ALUNO values (null, 1,'Carla Moreira','Feminino', 'moreiracarla@h
 							 (null, 5,'Aline Campos da Cruz','Feminino','natashacald@terra.com.br','202.744.120-47','(28) 95286-0776', '(28) 4787-0665', 5);
 
 
-
-
-
-
-
 insert into RC_USUARIO values(null,1,'0bqE',1),
 							 (null,2,'6OdG',1),
                              (null,3,'ejEl',1),
@@ -190,6 +185,13 @@ insert into RC_USUARIO values(null,1,'0bqE',1),
                              (null,24,'5hCa',1),
                              (null,35,'pS8F',1);
                              
+
+
+
+
+
+
+
 
 insert into rc_pagamento values (null, '2020', '04', '2020-04-12', '5%', 'Dinheiro', '2500', 1, (select curdate()), null),
 								(null, '2019', '09', '2021-03-10', '2,5%','Cartão de Débito', '900', 2, (select curdate()), null),
