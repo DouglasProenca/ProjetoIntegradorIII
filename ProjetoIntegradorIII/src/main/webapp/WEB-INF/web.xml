@@ -38,7 +38,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastroClienteServlet</servlet-name>
-        <url-pattern>/cliente/CadastroClienteServlet</url-pattern>
+        <url-pattern>/protegido/cliente/CadastroClienteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListarClienteServlet</servlet-name>

@@ -33,7 +33,7 @@
             function deletar() {
                 console.log("Excluindo cliente ", cpfRemocao);
                 fecharModal();
-                var url = "CadastroClienteServlet?CPFUsuario=" + cpfRemocao;
+                var url = "../protegido/cliente/CadastroClienteServlet?CPFUsuario=" + cpfRemocao;
                 $.ajax(url).done(function () {
                     console.log("Cliente removido!");
                     var alerta = $("#alerta");

@@ -3,9 +3,7 @@ package br.senac.conexaobd.servlet;
 import br.senac.conexaobd.dao.ClienteDAO;
 import br.senac.conexaobd.entidades.Cliente;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -59,10 +57,9 @@ public class CadastroClienteServlet extends HttpServlet {
             } else {
                 ClienteDAO.inserirCliente(cliente);
             }
-            response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
         } catch (SQLException ex) {
-            response.sendRedirect(request.getContextPath() + "/uteis/erro.jsp");
-            System.out.println(ex);
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
         }
     }
 
