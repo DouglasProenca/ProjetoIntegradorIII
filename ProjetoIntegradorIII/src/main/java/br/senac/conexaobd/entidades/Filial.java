@@ -13,20 +13,17 @@ import lombok.Setter;
 public class Filial {
 
     private int empr_id;
-    private String nome;
     private String rua;
     private String numero;
     private String bairro;
     private String cidade;
-    private String CEP;
-    private String Uf;
+    private String cep;
+    private String uf;
     private int id_colaborador;
-    private Date data_;
-    private String obs;
+    private Date data_lançamento;
     
     public Filial(){
         
     }
-    
     
 }

@@ -22,13 +22,12 @@ public class ClienteDAO {
     public static void inserirCliente(Cliente cliente) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into rc_pessoa values (null,1,2,?,0,?,?,?,?,?,'2021-09-09','Solteiro','2021-09-09',1,?)";
+            String query = "insert into rc_pessoa values (null,1,2,?,0,?,?,?,?,?,'2021-09-09','2021-09-09',1)";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
             //ps.setInt(1, cliente.getId_filial());
             //ps.setInt(2, cliente.getId_categoria());
-            //ps.setInt(2, cliente.getId_colaborador()); 
             ps.setString(1, cliente.getNome());
             //ps.setString(2, cliente.getSexo());
             ps.setString(2, cliente.getEmail());
@@ -37,8 +36,6 @@ public class ClienteDAO {
             ps.setString(5, cliente.getTelResidencial());
             ps.setString(6, cliente.getTelComercial());
             //ps.setDate(8, (java.sql.Date) cliente.getDataNascimento());
-            //ps.setString(8, cliente.getEstadoCivil());
-            ps.setString(7, cliente.getObs());
             //ps.setDate(14, (java.sql.Date) cliente.getData_());
             ps.execute();
         } catch (ClassNotFoundException ex) {
@@ -50,8 +47,8 @@ public class ClienteDAO {
     public static List<Cliente> getClientes() throws ClassNotFoundException, SQLException {
 
         List<Cliente> clientes = new ArrayList<>();
-        String query = "select id,id_filial,id_categoria,nome,case when sexo = 0 then 'Masculino' else 'Feminino' end as sexo,\n"
-                + "email,cpf,celular,tel_residencial,tel_comercial,data_nasc,estado_civil,data_,id_colaborador,obs from rc_pessoa order by nome;";
+        String query = "select id,id_filial,nome,case when sexo = 0 then 'Masculino' else 'Feminino' end as sexo,\n"
+                + "email,cpf,celular,tel_residencial,tel_comercial,data_nasc,data_,id_colaborador from rc_pessoa order by nome;";
 
         Connection con = Conexao.abrirConexao();
         try {
@@ -61,7 +58,6 @@ public class ClienteDAO {
                 Cliente cliente = new Cliente();
                 int id = rs.getInt("id");
                 int id_filial = rs.getInt("id_filial");
-                int id_categoria = rs.getInt("id_categoria");
                 int id_colaborador = rs.getInt("id_colaborador");
                 String nome = rs.getString("nome");
                 String sexo = rs.getString("sexo");
@@ -70,14 +66,11 @@ public class ClienteDAO {
                 String celular = rs.getString("celular");
                 String telResidencial = rs.getString("tel_residencial");
                 String telComercial = rs.getString("tel_comercial");
-                String estadoCivil = rs.getString("estado_civil");
-                String obs = rs.getString("obs");
                 Date dataNascimento = rs.getDate("data_nasc");
                 Date data_ = rs.getDate("data_");
 
                 cliente.setId(id);
                 cliente.setId_filial(id_filial);
-                cliente.setId_categoria(id_categoria);
                 cliente.setId_colaborador(id_colaborador);
                 cliente.setNome(nome);
                 cliente.setSexo(sexo);
@@ -86,8 +79,6 @@ public class ClienteDAO {
                 cliente.setCelular(celular);
                 cliente.setTelResidencial(telResidencial);
                 cliente.setTelComercial(telComercial);
-                cliente.setEstadoCivil(estadoCivil);
-                cliente.setObs(obs);
                 cliente.setDataNascimento(dataNascimento);
                 cliente.setData_(data_);
                 clientes.add(cliente);
@@ -104,7 +95,7 @@ public class ClienteDAO {
     public static Cliente getClientePorCPF(String cpf) throws ClassNotFoundException, SQLException {
         Cliente cliente = null;
         String query = "select id,id_filial,id_categoria,nome,case when sexo = 0 then 'Masculino' else 'Feminino' end as sexo,\n"
-                + "email,cpf,celular,tel_residencial,tel_comercial,data_nasc,estado_civil,data_,id_colaborador,obs from rc_pessoa where cpf = ?;";
+                + "email,cpf,celular,tel_residencial,tel_comercial,data_nasc,data_,id_colaborador from rc_pessoa where cpf = ?;";
 
         Connection con = Conexao.abrirConexao();
         try {
@@ -118,8 +109,6 @@ public class ClienteDAO {
                 String celular = rs.getString("celular");
                 String telResidencial = rs.getString("tel_residencial");
                 String telComercial = rs.getString("tel_comercial");
-                String estadoCivil = rs.getString("estado_civil");
-                String obs = rs.getString("obs");
                 Date dataNascimento = rs.getDate("data_nasc");
                 Date data_ = rs.getDate("data_");
                 cliente.setNome(nome);
@@ -128,8 +117,6 @@ public class ClienteDAO {
                 cliente.setCelular(celular);
                 cliente.setTelResidencial(telResidencial);
                 cliente.setTelComercial(telComercial);
-                cliente.setEstadoCivil(estadoCivil);
-                cliente.setObs(obs);
                 cliente.setDataNascimento(dataNascimento);
                 cliente.setData_(data_);
 
@@ -161,12 +148,11 @@ public class ClienteDAO {
     public static boolean atualizarCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "update rc_pessoa set nome=?,email=?,celular=?,tel_residencial=?, "
-                + "tel_comercial=?,obs=? where cpf=?";
+                + "tel_comercial=?where cpf=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             //ps.setInt(1, cliente.getId_filial());
-            //ps.setInt(2, cliente.getId_categoria());
             //ps.setInt(2, cliente.getId_colaborador()); 
             ps.setString(1, cliente.getNome());
             //ps.setString(2, cliente.getSexo());
@@ -176,8 +162,6 @@ public class ClienteDAO {
             ps.setString(4, cliente.getTelResidencial());
             ps.setString(5, cliente.getTelComercial());
             //ps.setDate(8, (java.sql.Date) cliente.getDataNascimento());
-            //ps.setString(8, cliente.getEstadoCivil());
-            ps.setString(6, cliente.getObs());
             //ps.setDate(14, (java.sql.Date) cliente.getData_());
             ps.executeUpdate();
 
@@ -229,8 +213,6 @@ public class ClienteDAO {
                 cliente.setCelular(celular);
                 cliente.setTelResidencial(telResidencial);
                 cliente.setTelComercial(telComercial);
-                cliente.setEstadoCivil(estadoCivil);
-                cliente.setObs(obs);
                 cliente.setDataNascimento(dataNascimento);
                 cliente.setData_(data_);
                 clientes.add(cliente);

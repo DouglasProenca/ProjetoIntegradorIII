@@ -30,8 +30,6 @@ public class CadastroClienteServlet extends HttpServlet {
         String comercial = request.getParameter("TelefoneComercial");
         String dataNasc = request.getParameter("DataNascimento");
         String sexo = request.getParameter("sexo");
-        String estadoCivil = request.getParameter("EstadoCivil");
-        String obs = request.getParameter("observacao");
 
         // Passo 2 - Inserir no BD
         Cliente cliente = new Cliente();
@@ -43,8 +41,7 @@ public class CadastroClienteServlet extends HttpServlet {
         cliente.setTelComercial(comercial);
         //cliente.setDataNascimento(dataNasc);
         cliente.setSexo(sexo);
-        cliente.setEstadoCivil(estadoCivil);
-        cliente.setObs(obs);
+
 
         try {
             // ope = 1 => Update

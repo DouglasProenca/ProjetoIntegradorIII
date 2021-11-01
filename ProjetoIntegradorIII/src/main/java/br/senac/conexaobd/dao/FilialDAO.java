@@ -32,27 +32,23 @@ public class FilialDAO {
                 Filial filial = new Filial();
                 int id = rs.getInt("empr_id");
                 int id_colaborador = rs.getInt("id_colaborador");
-                String nome = rs.getString("nome");
                 String uf = rs.getString("uf");
                 String rua = rs.getString("rua");
                 String bairro = rs.getString("bairro");
                 String numero = rs.getString("numero");
                 String cidade = rs.getString("cidade");
                 String CEP = rs.getString("CEP");
-                String obs = rs.getString("obs");
-                Date data_ = rs.getDate("data_");
+                Date data_lançamento = rs.getDate("data_lançamento");
 
                 filial.setEmpr_id(id);
-                filial.setNome(nome);
                 filial.setRua(rua);
                 filial.setBairro(bairro);
                 filial.setNumero(numero);
                 filial.setCidade(cidade);
-                filial.setCEP(CEP);
+                filial.setCep(CEP);
                 filial.setUf(uf);
                 filial.setId_colaborador(id_colaborador);
-                filial.setData_(data_);
-                filial.setObs(obs);
+                filial.setData_lançamento(data_lançamento);
                 Filiais.add(filial);
             }
 
@@ -66,8 +62,8 @@ public class FilialDAO {
 
     public static Filial getFilialPorID(String idFilial) throws ClassNotFoundException, SQLException {
         Filial filial = null;
-        String query = "select empr_id,nome,rua,numero,bairro,cidade,cep,uf,"
-                + "id_colaborador,data_,obs from rc_filial where empr_id =?";
+        String query = "select empr_id,rua,numero,bairro,cidade,cep,uf,"
+                + "id_colaborador,data_lançamento, from rc_filial where empr_id =?";
 
         Connection con = Conexao.abrirConexao();
         try {
@@ -78,26 +74,22 @@ public class FilialDAO {
                 filial = new Filial();
                 int id = rs.getInt("empr_id");
                 int id_colaborador = rs.getInt("id_colaborador");
-                String nome = rs.getString("nome");
                 String uf = rs.getString("uf");
                 String rua = rs.getString("rua");
                 String cidade = rs.getString("Cidade");
                 String bairro = rs.getString("bairro");
                 String numero = rs.getString("numero");
                 String CEP = rs.getString("CEP");
-                String obs = rs.getString("obs");
                 Date data_ = rs.getDate("data_");
                 filial.setEmpr_id(id);
-                filial.setNome(nome);
                 filial.setRua(rua);
                 filial.setBairro(bairro);
                 filial.setNumero(numero);
                 filial.setCidade(cidade);
-                filial.setCEP(CEP);
+                filial.setCep(CEP);
                 filial.setUf(uf);
                 filial.setId_colaborador(id_colaborador);
-                filial.setData_(data_);
-                filial.setObs(obs);
+                filial.setData_lançamento(data_);
 
             }
         } catch (SQLException ex) {
@@ -110,17 +102,16 @@ public class FilialDAO {
     public static void inserirFilial(Filial filial) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into rc_filial values (null,?,?,?,?,?,?,'?',1,'2021-09-09',?)";
+            String query = "insert into rc_filial values (null,?,?,?,?,?,?,1,'2021-09-09')";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
-            ps.setString(1, filial.getNome());
-            ps.setString(2, filial.getRua());
-            ps.setString(3, filial.getNumero());
-            ps.setString(4, filial.getBairro());
-            ps.setString(5, filial.getCidade());
-            ps.setString(6, filial.getCEP());
-            ps.setString(7, filial.getObs());
+            ps.setString(1, filial.getRua());
+            ps.setString(2, filial.getNumero());
+            ps.setString(3, filial.getBairro());
+            ps.setString(4, filial.getCidade());
+            ps.setString(5, filial.getCep());
+            ps.setString(6, filial.getUf());
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,18 +120,16 @@ public class FilialDAO {
     
     public static boolean atualizarFilial(Filial filial) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update rc_filial set nome=?,rua=?,numero=?,bairro=?, "
-                + "cidade=?,CEP=?,obs=? where empr_id=?";
+        String query = "update rc_filial rua=?,numero=?,bairro=?, "
+                + "cidade=?,CEP=? where empr_id=?";
         Connection con = Conexao.abrirConexao();
         try {
            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, filial.getNome());
             ps.setString(2, filial.getRua());
             ps.setString(3, filial.getNumero());
             ps.setString(4, filial.getBairro());
             ps.setString(5, filial.getCidade());
-            ps.setString(6, filial.getCEP());
-            ps.setString(7, filial.getObs());
+            ps.setString(6, filial.getCep());
             ps.setInt(8, filial.getEmpr_id());
             ps.executeUpdate();
 
@@ -184,27 +173,23 @@ public class FilialDAO {
                Filial filial = new Filial();
                 int id = rs.getInt("empr_id");
                 int id_colaborador = rs.getInt("id_colaborador");
-                String nome = rs.getString("nome");
                 String uf = rs.getString("uf");
                 String rua = rs.getString("rua");
                 String bairro = rs.getString("bairro");
                 String numero = rs.getString("numero");
                 String cidade = rs.getString("cidade");
                 String CEP = rs.getString("CEP");
-                String obs = rs.getString("obs");
-                Date data_ = rs.getDate("data_");
+                Date data_ = rs.getDate("data_lançamento");
 
                 filial.setEmpr_id(id);
-                filial.setNome(nome);
                 filial.setRua(rua);
                 filial.setBairro(bairro);
                 filial.setNumero(numero);
                 filial.setCidade(cidade);
-                filial.setCEP(CEP);
+                filial.setCep(CEP);
                 filial.setUf(uf);
                 filial.setId_colaborador(id_colaborador);
-                filial.setData_(data_);
-                filial.setObs(obs);
+                filial.setData_lançamento(data_);
                 Filiais.add(filial);
            }
        } catch (SQLException ex) {

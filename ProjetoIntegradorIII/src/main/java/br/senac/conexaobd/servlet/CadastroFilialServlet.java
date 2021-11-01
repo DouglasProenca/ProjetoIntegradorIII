@@ -24,25 +24,21 @@ public class CadastroFilialServlet extends HttpServlet {
             throws ServletException, IOException {
         String ope = request.getParameter("ope");
         // Passo 1 - Recuperar os parametros
-        String nome = request.getParameter("nomeCliente");
         String rua = request.getParameter("rua");
         String numero = request.getParameter("numero");
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String cep = request.getParameter("CEP");
         String uf = request.getParameter("uf");
-        String obs = request.getParameter("obs");
 
         // Passo 2 - Inserir no BD
         Filial filial = new Filial();
-        filial.setNome(nome);
         filial.setRua(rua);
         filial.setNumero(numero);
         filial.setBairro(bairro);
         filial.setCidade(cidade);
-        filial.setCEP(cep);
+        filial.setCep(cep);
         filial.setUf(uf);
-        filial.setObs(obs);
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {

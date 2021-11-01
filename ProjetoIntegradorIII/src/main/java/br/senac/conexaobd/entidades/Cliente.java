@@ -28,17 +28,7 @@ public class Cliente {
   private String celular;
   private String telResidencial;
   private String telComercial;
-  private String estadoCivil;
-  private String obs;
   private Date dataNascimento;
   private Date data_;
-    
-
-    @Override
-    public String toString() {
-        return "nome=" + nome + ", email=" + email + ", cpf=" + CPF;
-    }
-    
-    
-    
+      
 }

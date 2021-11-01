@@ -15,11 +15,11 @@
         <title>Lista de Filiais</title>
         <script type="text/javascript">
             var cpfRemocao;
-            function confirmarRemocao(nome, empr_id) {
-                console.log("Confirmar exclusao ", nome, empr_id);
+            function confirmarRemocao(cidade, empr_id) {
+                console.log("Confirmar exclusao ", cidade, empr_id);
                 idFilial = empr_id;
                 var paragrafoCliente = $("#campoTextoExclusao");
-                paragrafoCliente.html(nome + " - " + empr_id);
+                paragrafoCliente.html(cidade + " - " + empr_id);
 
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.show();
@@ -79,20 +79,19 @@
     <fildset>
         <table class="table-bordered" aling="center" border="2px" width="80%">
             <thead>
-            <td>ID</td><td>Nome</td><td>Rua</td><td>Numero</td><td>Bairro</td><td>Cidade</td><td>UF</td>
+            <td>ID</td><td>Rua</td><td>Numero</td><td>Bairro</td><td>Cidade</td><td>UF</td>
             </thead>
             <tbody>
                 <c:forEach var="filial" items="${listaFiliais}">
                     <tr>
                         <td>${filial.empr_id}</td>
-                        <td>${filial.nome}</td>
                         <td>${filial.rua}</td>
                         <td>${filial.numero}</td>
                         <td>${filial.bairro}</td>
                         <td>${filial.cidade}</td>
                         <td>${filial.uf}</td>
                         <td><a href="CadastroFilialServlet?idFilial=${filial.empr_id}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${filial.nome}', '${filial.empr_id}')" class="btn btn-link">Deletar</button></td>
+                        <td><button onclick="confirmarRemocao('${filial.cidade}','${filial.empr_id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>
             </tbody>

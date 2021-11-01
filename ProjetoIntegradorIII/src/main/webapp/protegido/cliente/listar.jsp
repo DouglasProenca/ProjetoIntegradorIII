@@ -79,7 +79,7 @@
     <fildset>
         <table class="table-bordered" aling="left" border="2px" width="100%">
             <thead>
-            <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Email</td><td>Celular</td><td>Obs</td>
+            <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Email</td><td>Celular</td>
         </thead>
         <tbody>
             <c:forEach var="cliente" items="${listaClientes}">
@@ -90,7 +90,6 @@
                     <td>${cliente.sexo}</td>
                     <td>${cliente.email}</td>
                     <td>${cliente.celular}</td>
-                    <td>${cliente.obs}</td>
                     <td><a href="CadastroClienteServlet?CPFUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
                     <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
                 </tr>

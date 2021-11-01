@@ -22,11 +22,11 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pessoa</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aluno</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-               <button class="dropdown-item"><a href="cliente/cadastro.jsp">Cadastrar Pessoa</a></button>
-               <button class="dropdown-item"><a href="../cliente/ListarClienteServlet">Listar Pessoa</a></button>
-               <button class="dropdown-item"><a href="cliente/busca.jsp">Buscar Pessoa</a></button>
+               <button class="dropdown-item"><a href="cliente/cadastro.jsp">Cadastrar Aluno</a></button>
+               <button class="dropdown-item"><a href="../cliente/ListarClienteServlet">Listar Aluno</a></button>
+               <button class="dropdown-item"><a href="cliente/busca.jsp">Buscar Aluno</a></button>
             </div>
             
           </li>
@@ -71,7 +71,7 @@
 
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
   <div class="col-md-5 p-lg-5 mx-auto my-5">
-    <h2 class="display-5 font-weight-normal">Instituto Brasileiro de Cursos</h2>
+    <h2 class="display-5 font-weight-normal">Tades Ltda</h2>
     <p class="lead font-weight-normal">Construindo um futuro para todos.</p>
   </div>
 </div>
