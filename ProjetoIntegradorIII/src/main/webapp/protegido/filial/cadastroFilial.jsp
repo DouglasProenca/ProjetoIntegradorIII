@@ -29,11 +29,6 @@
                 <c:if test="${not empty filialAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>
-                <div  class="form-group">
-                    <label>Nome</label>
-                    <input type="text" name="nomeCliente" value="${filialAtualizacao.nome}"
-                           required class="form-control"/><br/> 
-                </div>
                 <div class="form-group">
                     <label>Rua</label>
                     <input type="text" name="rua" value="${filialAtualizacao.rua}"
@@ -71,13 +66,14 @@
                 <div class="form-group">
                     <label>CEP</label>
                     <input type="text" name="CEP"
-                           value="${filialAtualizacao.CEP}" placeholder="00000-000"
+                           value="${filialAtualizacao.cep}" placeholder="00000-000"
                            required
                            class="form-control"
                            />
                 </div>
                 <br>
                 <div class="form-group">
+                    <c:if test="${empty filialAtualizacao}">
                     <label>UF</label>
                     <select name="uf" value="${filialAtualizacao.uf}"
                             class="form-control">
@@ -97,12 +93,7 @@
                         <option value="AL">AL</option>
                         <option value="DF">DF</option>
                     </select>
-                </div>
-                <br/>
-                <div  class="form-group">
-                    <label>Observação</label>
-                    <input type="text" name="obs" value="${filialAtualizacao.obs}"
-                           class="form-control"/><br/> 
+                    </c:if>
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>

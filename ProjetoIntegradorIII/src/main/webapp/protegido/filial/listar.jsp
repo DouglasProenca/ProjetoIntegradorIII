@@ -90,7 +90,7 @@
                         <td>${filial.bairro}</td>
                         <td>${filial.cidade}</td>
                         <td>${filial.uf}</td>
-                        <td><a href="CadastroFilialServlet?idFilial=${filial.empr_id}&ope=1" >Atualizar</a></td>
+                        <td><a href="../protegido/cliente/CadastroFilialServlet?idFilial=${filial.empr_id}&ope=1" >Atualizar</a></td>
                         <td><button onclick="confirmarRemocao('${filial.cidade}','${filial.empr_id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>

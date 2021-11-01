@@ -66,7 +66,7 @@ public class CadastroFilialServlet extends HttpServlet {
             try {
                 Filial filial = FilialDAO.getFilialPorID(id);
                 req.setAttribute("filialAtualizacao", filial);
-                req.getRequestDispatcher("/filial/cadastroFilial.jsp").forward(req, resp);
+                req.getRequestDispatcher("/protegido/filial/cadastroFilial.jsp").forward(req, resp);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

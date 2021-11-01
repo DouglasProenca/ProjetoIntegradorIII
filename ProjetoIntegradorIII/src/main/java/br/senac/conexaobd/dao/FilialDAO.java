@@ -63,7 +63,7 @@ public class FilialDAO {
     public static Filial getFilialPorID(String idFilial) throws ClassNotFoundException, SQLException {
         Filial filial = null;
         String query = "select empr_id,rua,numero,bairro,cidade,cep,uf,"
-                + "id_colaborador,data_lançamento, from rc_filial where empr_id =?";
+                + "id_colaborador,data_lançamento from rc_filial where empr_id =?";
 
         Connection con = Conexao.abrirConexao();
         try {
@@ -80,7 +80,7 @@ public class FilialDAO {
                 String bairro = rs.getString("bairro");
                 String numero = rs.getString("numero");
                 String CEP = rs.getString("CEP");
-                Date data_ = rs.getDate("data_");
+                Date data_ = rs.getDate("data_lançamento");
                 filial.setEmpr_id(id);
                 filial.setRua(rua);
                 filial.setBairro(bairro);

@@ -29,6 +29,18 @@ create table if not exists RC_CARGO(
 	data_ingresso date not null
 );
 
+create table if not exists RC_ALUNO(
+	id bigint(20) primary key auto_increment,
+	id_filial bigint(20) not null,
+	nome varchar(250) not null,
+	sexo char(10) not null,
+	email varchar(250) not null,
+	cpf char(14) unique not null, 
+	celular varchar(20) not null,
+	tel_residencial varchar(20) not null,
+	id_colaborador bigint(20) not null
+);
+
 create table if not exists RC_TURMA(
 	id bigint(20) primary key auto_increment,
 	empr_id  bigint(20) not null,
@@ -60,33 +72,8 @@ create table if not exists RC_MATRICULA(
 
 
 
-create table if not exists RC_ALUNO(
-	id bigint(20) primary key auto_increment,
-	id_filial bigint(20) not null,
-	nome varchar(250) not null,
-	sexo bit not null,
-	email varchar(250) not null,
-	cpf char(14) unique not null, 
-	celular varchar(20) not null,
-	tel_residencial varchar(20) not null,
-	tel_comercial varchar(20) not null,
-	data_nasc date,
-	id_colaborador bigint(20) not null
-);
 
-create table if not exists RC_ENDERECO_PESSOA(
-	id bigint(20) primary key auto_increment not null,
-	id_pessoa bigint(20) not null unique,
-	rua varChar(250) not null,
-	numero varChar(10) not null,
-	bairro varChar(250) not null,
-	cidade varChar(250) not null,
-	CEP char(10) not null,
-	UF char(2) not null,
-	id_colaborador bigInt(20) not null,
-	data_ date not null,
-	obs text
-);
+
 
 
 
@@ -157,64 +144,23 @@ insert into RC_MATRICULA values (null, 1, 1, 'PA1','Sim', 10,'2019-01-14',5),
 								(null, 4, 4, 'PB1','Sim', 10,'2017-02-08',5),
 								(null, 2, 5, 'PC2','Não', 5,'2020-01-14',5);
                                 
-			
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-insert into RC_ALUNOS values (null, 1,1,'Carla Moreira',1, 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
-							 (null, 2,1,'Anita Dutra Ferraz',1, 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
-                             (null, 4,1,'Bernardo Azambuja Lima',0, 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
-                             (null, 5,1,'Vanessa Mariz Durão',1, 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null),
-							 (null, 1,2,'Amanda Gavioli',1,'mandsGavi@terra.com.br','404.936.540-54','(11) 98714-2390','(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
-							 (null, 3,2,'Weskley Oliveira',0,'weskleysantos@outlook.com','395.054.350-37','(14) 90113-7133', '(14) 4051-6467', '(14) 90113-7133', '1994-11-20','Solteiro', (select curdate()), 3, null),
-							 (null, 4,2,'Abnoel Andrade',0,'abandrade@gmail.com','226.526.880-14','(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
-							 (null, 5,2,'Nathasa Caldeirão',1,'natashacald@terra.com.br','386.164.430-45','(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null),
-                             (null, 5,1,'Beatriz Malara',1, 'marizvanessa@gmail.com', '722.139.480-62', '(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null),
-							 (null, 1,2,'Maria do Carmo de Almeida Russo',1,'mandsGavi@terra.com.br','279.288.770-23','(11) 98714-2390','(11) 5615-1900', '(11) 98714-2390', '1997-08-07','Solteiro', (select curdate()), 1, null),
-							 (null, 2,2,'Antonio Silveira',0,'mat1998@gmail.com','202.709.210-28','(45) 97150-2774', '(45) 1680-8896', '(45) 97150-2774', '2000-03-14','Viuvo', (select curdate()), 2, null),
-							 (null, 4,2,'Marcio Silva Santos',0,'abandrade@gmail.com','463.096.620-07','(61) 95286-0776', '(61) 6157-1800', '(61) 95286-0776', '2002-08-24','Casado', (select curdate()), 4, null),
-							 (null, 5,2,'Aline Campos da Cruz',1,'natashacald@terra.com.br','202.744.120-47','(28) 95286-0776', '(28) 4787-0665', '(28) 95286-0776', '1999-12-16','Solteiro', (select curdate()), 5, null);
+insert into RC_ALUNO values (null, 1,'Carla Moreira','Feminino', 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900',1),
+							 (null, 2,'Anita Dutra Ferraz','Feminino', 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896',2),
+                             (null, 4,'Bernardo Azambuja Lima','Masculino', 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800',4),
+                             (null, 5,'Vanessa Mariz Durão','Feminino', 'marizvanessa@gmail.com', '949.851.794-00', '(28) 95286-0776', '(28) 4787-0665', 5),
+							 (null, 1,'Amanda Gavioli','Feminino','mandsGavi@terra.com.br','404.936.540-54','(11) 98714-2390','(11) 5615-1900', 1),
+							 (null, 3,'Weskley Oliveira','Masculino','weskleysantos@outlook.com','395.054.350-37','(14) 90113-7133', '(14) 4051-6467',3),
+							 (null, 4,'Abnoel Andrade','Masculino','abandrade@gmail.com','226.526.880-14','(61) 95286-0776', '(61) 6157-1800',4),
+							 (null, 5,'Nathasa Caldeirão','Feminino','natashacald@terra.com.br','386.164.430-45','(28) 95286-0776', '(28) 4787-0665', 5),
+                             (null, 5,'Beatriz Malara','Feminino', 'marizvanessa@gmail.com', '722.139.480-62', '(28) 95286-0776', '(28) 4787-0665', 5),
+							 (null, 1,'Maria do Carmo de Almeida Russo','Feminino','mandsGavi@terra.com.br','279.288.770-23','(11) 98714-2390','(11) 5615-1900', 1),
+							 (null, 2,'Antonio Silveira','Masculino','mat1998@gmail.com','202.709.210-28','(45) 97150-2774', '(45) 1680-8896',  2),
+							 (null, 4,'Marcio Silva Santos','Masculino','abandrade@gmail.com','463.096.620-07','(61) 95286-0776', '(61) 6157-1800', 4),
+							 (null, 5,'Aline Campos da Cruz','Feminino','natashacald@terra.com.br','202.744.120-47','(28) 95286-0776', '(28) 4787-0665', 5);
 
-insert into RC_ENDERECO_PESSOA values (null,1, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
-									  (null,2, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
-									  (null,3, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
-									  (null,4, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
-									  (null,5, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null),
-                                      (null,6, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
-									  (null,7, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
-									  (null,8, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
-									  (null,9, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
-									  (null,10, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null),
-									  (null,11, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
-									  (null,12, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
-									  (null,13, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
-									  (null,14, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
-									  (null,15, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null),
-                                      (null,16, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
-									  (null,17, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
-									  (null,18, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
-									  (null,19, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
-									  (null,20, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null),
-                                      (null,21, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
-									  (null,22, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
-									  (null,23, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
-									  (null,24, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
-									  (null,25, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null),
-									  (null,26, 'Rua Amador Bueno', '590', 'Santo Amaro', 'São Paulo', '05887-310', 'SP', 1, (select curdate()), null),
-									  (null,27, 'Rua Abelardo Costa Filho', '22', 'Itajaí', 'Santa Catarina', '88512-627', 'SC', 2, (select curdate()), null),
-									  (null,28, 'Rua Deise Maria Pinto', '327', 'Boa vista', 'Tocantins', '77827-210', 'TO', 3, (select curdate()), null),
-									  (null,29, 'Rua Alexandre de Barros', '2901', 'Chácara dos Pinheiros', 'Mato Grosso', '78088-806', 'MT', 4, (select curdate()), null),
-									  (null,30, 'Rua Comendador Bernardino Costa', '3', 'Jardim Casa Forte', 'Recife', '54705-384', 'PE', 5, (select curdate()), null);									
+
+
 
 
 
@@ -257,8 +203,6 @@ insert into rc_pagamento values (null, '2020', '04', '2020-04-12', '5%', 'Dinhei
 alter table RC_FILIAL add constraint FILIAL_USER check (ID_COLABORADOR <= 10);
 alter table RC_FILIAL add constraint FK_FILIAL_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
 
-alter table RC_FORMA_PAGAMENTO add constraint FORMA_PAGAMENTO_USER check (ID_COLABORADOR <= 10);
-alter table RC_FORMA_PAGAMENTO add constraint FK_FORMA_PAGAMENTO_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
 
 alter table RC_CATEGORIA add constraint FORMA_PAGAMENTO_USER check (ID_COLABORADOR <= 10);
 alter table RC_CATEGORIA add constraint FK_CATEGORIA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
@@ -267,10 +211,6 @@ alter table RC_PESSOA add constraint PESSOA_USER check (ID_COLABORADOR <= 25);
 alter table RC_PESSOA add constraint FK_PESSOA_FILIAL foreign key (ID_FILIAL) references RC_FILIAL (EMPR_ID);    
 alter table RC_PESSOA add constraint FK_PESSOA_CATEGORIA foreign key (ID_CATEGORIA) references RC_CATEGORIA (id);   
 alter table RC_PESSOA add constraint FK_PESSOA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
-
-alter table RC_ENDERECO_PESSOA add constraint ENDERECO_PESSOA_USER check (ID_COLABORADOR <= 25);
-alter table RC_ENDERECO_PESSOA add constraint FK_ENDERECO_PESSOA foreign key (ID_PESSOA) references RC_PESSOA (id);
-alter table RC_ENDERECO_PESSOA add constraint FK_ENDERECO_PESSOA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
 
 alter table RC_CARGO add constraint CARGO_USER check (ID_COLABORADOR <= 10);
 alter table RC_CARGO add constraint FK_CARGO_PESSOA foreign key (ID_PESSOA) references RC_PESSOA (id);
