@@ -102,7 +102,7 @@ public class FilialDAO {
     public static void inserirFilial(Filial filial) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into rc_filial values (null,?,?,?,?,?,?,1,'2021-09-09')";
+            String query = "insert into rc_filial values (null,?,?,?,?,?,?,?,'2021-09-09')";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
@@ -112,6 +112,8 @@ public class FilialDAO {
             ps.setString(4, filial.getCidade());
             ps.setString(5, filial.getCep());
             ps.setString(6, filial.getUf());
+            ps.setInt(7, filial.getId_colaborador());
+            ps.setDate(8, new java.sql.Date(filial.getData_lançamento().getTime()));
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

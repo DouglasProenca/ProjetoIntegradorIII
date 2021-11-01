@@ -18,4 +18,24 @@ public class Usuario extends Cargo {
     public Usuario() {
         super();
     }
+    
+     public boolean isEX(){
+        return "EX".equalsIgnoreCase(this.getCategoria());   
+    }
+
+    public boolean isTI() {
+        return "TI".equalsIgnoreCase(this.getCategoria());
+    }
+    
+    public boolean isVendas(){
+        return "Vendas".equalsIgnoreCase(this.getCategoria());   
+    }
+    
+    public boolean isAdministrativo(){
+        return "Administrativo".equalsIgnoreCase(this.getCategoria());   
+    }
+    
+    public boolean isServico(){
+        return " Produtos/Serviços/Marketing".equalsIgnoreCase(this.getCategoria());   
+    }        
 }
