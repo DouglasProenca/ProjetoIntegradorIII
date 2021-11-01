@@ -33,7 +33,7 @@
             function deletar() {
                 console.log("Excluindo Filial ", idFilial);
                 fecharModal();
-                var url = "CadastroFilialServlet?idFilial=" + idFilial;
+                var url = "../protegido/cliente/CadastroFilialServlet?idFilial=" + idFilial;
                 $.ajax(url).done(function () {
                     console.log("Filial removida!");
                     var alerta = $("#alerta");
