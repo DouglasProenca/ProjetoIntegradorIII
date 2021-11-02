@@ -78,17 +78,18 @@
     <fildset>
         <table class="table-bordered" aling="center" border="2px" width="80%">
             <thead>
-            <td>empr_id</td><td>Turma</td><td>Data de inicio</td><td>Data de conclusão</td><td>Valor curso</td>
+            <td>empr_id</td><td>ID</td><td>Turma</td><td>Data de inicio</td><td>Data de conclusão</td><td>Valor curso</td>
             </thead>
             <tbody>
                 <c:forEach var="turma" items="${listaTurma}">
                     <tr>
                         <td>${turma.empr_id}</td>
+                        <td>${turma.id}</td>
                         <td>${turma.nome}</td>
                         <td>${turma.data_inicio}</td>
                         <td>${turma.data_fim}</td>
                         <td>${turma.valor}</td>                        
-                        <td><a href="../protegido/cliente/CadastroFilialServlet?idFilial=${turma.empr_id}&ope=1" >Atualizar</a></td>
+                        <td><a href="../protegido/cliente/CadastroTurmaServlet?idTurma=${turma.id}&ope=1" >Atualizar</a></td>
                         <td><button onclick="confirmarRemocao('${turma.nome}','${turma.empr_id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>

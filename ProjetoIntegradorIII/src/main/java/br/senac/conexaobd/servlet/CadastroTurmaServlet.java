@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Douglas
  */
-@WebServlet(name = "CadastroTurmaServlet", urlPatterns = {"/protegido/turma/CadastroTurmaServlet"})
+@WebServlet(name = "CadastroTurmaServlet", urlPatterns = {"/protegido/cliente/CadastroTurmaServlet"})
 public class CadastroTurmaServlet extends HttpServlet {
 
     @Override
@@ -67,14 +67,14 @@ public class CadastroTurmaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("idFilial");
+        String id = req.getParameter("idTurma");
         String ope = req.getParameter("ope");
         //OPE = 1 => Atualização
         if ("1".equals(ope)) {
             try {
-                Filial filial = FilialDAO.getFilialPorID(id);
-                req.setAttribute("filialAtualizacao", filial);
-                req.getRequestDispatcher("/protegido/filial/cadastroFilial.jsp").forward(req, resp);
+                Turma turma = TurmaDAO.getTurmaPorID(id);
+                req.setAttribute("turmaAtualizacao", turma);
+                req.getRequestDispatcher("/protegido/turma/cadastroTurma.jsp").forward(req, resp);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

@@ -23,24 +23,24 @@
             <h1><center>Cadastro de Turmas</center></h1>
             <br>
             <br>
-            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroTurmaServlet" method="POST">
+            <form class="col-md-6 offset-md-3 jumbotron" action="../cliente/CadastroTurmaServlet" method="POST">
 
                 <c:if test="${not empty turmaAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>
                 <div  class="form-group">
                     <label>Turma</label>
-                    <input type="text" name="nomeTurma" value="${turmaAtualizacao.turma}"
+                    <input type="text" name="nomeTurma" value="${turmaAtualizacao.nome}"
                            required class="form-control"/><br/> 
                 </div>
                 <div class="form-group">
                     <label>Data de inicio</label>
-                    <input type="date" name="inicioCliente" value="${turmaAtualizacao.inicio}"
+                    <input type="date" name="inicioCliente" value="${turmaAtualizacao.data_inicio}"
                            required class="form-control"/><br/>
                 </div>
                  <div class="form-group">
                     <label>Data de conclusão</label>
-                    <input type="date" name="conslusaoCliente" value="${turmaAtualizacao.conclusao}"
+                    <input type="date" name="conslusaoCliente" value="${turmaAtualizacao.data_fim}"
                            required class="form-control"/><br/>
                 </div>
                  <div class="form-group">
