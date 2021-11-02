@@ -104,10 +104,10 @@ public class TurmaDAO {
             ps.setInt(1, turma.getEmpr_id());
             ps.setString(2, turma.getNome());
             ps.setInt(3, turma.getId_colaborador());
-            ps.setDate(4, (Date) turma.getData_inicio());
-            ps.setDate(5, (Date) turma.getData_fim());
+            ps.setDate(4, new java.sql.Date(turma.getData_inicio().getTime()));
+            ps.setDate(5, new java.sql.Date(turma.getData_fim().getTime()));
             ps.setFloat(6, turma.getValor());
-            //ps.setDate(8, new java.sql.Date(filial.getData_lançamento().getTime()));
+      
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,7 +153,7 @@ public class TurmaDAO {
         return ok;
     }
     
-     public static List<Filial> getFilialPorNome(String nomeParam) throws ClassNotFoundException, SQLException {
+     /*public static List<Filial> getFilialPorNome(String nomeParam) throws ClassNotFoundException, SQLException {
        nomeParam = nomeParam.toUpperCase();
        List<Filial> Filiais = new ArrayList<>();
        String query = "select * from rc_filial where nome like ?";
@@ -191,5 +191,5 @@ public class TurmaDAO {
        }
        return Filiais;
        
-   }
+   }*/
 }

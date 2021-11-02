@@ -37,7 +37,7 @@ public class CadastroTurmaServlet extends HttpServlet {
 
             // Passo 2 - Inserir no BD
             Turma turma = new Turma();
-            turma.setRua(nome);
+            turma.setNome(nome);
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             Date data_inicial = sdf.parse(dt_ini);
             Date data_final= sdf.parse(dt_fim);
@@ -61,6 +61,7 @@ public class CadastroTurmaServlet extends HttpServlet {
             Logger.getLogger(CadastroTurmaServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(CadastroTurmaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
         }
     }
 

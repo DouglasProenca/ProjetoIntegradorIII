@@ -4,7 +4,7 @@
     Author     : Douglas
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -62,10 +62,10 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Confirmar Exclus√£o</h5>                       
+                        <h5 class="modal-title">Confirmar Exclus„o</h5>                       
                     </div>
                     <div class="modal-body">
-                        <p>Confirmar exclus√£o da turma abaixo?</p>
+                        <p>Confirmar exclus„o da turma abaixo?</p>
                         <p id="campoTextoExclusao"></p>
                     </div>
                     <div class="modal-footer">
@@ -78,7 +78,7 @@
     <fildset>
         <table class="table-bordered" aling="center" border="2px" width="80%">
             <thead>
-            <td>Turma</td><td>Data de inicio</td><td>Data de conclus√£o</td><td>Valor curso</td>
+            <td>Turma</td><td>Data de inicio</td><td>Data de conclus„o</td><td>Valor curso</td>
             </thead>
             <tbody>
                 <c:forEach var="turma" items="${listaTurma}">
@@ -97,4 +97,4 @@
     </fildset>
     </body>
     <a href="${pageContext.request.contextPath}/protegido/index.jsp">Voltar</a>
-</html>
+</html>--%>
