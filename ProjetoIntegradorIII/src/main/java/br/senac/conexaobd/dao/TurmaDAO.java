@@ -132,9 +132,9 @@ public class TurmaDAO {
         return ok;
     }
     
-    public static boolean deletarFilial(String id) throws ClassNotFoundException, SQLException {
+    public static boolean deletarTurma(String id) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "delete from rc_filial where empr_id=?";
+        String query = "delete from rc_turma where id=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);

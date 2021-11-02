@@ -15,11 +15,11 @@
         <title>Listar turmas</title>
         <script type="text/javascript">
             var turmaRemocao;
-            function confirmarRemocao(turma, empr_id) {
-                console.log("Confirmar exclusao ", turma, empr_id);
-                idTurma = empr_id;
+            function confirmarRemocao(turma, id) {
+                console.log("Confirmar exclusao ", turma, id);
+                idTurma = id;
                 var paragrafoCliente = $("#campoTextoExclusao");
-                paragrafoCliente.html(turma + " - " + empr_id);
+                paragrafoCliente.html(turma + " - " + id);
 
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.show();
@@ -90,7 +90,7 @@
                         <td>${turma.data_fim}</td>
                         <td>${turma.valor}</td>                        
                         <td><a href="../protegido/cliente/CadastroTurmaServlet?idTurma=${turma.id}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${turma.nome}','${turma.empr_id}')" class="btn btn-link">Deletar</button></td>
+                        <td><button onclick="confirmarRemocao('${turma.nome}','${turma.id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>
             </tbody>

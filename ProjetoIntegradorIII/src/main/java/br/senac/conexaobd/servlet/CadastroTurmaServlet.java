@@ -82,8 +82,8 @@ public class CadastroTurmaServlet extends HttpServlet {
             }
         } else {
             try {
-                FilialDAO.deletarFilial(id);
-                resp.sendRedirect(req.getContextPath() + "/cliente/ListarFilialServlet");
+                TurmaDAO.deletarTurma(id);
+                resp.sendRedirect(req.getContextPath() + "/cliente/ListarTurmaServlet");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
