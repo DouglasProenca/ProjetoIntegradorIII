@@ -4,6 +4,7 @@
     Author     : Douglas
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,8 +15,7 @@
               crossorigin="anonymous" />
         
     </head>
-        <body>
-        <div class="container">
+        <body class="container">
             <c:import url="../uteis/header.jsp"/>
             <br>
             <br>
@@ -23,9 +23,9 @@
             <h1><center>Cadastro de Turmas</center></h1>
             <br>
             <br>
-            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroClienteServlet" method="POST">
+            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroTurmaServlet" method="POST">
 
-                <c:if test="${not empty clienteAtualizacao}">
+                <c:if test="${not empty turmaAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>
                 <div  class="form-group">
@@ -35,24 +35,23 @@
                 </div>
                 <div class="form-group">
                     <label>Data de inicio</label>
-                    <input type="text" name="inicioCliente" value="${inicioAtualizacao.inicio}"
+                    <input type="date" name="inicioCliente" value="${turmaAtualizacao.inicio}"
                            required class="form-control"/><br/>
                 </div>
                  <div class="form-group">
                     <label>Data de conclusão</label>
-                    <input type="text" name="conslusaoCliente" value="${conclusaoAtualizacao.conclusao}"
+                    <input type="date" name="conslusaoCliente" value="${turmaAtualizacao.conclusao}"
                            required class="form-control"/><br/>
                 </div>
                  <div class="form-group">
                     <label>Valor curso</label>
-                    <input type="text" name="valorCliente" value="${valorAtualizacao.valor}"
+                    <input type="text" name="valorCliente" value="${turmaAtualizacao.valor}"
                            required class="form-control"/><br/>
                 </div>                           
                 <br>               
                 <br>                                               
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
-        </div>
     </body>
    
 </html>
