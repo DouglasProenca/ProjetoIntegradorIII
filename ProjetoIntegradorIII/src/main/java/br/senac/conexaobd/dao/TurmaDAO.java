@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * @author Douglas
  */
 public class TurmaDAO {
+
     public static List<Turma> getTurma() throws ClassNotFoundException, SQLException {
 
         List<Turma> TurmaList = new ArrayList<>();
@@ -43,7 +44,7 @@ public class TurmaDAO {
                 turma.setData_inicio(dt_inicio);
                 turma.setData_fim(dt_fim);
                 turma.setValor(valor);
-           
+
                 TurmaList.add(turma);
             }
 
@@ -56,7 +57,7 @@ public class TurmaDAO {
     }
 
     public static Turma getTurmaPorID(String id) throws ClassNotFoundException, SQLException {
-        Turma turma =  null;
+        Turma turma = null;
         String query = "select * from rc_turma where id =?";
 
         Connection con = Conexao.abrirConexao();
@@ -103,24 +104,24 @@ public class TurmaDAO {
             ps.setDate(4, new java.sql.Date(turma.getData_inicio().getTime()));
             ps.setDate(5, new java.sql.Date(turma.getData_fim().getTime()));
             ps.setFloat(6, turma.getValor());
-      
+
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static boolean atualizarTurma(Turma turma) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update rc_filial rua=?,numero=?,bairro=?, "
-                + "cidade=?,CEP=? where empr_id=?";
+        String query = "update rc_tuma set nome=?,data_inicio=?,data_fim=?, "
+                + "valor=? where id=?";
         Connection con = Conexao.abrirConexao();
         try {
-           PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, turma.getRua());
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, turma.getNome());
             ps.setString(2, turma.getNumero());
-            ps.setString(3, turma.getBairro());
-            ps.setString(4, turma.getCidade());
+            ps.setDate(3, new java.sql.Date(turma.getData_inicio().getTime()));
+            ps.setDate(4, new java.sql.Date(turma.getData_fim().getTime()));
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -131,7 +132,7 @@ public class TurmaDAO {
         }
         return ok;
     }
-    
+
     public static boolean deletarTurma(String id) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "delete from rc_turma where id=?";
@@ -148,8 +149,8 @@ public class TurmaDAO {
         }
         return ok;
     }
-    
-     /*public static List<Filial> getFilialPorNome(String nomeParam) throws ClassNotFoundException, SQLException {
+
+    /*public static List<Filial> getFilialPorNome(String nomeParam) throws ClassNotFoundException, SQLException {
        nomeParam = nomeParam.toUpperCase();
        List<Filial> Filiais = new ArrayList<>();
        String query = "select * from rc_filial where nome like ?";

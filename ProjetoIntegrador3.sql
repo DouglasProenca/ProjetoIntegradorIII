@@ -4,7 +4,6 @@ create database if not exists ProjetoIntegrador3;
 -- comando para usar a tabela
 use ProjetoIntegrador3;
 
-
 -- criação da tabelas
 create table if not exists RC_FILIAL(
 	empr_id bigInt(20) primary key auto_increment,
@@ -69,22 +68,6 @@ create table if not exists RC_USUARIO(
 	id_colaborador bigInt(20) not null
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 create table if not exists RC_PAGAMENTO(
 	id bigInt(20) primary key auto_increment,
 	id_matricula bigInt(20) not null,
@@ -96,7 +79,6 @@ create table if not exists RC_PAGAMENTO(
 	valor_pago float not null,
 	id_colaborador bigInt(20) not null
 );
-
 
 -- inserts na tabelas 
 
@@ -143,7 +125,7 @@ insert into RC_MATRICULA values (null, 1, 1, 'PA1','Sim', 10,'2019-01-14',5),
 								(null, 4, 4, 'PB1','Sim', 10,'2017-02-08',5),
 								(null, 2, 5, 'PC2','Não', 5,'2020-01-14',5);
                                 
-    
+                                
 insert into RC_ALUNO values (null, 1,'Carla Moreira','Feminino', 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900',1),
 							 (null, 2,'Anita Dutra Ferraz','Feminino', 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896',2),
                              (null, 4,'Bernardo Azambuja Lima','Masculino', 'limabernar@gmail.com', '757.735.641-73', '(61) 95286-0776', '(61) 6157-1800',4),
@@ -184,46 +166,32 @@ insert into RC_USUARIO values(null,1,'0bqE',1),
                              (null,23,'wUxP',1),
                              (null,24,'5hCa',1),
                              (null,35,'pS8F',1);
-                             
+							
 
-
-
-
-
-
-
-
-insert into rc_pagamento values (null, '2020', '04', '2020-04-12', '5%', 'Dinheiro', '2500', 1, (select curdate()), null),
-								(null, '2019', '09', '2021-03-10', '2,5%','Cartão de Débito', '900', 2, (select curdate()), null),
-								(null, '2020', '11', '2020-12-15', '3%','Cartão de Crédito', '1500', 3, (select curdate()), null),
-								(null, '2017', '02', '2017-03-20', '2,25%','Boleto Bancário', '800', 4, (select curdate()), null),
-								(null, '2018', '10', '2018-11-05', '3,5%', 'Cheque', '1900', 5, (select curdate()), null);
+insert into rc_pagamento values (null,1, '2020', '04', '2020-04-12', 5, 'Dinheiro', '2500', 1),
+								(null,2, '2019', '09', '2021-03-10', 2.5,'Cartão de Débito', '900', 2),
+								(null,3,'2020', '11', '2020-12-15', 3,'Cartão de Crédito', '1500', 3),
+								(null,4,'2017', '02', '2017-03-20', 2.25,'Boleto Bancário', '800', 4),
+								(null,5,'2018', '10', '2018-11-05', 3.5, 'Cheque', '1900', 5);
 
 -- Regras das tabelas
 
-alter table RC_FILIAL add constraint FILIAL_USER check (ID_COLABORADOR <= 10);
-alter table RC_FILIAL add constraint FK_FILIAL_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
+-- alter table RC_FILIAL add constraint FILIAL_USER check (ID_COLABORADOR <= 10);
+alter table RC_FILIAL add constraint FK_FILIAL_USUARIO foreign key (ID_COLABORADOR) references RC_CARGO (ID);
 
+-- alter table RC_ALUNO add constraint PESSOA_USER check (ID_COLABORADOR <= 25); -- testar
+alter table RC_ALUNO add constraint FK_ALUNO_FILIAL foreign key (ID_FILIAL) references RC_FILIAL (EMPR_ID);    
+-- alter table RC_ALUNO add constraint FK_PESSOA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
 
-alter table RC_CATEGORIA add constraint FORMA_PAGAMENTO_USER check (ID_COLABORADOR <= 10);
-alter table RC_CATEGORIA add constraint FK_CATEGORIA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
+-- alter table RC_CARGO add constraint CARGO_USER check (ID_COLABORADOR <= 10); -- testar
+alter table RC_CARGO add constraint CARGO_FILIAL foreign key (ID_FILIAL) references RC_FILIAL (EMPR_ID);
 
-alter table RC_PESSOA add constraint PESSOA_USER check (ID_COLABORADOR <= 25);
-alter table RC_PESSOA add constraint FK_PESSOA_FILIAL foreign key (ID_FILIAL) references RC_FILIAL (EMPR_ID);    
-alter table RC_PESSOA add constraint FK_PESSOA_CATEGORIA foreign key (ID_CATEGORIA) references RC_CATEGORIA (id);   
-alter table RC_PESSOA add constraint FK_PESSOA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
-
-alter table RC_CARGO add constraint CARGO_USER check (ID_COLABORADOR <= 10);
-alter table RC_CARGO add constraint FK_CARGO_PESSOA foreign key (ID_PESSOA) references RC_PESSOA (id);
-
---
-alter table RC_PAGAMENTO add constraint pagamentos_user check (user_ = 4);
+-- alter table RC_PAGAMENTO add constraint pagamentos_user check (user_ = 4); -- testar
 alter table RC_PAGAMENTO add constraint fk_matricula_id foreign key (id_matricula) references RC_MATRICULA (id);
-alter table RC_PAGAMENTO add constraint fk_forma_pagamento foreign key (id_forma_pagamento) references RC_FORMA_PAGAMENTO (id);
 
-alter table RC_MATRICULA add constraint fk_turma_id foreign key (id_turma) references rc_turma (id);
-alter table RC_MATRICULA add constraint fk_id_aluno foreign key (id_aluno) references rc_aluno (id);
-alter table RC_MATRICULA add constraint matricula_user check (user_ = 3 or user_ = 8);
+alter table RC_MATRICULA add constraint fk_turma_id foreign key (id_turma) references rc_turma (id); 
+alter table RC_MATRICULA add constraint fk_id_aluno foreign key (id_pessoa) references rc_aluno (id);
+-- alter table RC_MATRICULA add constraint matricula_user check (user_ = 3 or user_ = 8); -- testar
    
 
 -- site para gerar informações:

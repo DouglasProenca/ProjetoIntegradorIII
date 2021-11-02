@@ -46,6 +46,7 @@
                         <button class="dropdown-item"><a href="turma/cadastroTurma.jsp">Cadastrar Turma</a></button>
                         <button class="dropdown-item"><a href='../cliente/ListarTurmaServlet'>Listar Turmas</a></button>
                         <button class="dropdown-item"><a href="turma/buscarTurma.jsp">Buscar Turmas</a></button>
+                        <button class="dropdown-item"><a href="turma/matricularAluno.jsp">Matricular Aluno</a></button>
                     </div>
 
                 </li>
