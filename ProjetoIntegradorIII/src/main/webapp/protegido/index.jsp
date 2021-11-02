@@ -44,7 +44,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Turma</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                         <button class="dropdown-item"><a href="turma/cadastroTurma.jsp">Cadastrar Turma</a></button>
-                        <button class="dropdown-item"><a href=#>Listar Turmas</a></button>
+                        <button class="dropdown-item"><a href='../cliente/ListarTurmaServlet'>Listar Turmas</a></button>
                         <button class="dropdown-item"><a href="turma/buscarTurma.jsp">Buscar Turmas</a></button>
                     </div>
 

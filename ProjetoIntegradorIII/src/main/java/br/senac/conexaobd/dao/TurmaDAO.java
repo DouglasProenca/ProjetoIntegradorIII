@@ -5,7 +5,10 @@ import br.senac.conexaobd.entidades.Turma;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,46 +17,43 @@ import java.util.logging.Logger;
  * @author Douglas
  */
 public class TurmaDAO {
-    /*public static List<Filial> getFilial() throws ClassNotFoundException, SQLException {
+    public static List<Turma> getTurma() throws ClassNotFoundException, SQLException {
 
-        List<Filial> Filiais = new ArrayList<>();
-        String query = "select * from rc_filial";
+        List<Turma> TurmaList = new ArrayList<>();
+        String query = "select * from rc_turma";
 
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Filial filial = new Filial();
-                int id = rs.getInt("empr_id");
+                Turma turma = new Turma();
+                int id = rs.getInt("id");
+                int id_filial = rs.getInt("empr_id");
+                String nome = rs.getString("nome");
                 int id_colaborador = rs.getInt("id_colaborador");
-                String uf = rs.getString("uf");
-                String rua = rs.getString("rua");
-                String bairro = rs.getString("bairro");
-                String numero = rs.getString("numero");
-                String cidade = rs.getString("cidade");
-                String CEP = rs.getString("CEP");
-                Date data_lançamento = rs.getDate("data_lançamento");
+                Date dt_inicio = rs.getDate("data_inicio");
+                Date dt_fim = rs.getDate("data_fim");
+                float valor = rs.getFloat("valor");
 
-                filial.setEmpr_id(id);
-                filial.setRua(rua);
-                filial.setBairro(bairro);
-                filial.setNumero(numero);
-                filial.setCidade(cidade);
-                filial.setCep(CEP);
-                filial.setUf(uf);
-                filial.setId_colaborador(id_colaborador);
-                filial.setData_lançamento(data_lançamento);
-                Filiais.add(filial);
+                turma.setId(id);
+                turma.setEmpr_id(id_filial);
+                turma.setNome(nome);
+                turma.setId_colaborador(id_colaborador);
+                turma.setData_inicio(dt_inicio);
+                turma.setData_fim(dt_fim);
+                turma.setValor(valor);
+           
+                TurmaList.add(turma);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(FilialDAO.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        return Filiais;
+        return TurmaList;
 
-    }*/
+    }
 
     /*public static Filial getFilialPorID(String idFilial) throws ClassNotFoundException, SQLException {
         Filial filial = null;
