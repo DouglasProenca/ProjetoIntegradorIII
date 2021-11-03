@@ -44,7 +44,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Turma</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                         <button class="dropdown-item"><a href="turma/cadastroTurma.jsp">Cadastrar Turma</a></button>
-                        <button class="dropdown-item"><a href='../cliente/ListarTurmaServlet'>Listar Turmas</a></button>
+                        <button class="dropdown-item"><a href="../cliente/ListarTurmaServlet">Listar Turmas</a></button>
                         <button class="dropdown-item"><a href="turma/buscarTurma.jsp">Buscar Turmas</a></button>
                         <button class="dropdown-item"><a href="turma/matricularAluno.jsp">Matricular Aluno</a></button>
                     </div>
@@ -63,7 +63,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Colaboradores</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                         <button class="dropdown-item"><a href="colaboradores/cadastroColaborador.jsp">Cadastrar Colaboradores</a></button>
-                        <button class="dropdown-item"><a href=#>Listar Colaboradores</a></button>                        
+                        <button class="dropdown-item"><a href="colaboradores/listar.jsp">Listar Colaboradores</a></button>                        
                         <button class="dropdown-item"><a href="colaboradores/buscaColaborador.jsp">Buscar Colaboradores</a></button> 
                     </div>
 

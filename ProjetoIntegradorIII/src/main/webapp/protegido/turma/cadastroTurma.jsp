@@ -40,7 +40,7 @@
                 </div>
                  <div class="form-group">
                     <label>Data de conclusão</label>
-                    <input type="date" name="conslusaoCliente" value="${turmaAtualizacao.data_fim}"
+                    <input type="date" name="conclusaoCliente" value="${turmaAtualizacao.data_fim}"
                            required class="form-control"/><br/>
                 </div>
                  <div class="form-group">
