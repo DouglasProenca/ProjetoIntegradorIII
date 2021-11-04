@@ -63,8 +63,16 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Colaboradores</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                         <button class="dropdown-item"><a href="colaboradores/cadastroColaborador.jsp">Cadastrar Colaboradores</a></button>
-                        <button class="dropdown-item"><a href="colaboradores/listar.jsp">Listar Colaboradores</a></button>                        
+                        <button class="dropdown-item"><a href="../cliente/ListarColaboradorServlet">Listar Colaboradores</a></button>                        
                         <button class="dropdown-item"><a href="colaboradores/buscaColaborador.jsp">Buscar Colaboradores</a></button> 
+                    </div>
+
+                </li>
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <button class="dropdown-item"><a href="#">Relatório Analitico</a></button>
+                        <button class="dropdown-item"><a href="#">Relatório Sintetico</a></button>                        
                     </div>
 
                 </li>

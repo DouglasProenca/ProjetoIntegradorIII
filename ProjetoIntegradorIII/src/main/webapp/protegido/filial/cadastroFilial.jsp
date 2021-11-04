@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label>Número</label>
-                    <input type="text" name="numero"
+                    <input type="number" name="numero"
                            value="${filialAtualizacao.numero}" 
                            required=""
                            class="form-control"
@@ -65,7 +65,7 @@
                 <br>
                 <div class="form-group">
                     <label>CEP</label>
-                    <input type="text" name="CEP"
+                    <input type="number" name="CEP"
                            value="${filialAtualizacao.cep}" placeholder="00000-000"
                            required
                            class="form-control"

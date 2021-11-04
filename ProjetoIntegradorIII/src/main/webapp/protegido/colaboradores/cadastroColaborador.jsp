@@ -4,6 +4,7 @@
     Author     : Douglas
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
             <h1><center>Cadastro de colaboradores</center></h1>
             <br>
             <br>
-            <form class="col-md-6 offset-md-3 jumbotron" action="../cliente/CadastroColaboradoresServlet" method="POST">
+            <form class="col-md-6 offset-md-3 jumbotron" action="../cliente/CadastroColaboradorServlet" method="POST">
 
                 <c:if test="${not empty colaboradorAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
@@ -38,8 +39,14 @@
                 </div>
                  <div class="form-group">
                     <label>Setor</label>
-                    <input type="text" name="setorColaborador" value="${colaboradorAtualizacao.setor}"
-                           required class="form-control"/><br/>
+                    <select name="categoria" value="${colaboradorAtualizacao.setor}"
+                                class="form-control">
+                            <option value="EX">Executivo</option>
+                            <option value="TI">Tecnologia da Informação</option>
+                            <option value="Vendas">Vendas</option>
+                            <option value="Produtos/Serviços/Marketing">Produtos/Serviços/Marketing</option>
+                            <option value="Administrativo">Administrativo</option>
+                        </select>
                 </div>
                  <div class="form-group">
                     <label>Salário</label>
@@ -48,7 +55,7 @@
                 </div>
                  <div class="form-group">
                     <label>Data de admissão</label>
-                    <input type="date" name="admissaoColaborador" value="${colaboradorAtualizacao.admissao}"
+                    <input type="date" name="admissaoColaborador" value="${colaboradorAtualizacao.data_ingresso}"
                            required class="form-control"/><br/>
                 </div>   
                            

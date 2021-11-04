@@ -3,7 +3,7 @@
     Created on : 01/11/2021, 16:06:22
     Author     : Douglas
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,7 @@
             function deletar() {
                 console.log("Excluindo colaborador(a) ", idColaborador);
                 fecharModal();
-                var url = "../protegido/cliente/CadastroTurmaServlet?idTurma=" + idColaborador;
+                var url = "../protegido/cliente/CadastroColaboradorServlet?id=" + idColaborador;
                 $.ajax(url).done(function () {
                     console.log("Colaborador(a) removido!");
                     var alerta = $("#alerta");
@@ -42,7 +42,7 @@
                         location.reload();
                     }, 1000)
                 }).fail(function () {
-                    console.log("Erro ao remover a Turma!");
+                    console.log("Erro ao remover o colaborador!");
                 })
             }
         </script>
@@ -80,16 +80,14 @@
             <td>empr_id</td><td>ID</td><td>Nome</td><td>Cargo</td><td>Setor</td><td>Salário</td><td>Data de admissão</td>
             </thead>
             <tbody>
-                <c:forEach var="turma" items="${listaColaboradores}">
+                <c:forEach var="colaborador" items="${listaColaboradores}">
                     <tr>
-                        <td>${turma.empr_id}</td>
-                        <td>${turma.id}</td>
-                        <td>${turma.nome}</td>
-                        <td>${turma.cargo}</td>
-                        <td>${turma.setor}</td>
-                        <td>${turma.salario}</td>
-                        <td>${turma.salario}</td>                         
-                        <td><a href="../protegido/cliente/CadastroColaboradorServlet?idColaborador=${colaborador.id}&ope=1" >Atualizar</a></td>
+                        <td>${colaborador.id}</td>
+                        <td>${colaborador.nome}</td>
+                        <td>${colaborador.cargo}</td>
+                        <td>${colaborador.setor}</td>
+                        <td>${colaborador.salario}</td>                        
+                        <td><a href="../protegido/cliente/CadastroColaboradorServlet?id=${colaborador.id}&ope=1" >Atualizar</a></td>
                         <td><button onclick="confirmarRemocao('${colaborador.nome}','${colaborador.id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>
