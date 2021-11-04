@@ -35,7 +35,7 @@ public class UsuarioDAO {
             usuario.setNome(login);
             usuario.setId(id_rule);
             usuario.setId_colaborador(id_colaborador);
-            usuario.setCategoria(categoria);
+            usuario.setSetor(categoria);
         }
         return usuario;
     }

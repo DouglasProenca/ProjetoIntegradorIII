@@ -4,6 +4,9 @@ import br.senac.conexaobd.dao.FilialDAO;
 import br.senac.conexaobd.entidades.Filial;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,38 +25,48 @@ public class CadastroFilialServlet extends HttpServlet {
       @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String ope = request.getParameter("ope");
-        // Passo 1 - Recuperar os parametros
-        String rua = request.getParameter("rua");
-        String numero = request.getParameter("numero");
-        String bairro = request.getParameter("bairro");
-        String cidade = request.getParameter("cidade");
-        String cep = request.getParameter("CEP");
-        String uf = request.getParameter("uf");
-
-        // Passo 2 - Inserir no BD
-        Filial filial = new Filial();
-        filial.setRua(rua);
-        filial.setNumero(numero);
-        filial.setBairro(bairro);
-        filial.setCidade(cidade);
-        filial.setCep(cep);
-        filial.setUf(uf);
         try {
-            // ope = 1 => Update
-            if ("1".equals(ope)) {
-                try {
-                    FilialDAO.atualizarFilial(filial);
-                } catch (ClassNotFoundException ex) {
-                    //Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex); 
-                    System.out.println(ex);
+            String ope = request.getParameter("ope");
+            // Passo 1 - Recuperar os parametros
+            String rua = request.getParameter("rua");
+            String numero = request.getParameter("numero");
+            String bairro = request.getParameter("bairro");
+            String cidade = request.getParameter("cidade");
+            String cep = request.getParameter("CEP");
+            String uf = request.getParameter("uf");
+            String dt_admissao = request.getParameter("admissaoColaborador");
+            String colaborador = request.getParameter("Colaborador");
+            
+            // Passo 2 - Inserir no BD
+            Filial filial = new Filial();
+            filial.setRua(rua);
+            filial.setNumero(numero);
+            filial.setBairro(bairro);
+            filial.setCidade(cidade);
+            filial.setCep(cep);
+            filial.setUf(uf);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            Date dt_lc = sdf.parse(dt_admissao);
+            filial.setData_lançamento(dt_lc);
+            filial.setId_colaborador(Integer.parseInt(colaborador));
+            try {
+                // ope = 1 => Update
+                if ("1".equals(ope)) {
+                    try {
+                        FilialDAO.atualizarFilial(filial);
+                    } catch (ClassNotFoundException ex) {
+                        //Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        System.out.println(ex);
+                    }
+                } else {
+                    FilialDAO.inserirFilial(filial);
                 }
-            } else {
-                FilialDAO.inserirFilial(filial);
+                response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
+            } catch (SQLException ex) {
+                response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             }
-            response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
-        } catch (SQLException ex) {
-            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+        } catch (ParseException ex) {
+              Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

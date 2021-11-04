@@ -1,9 +1,7 @@
 package br.senac.conexaobd.servlet;
 
 import br.senac.conexaobd.dao.ColaboradorDAO;
-import br.senac.conexaobd.dao.FilialDAO;
 import br.senac.conexaobd.entidades.Colaborador;
-import br.senac.conexaobd.entidades.Filial;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -35,7 +33,7 @@ public class CadastroColaboradorServlet extends HttpServlet {
             String setor = request.getParameter("categoria");
             String salario = request.getParameter("salarioColaborador");
             String admissao = request.getParameter("admissaoColaborador");
-            
+            String idcolaborador = request.getParameter("Colaborador");
             
             // Passo 2 - Inserir no BD
             Colaborador colaborador = new Colaborador();
@@ -46,6 +44,7 @@ public class CadastroColaboradorServlet extends HttpServlet {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             Date dt_admissão = sdf.parse(admissao);
             colaborador.setData_ingresso(dt_admissão);
+            colaborador.setId_colaborador(Integer.parseInt(idcolaborador));
             
             try {
                 // ope = 1 => Update

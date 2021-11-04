@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Usuario extends Cargo {
+public class Usuario extends Colaborador {
 
     private int id;
     private String senha;
@@ -19,22 +19,22 @@ public class Usuario extends Cargo {
     }
     
      public boolean isEX(){
-        return "EX".equalsIgnoreCase(this.getCategoria());   
+        return "EX".equalsIgnoreCase(this.getSetor());   
     }
 
     public boolean isTI() {
-        return "TI".equalsIgnoreCase(this.getCategoria());
+        return "TI".equalsIgnoreCase(this.getSetor());
     }
     
     public boolean isVendas(){
-        return "Vendas".equalsIgnoreCase(this.getCategoria());   
+        return "Vendas".equalsIgnoreCase(this.getSetor());   
     }
     
     public boolean isAdministrativo(){
-        return "Administrativo".equalsIgnoreCase(this.getCategoria());   
+        return "Administrativo".equalsIgnoreCase(this.getSetor());   
     }
     
     public boolean isServico(){
-        return " Produtos/Serviços/Marketing".equalsIgnoreCase(this.getCategoria());   
+        return " Produtos/Serviços/Marketing".equalsIgnoreCase(this.getSetor());   
     }        
 }

@@ -95,6 +95,17 @@
                     </select>
                     </c:if>
                 </div>
+                <div class="form-group">
+                    <label>Data de Lançamento</label>
+                    <input type="date" name="admissaoColaborador" value="${filialAtualizacao.data_lançamento}"
+                           required class="form-control"/><br/>
+                </div>   
+                <div class="form-group">
+                    <input type="hidden" name="Colaborador" 
+                           value="${sessionScope.usuario.id_colaborador}" 
+                           class="form-control"
+                           />
+                </div>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>

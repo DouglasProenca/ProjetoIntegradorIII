@@ -1,8 +1,7 @@
 package br.senac.conexaobd.servlet;
 
-import br.senac.conexaobd.dao.FilialDAO;
+
 import br.senac.conexaobd.dao.TurmaDAO;
-import br.senac.conexaobd.entidades.Filial;
 import br.senac.conexaobd.entidades.Turma;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,8 +31,9 @@ public class CadastroTurmaServlet extends HttpServlet {
             // Passo 1 - Recuperar os parametros
             String nome = request.getParameter("nomeTurma");
             String dt_ini = request.getParameter("inicioCliente");
-            String dt_fim = request.getParameter("conslusaoCliente");
+            String dt_fim = request.getParameter("conclusaoCliente");
             String valor = request.getParameter("valorCliente");
+            String colaborador = request.getParameter("Colaborador");
 
             // Passo 2 - Inserir no BD
             Turma turma = new Turma();
@@ -44,6 +44,7 @@ public class CadastroTurmaServlet extends HttpServlet {
             turma.setData_inicio(data_inicial);
             turma.setData_fim(data_final);
             turma.setValor(Float.parseFloat(valor));
+            turma.setId_colaborador(Integer.parseInt(colaborador));
 
             // ope = 1 => Update
             if ("1".equals(ope)) {

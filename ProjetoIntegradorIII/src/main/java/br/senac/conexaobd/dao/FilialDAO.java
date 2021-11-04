@@ -102,7 +102,7 @@ public class FilialDAO {
     public static void inserirFilial(Filial filial) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into rc_filial values (null,?,?,?,?,?,?,?,'2021-09-09')";
+            String query = "insert into rc_filial values (null,?,?,?,?,?,?,?,?)";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);

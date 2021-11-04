@@ -78,6 +78,12 @@
                         </select>
                     </c:if>
                 </div>
+                <div class="form-group">
+                    <input type="hidden" name="Colaborador" 
+                           value="${sessionScope.usuario.id_colaborador}" 
+                           class="form-control"
+                           />
+                </div>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
