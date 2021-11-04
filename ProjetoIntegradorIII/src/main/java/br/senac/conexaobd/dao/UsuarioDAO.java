@@ -16,7 +16,7 @@ public class UsuarioDAO {
     public static Usuario getUsuario(String login, String senha) throws ClassNotFoundException, SQLException {
         Connection con = Conexao.abrirConexao();
         Usuario usuario = null;
-        String query = "select u.id,p.nome,p.categoria,u.senha,p.id "
+        String query = "select p.id_filial,u.id,p.nome,p.categoria,u.senha,p.id "
                 + "                from rc_usuario u \n"
                 + "                inner join rc_cargo p\n"
                 + "                on u.id_cargo = p.id\n"
@@ -31,11 +31,13 @@ public class UsuarioDAO {
             int id_rule = rs.getInt("id");
             int id_colaborador = rs.getInt("id");
             String categoria = rs.getString("categoria");
+            int id_filial = rs.getInt("id_filial");
             usuario = new Usuario();
             usuario.setNome(login);
             usuario.setId(id_rule);
             usuario.setId_colaborador(id_colaborador);
             usuario.setSetor(categoria);
+            usuario.setEmpr_id(id_filial);
         }
         return usuario;
     }

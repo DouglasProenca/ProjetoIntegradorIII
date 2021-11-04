@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author Douglas
  */
 public class ColaboradorDAO {
- 
+
     public static List<Colaborador> getColaborador() throws ClassNotFoundException, SQLException {
 
         List<Colaborador> Colaboradores = new ArrayList<>();
@@ -55,8 +55,8 @@ public class ColaboradorDAO {
         return Colaboradores;
 
     }
-    
-     public static Colaborador getFilialPorID(String idColaborador) throws ClassNotFoundException, SQLException {
+
+    public static Colaborador getFilialPorID(String idColaborador) throws ClassNotFoundException, SQLException {
         Colaborador colaborador = null;
         String query = "select * from rc_cargo where id =?";
 
@@ -67,7 +67,7 @@ public class ColaboradorDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 colaborador = new Colaborador();
-                 int id = rs.getInt("id");
+                int id = rs.getInt("id");
                 int id_colaborador = rs.getInt("id_colaborador");
                 String nome = rs.getString("nome");
                 String categoria = rs.getString("categoria");
@@ -91,28 +91,28 @@ public class ColaboradorDAO {
         }
         return colaborador;
     }
-    
+
     public static void inserirColaborador(Colaborador colaborador) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into rc_cargo values (null,'1',?,?,?,?,?,?)";
+            String query = "insert into rc_cargo values (null,?,?,?,?,?,?,?)";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
-            //ps.setInt(1, colaborador.getId_colaborador());
-            ps.setString(1, colaborador.getNome());
-            ps.setString(2, colaborador.getSetor());
-            ps.setString(3, colaborador.getCargo());
-            ps.setFloat(4, colaborador.getSalario());
-            ps.setInt(5, colaborador.getId_colaborador());
-            ps.setDate(6, new java.sql.Date(colaborador.getData_ingresso().getTime()));
+            ps.setInt(1, colaborador.getEmpr_id());
+            ps.setString(2, colaborador.getNome());
+            ps.setString(3, colaborador.getSetor());
+            ps.setString(4, colaborador.getCargo());
+            ps.setFloat(5, colaborador.getSalario());
+            ps.setInt(6, colaborador.getId_colaborador());
+            ps.setDate(7, new java.sql.Date(colaborador.getData_ingresso().getTime()));
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     public static boolean deletarColaborador(String id) throws ClassNotFoundException, SQLException {
+
+    public static boolean deletarColaborador(String id) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "delete from rc_cargo where id=?";
         Connection con = Conexao.abrirConexao();
@@ -128,14 +128,14 @@ public class ColaboradorDAO {
         }
         return ok;
     }
-    
+
     public static boolean atualizarColaborador(Colaborador colaborador) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "update rc_cargo nome=?,categoria=?,cargo=?, "
                 + "salario=?,data_ingresso=? where id=?";
         Connection con = Conexao.abrirConexao();
         try {
-           PreparedStatement ps = con.prepareStatement(query);
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, colaborador.getNome());
             ps.setString(2, colaborador.getSetor());
             ps.setString(3, colaborador.getCargo());
@@ -153,20 +153,20 @@ public class ColaboradorDAO {
         }
         return ok;
     }
-    
+
     public static List<Colaborador> getColaboradorNome(String nomeParam) throws ClassNotFoundException, SQLException {
-       nomeParam = nomeParam.toUpperCase();
-       List<Colaborador> colaboradores = new ArrayList<>();
-       String query = "select * from rc_cargo where nome like ?";
-       
-       Connection con = Conexao.abrirConexao(); 
-       try {
-           PreparedStatement ps = con.prepareStatement(query);
-           ps.setString(1, nomeParam+"%");
-           ResultSet rs = ps.executeQuery();
-           while (rs.next()) {
-               Colaborador colaborador = new Colaborador();
-                  int id = rs.getInt("id");
+        nomeParam = nomeParam.toUpperCase();
+        List<Colaborador> colaboradores = new ArrayList<>();
+        String query = "select * from rc_cargo where nome like ?";
+
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nomeParam + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Colaborador colaborador = new Colaborador();
+                int id = rs.getInt("id");
                 int id_colaborador = rs.getInt("id_colaborador");
                 String nome = rs.getString("nome");
                 String categoria = rs.getString("categoria");
@@ -183,11 +183,11 @@ public class ColaboradorDAO {
                 colaborador.setId_colaborador(id_colaborador);
                 colaborador.setData_ingresso(data_ingresso);
                 colaboradores.add(colaborador);
-           }
-       } catch (SQLException ex) {
-           Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       return colaboradores;
-        
-   }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return colaboradores;
+
+    }
 }

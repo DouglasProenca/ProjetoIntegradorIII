@@ -3,7 +3,6 @@ package br.senac.conexaobd.servlet;
 import br.senac.conexaobd.dao.TurmaDAO;
 import br.senac.conexaobd.entidades.Turma;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;

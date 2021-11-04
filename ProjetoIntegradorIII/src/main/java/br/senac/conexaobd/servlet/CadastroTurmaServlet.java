@@ -1,6 +1,5 @@
 package br.senac.conexaobd.servlet;
 
-
 import br.senac.conexaobd.dao.TurmaDAO;
 import br.senac.conexaobd.entidades.Turma;
 import java.io.IOException;
@@ -34,18 +33,20 @@ public class CadastroTurmaServlet extends HttpServlet {
             String dt_fim = request.getParameter("conclusaoCliente");
             String valor = request.getParameter("valorCliente");
             String colaborador = request.getParameter("Colaborador");
+            String empr = request.getParameter("empr");
 
             // Passo 2 - Inserir no BD
             Turma turma = new Turma();
             turma.setNome(nome);
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             Date data_inicial = sdf.parse(dt_ini);
-            Date data_final= sdf.parse(dt_fim);
+            Date data_final = sdf.parse(dt_fim);
             turma.setData_inicio(data_inicial);
             turma.setData_fim(data_final);
             turma.setValor(Float.parseFloat(valor));
             turma.setId_colaborador(Integer.parseInt(colaborador));
-
+            turma.setEmpr_id(Integer.parseInt(empr));
+            
             // ope = 1 => Update
             if ("1".equals(ope)) {
                 try {

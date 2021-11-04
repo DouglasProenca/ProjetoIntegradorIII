@@ -84,6 +84,12 @@
                            class="form-control"
                            />
                 </div>
+                <div class="form-group">
+                    <input type="hidden" name="empr" 
+                           value="${sessionScope.usuario.empr_id}" 
+                           class="form-control"
+                           />
+                </div>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>

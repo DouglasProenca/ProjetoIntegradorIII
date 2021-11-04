@@ -29,6 +29,7 @@ public class CadastroClienteServlet extends HttpServlet {
         String residencial = request.getParameter("ResidencialCliente");
         String sexo = request.getParameter("sexo");
         String colaborador = request.getParameter("Colaborador");
+        String empr = request.getParameter("empr");
 
         // Passo 2 - Inserir no BD
         Cliente cliente = new Cliente();
@@ -39,7 +40,7 @@ public class CadastroClienteServlet extends HttpServlet {
         cliente.setTelResidencial(residencial);
         cliente.setId_colaborador(Integer.parseInt(colaborador));
         cliente.setSexo(sexo);
-
+        cliente.setEmpr_id(Integer.parseInt(empr));
 
         try {
             // ope = 1 => Update

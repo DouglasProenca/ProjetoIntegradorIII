@@ -74,25 +74,25 @@
                 <br>
                 <div class="form-group">
                     <c:if test="${empty filialAtualizacao}">
-                    <label>UF</label>
-                    <select name="uf" value="${filialAtualizacao.uf}"
-                            class="form-control">
-                        <option value="SP">SP</option>
-                        <option value="MG">MG</option>
-                        <option value="RS">RS</option>
-                        <option value="RJ">RJ</option>
-                        <option value="PR">PR</option>
-                        <option value="AM">AM</option>
-                        <option value="AC">AC</option>
-                        <option value="BA">BA</option>
-                        <option value="SC">SC</option>
-                        <option value="PB">PB</option>
-                        <option value="GO">GO</option>
-                        <option value="RO">RO</option>
-                        <option value="MS">MS</option>
-                        <option value="AL">AL</option>
-                        <option value="DF">DF</option>
-                    </select>
+                        <label>UF</label>
+                        <select name="uf" value="${filialAtualizacao.uf}"
+                                class="form-control">
+                            <option value="SP">SP</option>
+                            <option value="MG">MG</option>
+                            <option value="RS">RS</option>
+                            <option value="RJ">RJ</option>
+                            <option value="PR">PR</option>
+                            <option value="AM">AM</option>
+                            <option value="AC">AC</option>
+                            <option value="BA">BA</option>
+                            <option value="SC">SC</option>
+                            <option value="PB">PB</option>
+                            <option value="GO">GO</option>
+                            <option value="RO">RO</option>
+                            <option value="MS">MS</option>
+                            <option value="AL">AL</option>
+                            <option value="DF">DF</option>
+                        </select>
                     </c:if>
                 </div>
                 <div class="form-group">

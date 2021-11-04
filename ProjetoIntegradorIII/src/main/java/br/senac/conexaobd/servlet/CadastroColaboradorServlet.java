@@ -34,6 +34,7 @@ public class CadastroColaboradorServlet extends HttpServlet {
             String salario = request.getParameter("salarioColaborador");
             String admissao = request.getParameter("admissaoColaborador");
             String idcolaborador = request.getParameter("Colaborador");
+            String empr = request.getParameter("empr");
             
             // Passo 2 - Inserir no BD
             Colaborador colaborador = new Colaborador();
@@ -45,6 +46,7 @@ public class CadastroColaboradorServlet extends HttpServlet {
             Date dt_admissão = sdf.parse(admissao);
             colaborador.setData_ingresso(dt_admissão);
             colaborador.setId_colaborador(Integer.parseInt(idcolaborador));
+            colaborador.setEmpr_id(Integer.parseInt(empr));
             
             try {
                 // ope = 1 => Update

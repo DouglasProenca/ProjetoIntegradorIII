@@ -176,21 +176,23 @@ insert into rc_pagamento values (null,1, '2020', '04', '2020-04-12', 5, 'Dinheir
 
 -- Regras das tabelas
 
--- alter table RC_FILIAL add constraint FILIAL_USER check (ID_COLABORADOR <= 10);
+-- alter table RC_FILIAL add constraint FILIAL_USER check (ID_COLABORADOR = (select id from rc_cargo where categoria = 'TI'));
 alter table RC_FILIAL add constraint FK_FILIAL_USUARIO foreign key (ID_COLABORADOR) references RC_CARGO (ID);
 
--- alter table RC_ALUNO add constraint PESSOA_USER check (ID_COLABORADOR <= 25); -- testar
+-- alter table RC_ALUNO add constraint PESSOA_USER check (ID_COLABORADOR = (select id from rc_cargo where categoria = 'Vendas')); 
 alter table RC_ALUNO add constraint FK_ALUNO_FILIAL foreign key (ID_FILIAL) references RC_FILIAL (EMPR_ID);    
--- alter table RC_ALUNO add constraint FK_PESSOA_USUARIO foreign key (ID_COLABORADOR) references RC_USUARIO (ID_RULE);
+alter table RC_ALUNO add constraint FK_ALUNO_COLABORADOR foreign key (ID_COLABORADOR) references RC_CARGO (ID);
 
 -- alter table RC_CARGO add constraint CARGO_USER check (ID_COLABORADOR <= 10); -- testar
 alter table RC_CARGO add constraint CARGO_FILIAL foreign key (ID_FILIAL) references RC_FILIAL (EMPR_ID);
 
 -- alter table RC_PAGAMENTO add constraint pagamentos_user check (user_ = 4); -- testar
 alter table RC_PAGAMENTO add constraint fk_matricula_id foreign key (id_matricula) references RC_MATRICULA (id);
+alter table RC_PAGAMENTO add constraint FK_PAGAMENTO_COLABORADOR foreign key (ID_COLABORADOR) references RC_CARGO (ID);
 
 alter table RC_MATRICULA add constraint fk_turma_id foreign key (id_turma) references rc_turma (id); 
 alter table RC_MATRICULA add constraint fk_id_aluno foreign key (id_pessoa) references rc_aluno (id);
+alter table RC_MATRICULA add constraint FK_MATRICULA_COLABORADOR foreign key (ID_COLABORADOR) references RC_CARGO (ID);
 -- alter table RC_MATRICULA add constraint matricula_user check (user_ = 3 or user_ = 8); -- testar
    
 

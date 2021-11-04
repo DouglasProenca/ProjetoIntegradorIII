@@ -36,6 +36,7 @@ public class CadastroFilialServlet extends HttpServlet {
             String uf = request.getParameter("uf");
             String dt_admissao = request.getParameter("admissaoColaborador");
             String colaborador = request.getParameter("Colaborador");
+            String empr = request.getParameter("empr");
             
             // Passo 2 - Inserir no BD
             Filial filial = new Filial();
@@ -49,6 +50,7 @@ public class CadastroFilialServlet extends HttpServlet {
             Date dt_lc = sdf.parse(dt_admissao);
             filial.setData_lançamento(dt_lc);
             filial.setId_colaborador(Integer.parseInt(colaborador));
+
             try {
                 // ope = 1 => Update
                 if ("1".equals(ope)) {
