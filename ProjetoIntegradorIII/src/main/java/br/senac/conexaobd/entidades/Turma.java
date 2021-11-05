@@ -12,7 +12,6 @@ import lombok.Setter;
 @Setter
 public class Turma extends Filial {
 
-    private int id;
     private String nome;
     private Date data_inicio;
     private Date data_fim;

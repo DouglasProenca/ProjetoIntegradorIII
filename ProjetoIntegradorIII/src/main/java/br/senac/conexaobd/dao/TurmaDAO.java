@@ -150,10 +150,10 @@ public class TurmaDAO {
         return ok;
     }
 
-    /*public static List<Filial> getFilialPorNome(String nomeParam) throws ClassNotFoundException, SQLException {
+    public static List<Turma> getTurmaPorNome(String nomeParam) throws ClassNotFoundException, SQLException {
        nomeParam = nomeParam.toUpperCase();
-       List<Filial> Filiais = new ArrayList<>();
-       String query = "select * from rc_filial where nome like ?";
+       List<Turma> turmas = new ArrayList<>();
+       String query = "select * from rc_turma where nome like ?";
        
        Connection con = Conexao.abrirConexao(); 
        try {
@@ -161,32 +161,28 @@ public class TurmaDAO {
            ps.setString(1, nomeParam+"%");
            ResultSet rs = ps.executeQuery();
            while (rs.next()) {
-               Filial filial = new Filial();
-                int id = rs.getInt("empr_id");
+                Turma turma = new Turma();
+                 int id_tuma = rs.getInt("id");
+                int id_filial = rs.getInt("empr_id");
+                String nome = rs.getString("nome");
                 int id_colaborador = rs.getInt("id_colaborador");
-                String uf = rs.getString("uf");
-                String rua = rs.getString("rua");
-                String bairro = rs.getString("bairro");
-                String numero = rs.getString("numero");
-                String cidade = rs.getString("cidade");
-                String CEP = rs.getString("CEP");
-                Date data_ = rs.getDate("data_lançamento");
+                Date dt_inicio = rs.getDate("data_inicio");
+                Date dt_fim = rs.getDate("data_fim");
+                float valor = rs.getFloat("valor");
 
-                filial.setEmpr_id(id);
-                filial.setRua(rua);
-                filial.setBairro(bairro);
-                filial.setNumero(numero);
-                filial.setCidade(cidade);
-                filial.setCep(CEP);
-                filial.setUf(uf);
-                filial.setId_colaborador(id_colaborador);
-                filial.setData_lançamento(data_);
-                Filiais.add(filial);
+                turma.setId(id_tuma);
+                turma.setEmpr_id(id_filial);
+                turma.setNome(nome);
+                turma.setId_colaborador(id_colaborador);
+                turma.setData_inicio(dt_inicio);
+                turma.setData_fim(dt_fim);
+                turma.setValor(valor);
+                turmas.add(turma);
            }
        } catch (SQLException ex) {
            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
        }
-       return Filiais;
+       return turmas;
        
-   }*/
+   }
 }
