@@ -1,8 +1,9 @@
 <%-- 
-    Document   : listaPagamento
-    Created on : 01/11/2021, 16:10:49
-    Author     : Douglas
+    Document   : cadastro
+    Created on : 20/10/2021, 21:00:14
+    Author     : Douglas Proença
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,51 +11,53 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Lista Pagamentos</title>
+        <link rel="stylesheet" href="/css/estilo.css">
+        <title>Lista de Pessoas</title>
         <script type="text/javascript">
-            var turmaRemocao;
-            function confirmarRemocao(pagamento, id) {
-                console.log("Confirmar exclusao ", pagamento, id);
-                idPagamento = id;
+            var cpfRemocao;
+            function confirmarRemocao(nome, CPF) {
+                console.log("Confirmar exclusao", nome, CPF);
+                cpfRemocao = CPF;
                 var paragrafoCliente = $("#campoTextoExclusao");
-                paragrafoCliente.html(pagamento + " - " + idPagamento);
-
+                paragrafoCliente.html(nome + " - " + CPF);
+                
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.show();
             }
-
+            
             function fecharModal() {
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.hide();
             }
 
             function deletar() {
-                console.log("Excluindo Pagamento ", idPagamento);
+                console.log("Excluindo cliente ", cpfRemocao);
                 fecharModal();
-                var url = "../protegido/cliente/CadastroPagamentoServlet?idPagamento=" + idPagamento;
+                var url = "../protegido/cliente/CadastroClienteServlet?CPFUsuario=" + cpfRemocao;
                 $.ajax(url).done(function () {
-                    console.log("Pagamento removido!");
+                    console.log("Cliente removido!");
                     var alerta = $("#alerta");
                     alerta.css("display", "block");
-                    setTimeout(function () {
-                        alerta.css("display", "none");
-                        location.reload();
+                    setTimeout(function(){
+                         alerta.css("display", "none");
+                         location.reload();
                     }, 1000)
                 }).fail(function () {
-                    console.log("Erro ao remover o pagamento!");
+                    console.log("Erro ao remover o cliente!");
                 })
             }
+
         </script>
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
-            Turma removida com sucesso!
+           Cliente removido com sucesso!
         </div>
         <br>
         <br>
         <br>
-        <h1><center>Pagamento</center></h1>
+        <h1><center>Todos Os Alunos</center></h1>
         <br>
         <div class="modal" tabindex="-1" role="dialog" id="modalExclusao">
             <div class="modal-dialog" role="document">
@@ -63,7 +66,7 @@
                         <h5 class="modal-title">Confirmar Exclusão</h5>                       
                     </div>
                     <div class="modal-body">
-                        <p>Confirmar exclusão da turma abaixo?</p>
+                        <p>Confirmar exclusão do usuário abaixo?</p>
                         <p id="campoTextoExclusao"></p>
                     </div>
                     <div class="modal-footer">
@@ -74,28 +77,25 @@
             </div>
         </div>
     <fildset>
-        <table class="table-bordered" aling="center" border="2px" width="80%">
+        <table class="table-bordered" aling="left" border="2px" width="100%">
             <thead>
-            <td>ID</td><td>Nome</td><td>juros</td><td>Forma Pagamento</td><td>Valor Pago</td><td>Data Pagamento</td><td>Ano Ref.</td><td>Mês Ref.</td>
-            </thead>
-            <tbody>
-                <c:forEach var="pagamento" items="${listaPagamento}">
-                    <tr>
-                        <td>${pagamento.id}</td>
-                        <td>${pagamento.nome}</td>
-                        <td>${pagamento.juros}</td>
-                        <td>${pagamento.forma_pagamento}</td>
-                        <td>${pagamento.valor_pago}</td>
-                        <td>${pagamento.dt_pagamento}</td>
-                        <td>${pagamento.ano_ref}</td>    
-                        <td>${pagamento.mes_ref}</td>   
-                        <td><a href="../protegido/cliente/CadastroPagamentoServlet?idPagamento=${pagamento.id}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${pagamento.nome}', '${pagamento.id}')" class="btn btn-link">Deletar</button></td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </fildset>
+            <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Celular</td><td>Fixo</td>
+        </thead>
+        <tbody>
+            <c:forEach var="cliente" items="${listaClientes}">
+                <tr>
+                    <td>${cliente.nome}</td>
+                    <td>${cliente.email}</td>
+                    <td>${cliente.CPF}</td>
+                    <td>${cliente.sexo}</td>
+                    <td>${cliente.celular}</td>
+                    <td>${cliente.telResidencial}</td>
+                    <td><a href="../protegido/cliente/PagamentoClienteServlet?CPFUsuario=${cliente.CPF}&ope=1" >Novo Pagamento</a></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</fildset>
 </body>
 <a href="${pageContext.request.contextPath}/protegido/index.jsp">Voltar</a>
 </html>

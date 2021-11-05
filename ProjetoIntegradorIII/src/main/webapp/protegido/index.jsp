@@ -53,8 +53,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pagamento</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="pagamento/cadastroPagamento.jsp">Realizar Pagamento</a></button>
-                        <button class="dropdown-item"><a href="#">Listar Pagamento</a></button>
+                        <button class="dropdown-item"><a href="../cliente/ListaNovoPagamentoServlet">Novo Pagamento</a></button>
+                        <button class="dropdown-item"><a href="../cliente/ListarPagamentoServlet">Listar Pagamento</a></button>
                         <button class="dropdown-item"><a href="pagamento/buscar.jsp">Buscar Pagamentos</a></button>
                     </div>
 
