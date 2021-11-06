@@ -19,9 +19,11 @@
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
             <br/><br/>
             <font color="red"><h2 class="display-5 font-weight-normal">Acesso negado!</h2></font>
+            <br/><br/><br/>
+            <img src="Security-Denied-icon.png" width="90">
             <br/><br/><br/><br/>
             Desculpe, você não está autorizado a acessar a página que solicitou.
-            <br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/>
             <a href="javascript:history.back()" class="btn  btn-primary">Voltar para onde estava</a>
     </div>
 

@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Pessoa {
+public abstract class Pessoa {
     
     private int id;
     private String Nome;

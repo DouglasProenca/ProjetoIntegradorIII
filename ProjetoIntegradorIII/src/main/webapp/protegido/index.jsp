@@ -86,10 +86,9 @@
             <div class="col-md-5 p-lg-5 mx-auto my-5">
                 <h2 class="display-5 font-weight-normal">Tades Ltda</h2>
                 <p class="lead font-weight-normal">Construindo um futuro para todos.</p>
+                <img src="logo.png" width="70">
             </div>
         </div>
-
-
 
 
         <hr class="featurette-divider">

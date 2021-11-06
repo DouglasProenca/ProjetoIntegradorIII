@@ -69,8 +69,7 @@
                            required class="form-control"/><br/>
                 </div>                           
                 <br>                                               
-                <button type="submit" class="btn btn-primary">Enviar</button> <button type="submit" class="btn btn-primary">Buscar</button> 
+                <button type="submit" class="btn btn-primary">Matricular</button>
             </form>
-
     </body>
 </html>
