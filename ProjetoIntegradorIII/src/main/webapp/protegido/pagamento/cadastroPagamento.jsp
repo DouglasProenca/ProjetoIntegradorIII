@@ -1,88 +1,105 @@
 <%-- 
-    Document   : cadastroPagamento
-    Created on : 01/11/2021, 16:15:16
-    Author     : Douglas
+    Document   : Cadastro Pagamento
+    Created on : 2 de nov. de 2021, 23:09:43
+    Author     : Douglas Proença
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-              crossorigin="anonymous" />
         <title>Cadastro Pagamento</title>
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <br>
-        <br>
-        <br>
-        <h1><center>Realizar Pagamento</center></h1>
-        <br>
-        <br>
-        <form class="col-md-6 offset-md-3 jumbotron" action="../cliente/CadastroPagamentoServlet" method="POST">
+        <div>
+            <br><br><br>
+            <h1><center>Alunos</center></h1>
+            <table  class="table">
+                <thead>
+                    <tr>
+                        <th>ID Cliente</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
 
-            <c:if test="${not empty pagamentoAtualizacao}">
-                <input type="hidden" name="ope" value="1"/>
-            </c:if>
-            <div  class="form-group">
-                <label>Nome</label>
-                <input type="text" name="nome" value="${pagamentoAtualizacao.nome}"
-                       required class="form-control"/><br/> 
-            </div>
-            <div class="form-group">
-                <label>Data do Pagamento</label>
-                <input type="date" name="dataPagamento" value="${pagamentoAtualizacao.dt_pagamento}"
-                       required class="form-control"/><br/>
-            </div>
-            <div class="form-group">
-                <label>Mês de Referência</label>
-                <input type="number" name="mes_Ref" value="${pagamentoAtualizacao.mes_ref}"
-                       required class="form-control"/><br/>
-            </div>
-            <div class="form-group">
-                <label>Ano de Referência</label>
-                <input type="number" name="ano_ref" value="${pagamentoAtualizacao.ano_ref}"
-                       required class="form-control"/><br/>
-            </div>
-            <div class="form-group">
-                <label>Juros</label>
-                <input type="number" name="juros" value="${pagamentoAtualizacao.juros}"
-                       class="form-control"/><br/>
-            </div>
-            <div class="form-group">
-                <c:if test="${empty pagamentoAtualizacao}">
-                    <label>Forma de Pagamento</label>
-                    <select name="formaPagamento" value="${pagamentoAtualizacao.forma_pagamento}"
-                            class="form-control">
-                        <option value="Boleto">Boleto</option>
-                        <option value="Cartão">Cartão</option>
-                        <option value="Dinheiro">Dinheiro</option>
-                        <option value="Transferência">Transferência</option>
-                    </select>
+                <tbody>
+                    <%--  <c:forEach items="${clientes}" var="cliente">
+                         <tr>
+                             <td><c:out value="${cliente.id}"/></td>
+                             <td><c:out value="${cliente.nome}"/></td>
+                             <td><c:out value="${cliente.CPF}"/></td>
+                             <td><c:out value="${cliente.telCliente}"/></td>
+                             <td><c:out value="${cliente.email}"/></td>
+                         </tr>
+                     </c:forEach>--%>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h2><center>Cadastrar Pagamento</center></h2>
+            <form class="col-md-6 offset-md-3 jumbotron" action="CadastroPagamentoServlet" method="POST">
+                <c:if test="${not empty pagamentoAtualizacao}">
+                    <input type="hidden" name="ope" value="1"/>
                 </c:if>
-            </div>
-            <div class="form-group">
-                <label>Valor Pago</label>
-                <input type="number" name="valorPago" value="${pagamentoAtualizacao.valor_pago}"
-                       required class="form-control"/><br/>
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="Colaborador" 
-                       value="${sessionScope.usuario.id_colaborador}" 
-                       class="form-control"
-                       />
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="empr" 
-                       value="${sessionScope.usuario.empr_id}" 
-                       class="form-control"
-                       />
-            </div>
-            <br>               
-            <br>                                               
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+                <div  class="form-group">
+                    <label>ID Cliente</label>
+                    <input type="text" name="id" value="${pagamentoAtualizacao.id}"
+                           required class="form-control"/><br/> 
+                </div>
+                <div  class="form-group">
+                    <label>Data Pagamento</label>
+                    <input type="date" name="dataPagamento" value="${pagamentoAtualizacao.dt_pagamento}"
+                           required class="form-control"/><br/> 
+                </div>
+                <div  class="form-group">
+                    <label>Ano de Referência</label>
+                    <input type="number" name="ano_ref" value="${pagamentoAtualizacao.ano_ref}"
+                           required class="form-control"/><br/> 
+                </div>
+                <div  class="form-group">
+                    <label>Mês de Referência</label>
+                    <input type="number" name="mes_ref" value="${pagamentoAtualizacao.mes_ref}"
+                           required class="form-control"/><br/> 
+                </div>
+                <div  class="form-group">
+                    <label>Juros</label>
+                    <input type="number" name="juros" value="${pagamentoAtualizacao.juros}"
+                           required class="form-control"/><br/> 
+                </div>
+                <div class="form-group">
+                    <c:if test="${empty pagamentoAtualizacao}">
+                        <label>Forma de Pagamento</label>
+                        <select name="formaPagamento"
+                                class="form-control">
+                            <option value="Boleto">Boleto</option>
+                            <option value="Cartão">Cartão</option>
+                            <option value="Cheque">Cheque</option>
+                            <option value="Transferência">Transferência</option>
+                        </select>
+                    </c:if>
+                </div>
+                <div  class="form-group">
+                    <label>Valor Pago</label>
+                    <input type="number" name="valorPago" value="${pagamentoAtualizacao.valor_pago}"
+                           required class="form-control"/><br/> 
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="Colaborador" 
+                           value="${sessionScope.usuario.id_colaborador}" 
+                           class="form-control"
+                           />
+                </div>
+                <button type="submit" class="btn btn-primary">Realizar Pagamento</button>
+            </form> 
+        </div>
     </body>
 </html>

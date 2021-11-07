@@ -24,10 +24,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aluno</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-
                         <button class="dropdown-item"><a href="cliente/cadastro.jsp">Cadastrar Aluno</a></button>
                         <button class="dropdown-item"><a href="../cliente/ListarClienteServlet">Listar Aluno</a></button>
-
                         <button class="dropdown-item"><a href="cliente/busca.jsp">Buscar Aluno</a></button>
 
                     </div>
@@ -53,7 +51,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pagamento</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="../cliente/ListaNovoPagamentoServlet">Novo Pagamento</a></button>
+                        <button class="dropdown-item"><a href="pagamento/cadastroPagamento.jsp">Novo Pagamento</a></button>
                         <button class="dropdown-item"><a href="../cliente/ListarPagamentoServlet">Listar Pagamento</a></button>
                         <button class="dropdown-item"><a href="pagamento/buscar.jsp">Buscar Pagamentos</a></button>
                     </div>

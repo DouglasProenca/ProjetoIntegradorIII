@@ -1,75 +1,121 @@
 <%-- 
-    Document   : matricularAluno
-    Created on : 02/11/2021, 18:57:33
-    Author     : Douglas
+    Document   : Cadastro Matricula
+    Created on : 2 de nov. de 2021, 23:09:43
+    Author     : Douglas Proença
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Matricular Aluno</title>
+        <title>Cadastro Pagamento</title>
     </head>
- <body>
-        <div class="container">
-            <c:import url="../uteis/header.jsp"/>                        
-            <br>
-            <br>
-            <br>
-            <h1><center>Matricular aluno</center></h1>
-            <br>
-            <br>
-            <form class="col-md-6 offset-md-3 jumbotron" action="../cliente/CadastroTurmaServlet" method="POST">
+    <body class="container">
+        <c:import url="../uteis/header.jsp"/>
+        <div>
+            <br><br><br>
+            <h1><center>Clientes</center></h1>
+            <table  class="table">
+                <thead>
+                    <tr>
+                        <th>ID Cliente</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
 
-                <c:if test="${not empty matriculaAtualizacao}">
+                <tbody>
+                    <%--  <c:forEach items="${clientes}" var="cliente">
+                         <tr>
+                             <td><c:out value="${cliente.id}"/></td>
+                             <td><c:out value="${cliente.nome}"/></td>
+                             <td><c:out value="${cliente.CPF}"/></td>
+                             <td><c:out value="${cliente.telCliente}"/></td>
+                             <td><c:out value="${cliente.email}"/></td>
+                         </tr>
+                     </c:forEach>--%>
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <br><br><br>
+            <h1><center>Turma</center></h1>
+            <table  class="table">
+                <thead>
+                    <tr>
+                        <th>ID Turma</th>
+                        <th>Turma</th>
+                        <th>Data de inicio</th>
+                        <th>Data de conclusão</th>
+                        <th>Valor curso</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <%--  <c:forEach items="${clientes}" var="cliente">
+                         <tr>
+                             <td><c:out value="${cliente.id}"/></td>
+                             <td><c:out value="${cliente.nome}"/></td>
+                             <td><c:out value="${cliente.CPF}"/></td>
+                             <td><c:out value="${cliente.telCliente}"/></td>
+                             <td><c:out value="${cliente.email}"/></td>
+                         </tr>
+                     </c:forEach>--%>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h2><center>Matricular Aluno</center></h2>
+            <form class="col-md-6 offset-md-3 jumbotron" method="POST">
+                <c:if test="${not empty pagamentoAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>
                 </c:if>
-                    
                 <div  class="form-group">
-                    <label>Nome</label>
-                    <input type="text" name="nomeTurma" value="${matriculaAtualizacao.nome}"
+                    <label>ID Cliente</label>
+                    <input type="text" name="id_cliente" value="${pagamentoAtualizacao.id}"
                            required class="form-control"/><br/> 
-                    </div>
-                                    
+                </div>
+                <div  class="form-group">
+                    <label>ID turma</label>
+                    <input type="number" name="id_turma" value="${pagamentoAtualizacao.ano_ref}"
+                           required class="form-control"/><br/> 
+                </div>
+                <div  class="form-group">
+                    <label>Data Matricula</label>
+                    <input type="date" name="dt_matricula" value="${pagamentoAtualizacao.dt_pagamento}"
+                           required class="form-control"/><br/> 
+                </div>
+                <div  class="form-group">
+                    <label>Dia de Vencimento da Mensalidade</label>
+                    <input type="number" name="Dia_venc" value="${pagamentoAtualizacao.mes_ref}"
+                           required class="form-control"/><br/> 
+                </div>
                 <div class="form-group">
-                    <c:if test="${empty matriculaAtualizacao}">
-                    <label>Turma</label>
-                    <select name="turma" value="${matriculaAtualizacao.matricula}"
-                            class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>                       
-                    </select>
+                    <c:if test="${empty pagamentoAtualizacao}">
+                        <label>Situação</label>
+                        <select name="situacao"
+                                class="form-control">
+                            <option value="Sim">Ativo</option>
+                            <option value="Não">Não Ativo</option>
+                        </select>
                     </c:if>
                 </div>
-          
                 <div class="form-group">
-                    <c:if test="${empty ativoAtualizacao}">
-                    <label>Situação da matricula</label>
-                    <select name="ativo" value="${matriculaAtualizacao.ativo}"
-                            class="form-control">
-                        <option value="ativa">Ativa</option>
-                        <option value="naoAtiva">Não ativa</option>                     
-                    </select>
-                    </c:if>
+                    <input type="hidden" name="Colaborador" 
+                           value="${sessionScope.usuario.id_colaborador}" 
+                           class="form-control"
+                           />
                 </div>
-                
-                <div class="form-group">
-                    <label>Dia vencimento da matricula</label>
-                    <input type="number" name="vencimentoCliente" value="${matriculaAtualizacao.vencimento}"
-                           required class="form-control"/><br/>
-                </div> 
-
-                <div class="form-group">
-                    <label>Data da matrícula</label>
-                    <input type="date" name="matriculaCliente" value="${matriculaAtualizacao.matricula}"
-                           required class="form-control"/><br/>
-                </div>                           
-                <br>                                               
-                <button type="submit" class="btn btn-primary">Matricular</button>
-            </form>
+                <button type="submit" class="btn btn-primary">Realizar Matricula</button>
+            </form> 
+        </div>
     </body>
 </html>

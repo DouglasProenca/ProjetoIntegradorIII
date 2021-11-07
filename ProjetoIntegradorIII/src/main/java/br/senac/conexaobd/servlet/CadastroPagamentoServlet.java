@@ -28,7 +28,6 @@ public class CadastroPagamentoServlet extends HttpServlet {
         try {
             String ope = request.getParameter("ope");
             // Passo 1 - Recuperar os parametros
-            String nome = request.getParameter("nome");
             String id = request.getParameter("id");
             String id_matricula = request.getParameter("id_matricula");
             String ano_ref = request.getParameter("ano_ref");
@@ -41,7 +40,6 @@ public class CadastroPagamentoServlet extends HttpServlet {
 
             // Passo 2 - Inserir no BD
             Pagamento pagamento = new Pagamento();
-            pagamento.setNome(nome);
             pagamento.setId(Integer.parseInt(id));
             pagamento.setId_matricula(Integer.parseInt(id_matricula));
             pagamento.setAno_ref(ano_ref);
