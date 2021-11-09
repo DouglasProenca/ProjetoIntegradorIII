@@ -21,7 +21,7 @@
             <table  class="table">
                 <thead>
                     <tr>
-                        <th>ID Cliente</th>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>Telefone</th>
@@ -30,16 +30,15 @@
                 </thead>
 
                 <tbody>
-                    <%--  <c:forEach items="${clientes}" var="cliente">
-                         <tr>
-                             <td><c:out value="${cliente.id}"/></td>
-                             <td><c:out value="${cliente.nome}"/></td>
-                             <td><c:out value="${cliente.CPF}"/></td>
-                             <td><c:out value="${cliente.telCliente}"/></td>
-                             <td><c:out value="${cliente.email}"/></td>
-                         </tr>
-                     </c:forEach>--%>
-
+                    <c:forEach var="cliente" items="${listaClientes}">
+                        <tr>
+                            <td>${cliente.id}</td>
+                            <td>${cliente.nome}</td>
+                            <td>${cliente.CPF}</td>
+                            <td>${cliente.celular}</td>
+                            <td>${cliente.email}</td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

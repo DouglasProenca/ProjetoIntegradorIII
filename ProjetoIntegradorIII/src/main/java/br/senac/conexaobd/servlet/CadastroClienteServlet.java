@@ -48,6 +48,7 @@ public class CadastroClienteServlet extends HttpServlet {
                 try {
                     ClienteDAO.atualizarCliente(cliente);
                 } catch (ClassNotFoundException ex) {
+                    response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
                     Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {

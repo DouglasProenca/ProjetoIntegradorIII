@@ -30,6 +30,7 @@ public class BuscaFilial extends HttpServlet {
         try {
             filiais = FilialDAO.getFilialPorNome(nomeCliente);
         } catch (ClassNotFoundException | SQLException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(BuscaFilial.class.getName()).log(Level.SEVERE, null, ex);
         }
         String clientesJson = new Gson().toJson(filiais);

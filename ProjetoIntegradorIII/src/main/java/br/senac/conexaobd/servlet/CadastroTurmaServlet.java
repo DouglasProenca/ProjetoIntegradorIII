@@ -89,6 +89,7 @@ public class CadastroTurmaServlet extends HttpServlet {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
+                
                 Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

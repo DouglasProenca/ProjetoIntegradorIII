@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CadastroColaboradorServlet", urlPatterns = {"/protegido/cliente/CadastroColaboradorServlet"})
 public class CadastroColaboradorServlet extends HttpServlet {
 
-      @Override
-   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             String ope = request.getParameter("ope");
@@ -35,7 +35,7 @@ public class CadastroColaboradorServlet extends HttpServlet {
             String admissao = request.getParameter("admissaoColaborador");
             String idcolaborador = request.getParameter("Colaborador");
             String empr = request.getParameter("empr");
-            
+
             // Passo 2 - Inserir no BD
             Colaborador colaborador = new Colaborador();
             colaborador.setNome(nome);
@@ -47,7 +47,7 @@ public class CadastroColaboradorServlet extends HttpServlet {
             colaborador.setData_ingresso(dt_admissão);
             colaborador.setId_colaborador(Integer.parseInt(idcolaborador));
             colaborador.setEmpr_id(Integer.parseInt(empr));
-            
+
             try {
                 // ope = 1 => Update
                 if ("1".equals(ope)) {
@@ -65,7 +65,8 @@ public class CadastroColaboradorServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             }
         } catch (ParseException ex) {
-              Logger.getLogger(CadastroColaboradorServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+            Logger.getLogger(CadastroColaboradorServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

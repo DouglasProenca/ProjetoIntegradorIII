@@ -1,14 +1,18 @@
 package br.senac.conexaobd.servlet;
 
+import br.senac.conexaobd.dao.ClienteDAO;
 import br.senac.conexaobd.dao.PagamentoDAO;
+import br.senac.conexaobd.entidades.Cliente;
 import br.senac.conexaobd.entidades.Pagamento;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Douglas
  */
-@WebServlet(name = "CadastroPagamentoServlet", urlPatterns = {"/protegido/cliente/CadastroPagamentoServlet"})
+@WebServlet(name = "CadastroPagamentoServlet", urlPatterns = {"/cliente/CadastroPagamentoServlet"})
 public class CadastroPagamentoServlet extends HttpServlet {
 
     @Override
@@ -51,7 +55,7 @@ public class CadastroPagamentoServlet extends HttpServlet {
             pagamento.setForma_pagamento(Forma_pagamento);
             pagamento.setValor_pago(Float.parseFloat(valor_pago));
             pagamento.setId_colaborador(Integer.parseInt(colaborador));
-            
+
             // ope = 1 => Update
             if ("1".equals(ope)) {
                 try {
@@ -73,31 +77,24 @@ public class CadastroPagamentoServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("idPagamento");
-        String ope = req.getParameter("ope");
-        //OPE = 1 => Atualização
-        if ("1".equals(ope)) {
-            try {
-                Pagamento pagamento = PagamentoDAO.getPagamentoPorID(id);
-                req.setAttribute("pagamentoAtualizacao", pagamento);
-                req.getRequestDispatcher("/protegido/pagamento/cadastroPagamento.jsp").forward(req, resp);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            try {
-                PagamentoDAO.deletarPagamento(id);
-                resp.sendRedirect(req.getContextPath() + "/cliente/ListarPagamentoServlet");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
+        try {
+            List<Cliente> clientes = ClienteDAO.getClientes();
+            request.setAttribute("listaClientes", clientes);
+            // RequestDispatcher reaproveita os objetos Request e Response
+            String url = "/protegido/pagamento/cadastroPagamento.jsp";
+            request.getRequestDispatcher(url).forward(request, response);
+
+
+        } catch (ClassNotFoundException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+            Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
+            Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

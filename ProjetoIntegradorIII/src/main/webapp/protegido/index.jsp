@@ -44,14 +44,14 @@
                         <button class="dropdown-item"><a href="turma/cadastroTurma.jsp">Cadastrar Turma</a></button>
                         <button class="dropdown-item"><a href="../cliente/ListarTurmaServlet">Listar Turmas</a></button>
                         <button class="dropdown-item"><a href="turma/buscarTurma.jsp">Buscar Turmas</a></button>
-                        <button class="dropdown-item"><a href="turma/matricularAluno.jsp">Matricular Aluno</a></button>
+                        <button class="dropdown-item"><a href="../cliente/CadastroMatriculaServlet">Matricular Aluno</a></button>
                     </div>
 
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pagamento</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="pagamento/cadastroPagamento.jsp">Novo Pagamento</a></button>
+                        <button class="dropdown-item"><a href="../cliente/CadastroPagamentoServlet">Novo Pagamento</a></button>
                         <button class="dropdown-item"><a href="../cliente/ListarPagamentoServlet">Listar Pagamento</a></button>
                         <button class="dropdown-item"><a href="pagamento/buscar.jsp">Buscar Pagamentos</a></button>
                     </div>

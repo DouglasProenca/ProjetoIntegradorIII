@@ -68,6 +68,7 @@ public class CadastroFilialServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             }
         } catch (ParseException ex) {
+              response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
               Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

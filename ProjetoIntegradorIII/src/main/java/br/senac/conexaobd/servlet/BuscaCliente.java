@@ -30,6 +30,7 @@ public class BuscaCliente extends HttpServlet {
         try {
             clientes = ClienteDAO.getClientePorNome(nomeCliente);
         } catch (ClassNotFoundException | SQLException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(BuscaCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         String clientesJson = new Gson().toJson(clientes);

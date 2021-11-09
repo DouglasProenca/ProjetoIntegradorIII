@@ -11,7 +11,7 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro Pagamento</title>
+        <title>Cadastro Matricula</title>
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
@@ -30,16 +30,15 @@
                 </thead>
 
                 <tbody>
-                    <%--  <c:forEach items="${clientes}" var="cliente">
-                         <tr>
-                             <td><c:out value="${cliente.id}"/></td>
-                             <td><c:out value="${cliente.nome}"/></td>
-                             <td><c:out value="${cliente.CPF}"/></td>
-                             <td><c:out value="${cliente.telCliente}"/></td>
-                             <td><c:out value="${cliente.email}"/></td>
-                         </tr>
-                     </c:forEach>--%>
-
+                    <c:forEach var="cliente" items="${listaClientes}">
+                        <tr>
+                            <td>${cliente.id}</td>
+                            <td>${cliente.nome}</td>
+                            <td>${cliente.CPF}</td>
+                            <td>${cliente.celular}</td>
+                            <td>${cliente.email}</td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -58,16 +57,16 @@
                 </thead>
 
                 <tbody>
-                    <%--  <c:forEach items="${clientes}" var="cliente">
-                         <tr>
-                             <td><c:out value="${cliente.id}"/></td>
-                             <td><c:out value="${cliente.nome}"/></td>
-                             <td><c:out value="${cliente.CPF}"/></td>
-                             <td><c:out value="${cliente.telCliente}"/></td>
-                             <td><c:out value="${cliente.email}"/></td>
-                         </tr>
-                     </c:forEach>--%>
-
+                    <c:forEach var="turma" items="${listaTurma}">
+                        <tr>
+                            <td>${turma.empr_id}</td>
+                            <td>${turma.id}</td>
+                            <td>${turma.nome}</td>
+                            <td>${turma.data_inicio}</td>
+                            <td>${turma.data_fim}</td>
+                            <td>${turma.valor}</td>                       
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -75,38 +74,38 @@
         <div>
             <h2><center>Matricular Aluno</center></h2>
             <form class="col-md-6 offset-md-3 jumbotron" method="POST">
-                <c:if test="${not empty pagamentoAtualizacao}">
-                    <input type="hidden" name="ope" value="1"/>
-                </c:if>
                 <div  class="form-group">
                     <label>ID Cliente</label>
-                    <input type="text" name="id_cliente" value="${pagamentoAtualizacao.id}"
+                    <input type="text" name="id_cliente" 
                            required class="form-control"/><br/> 
                 </div>
                 <div  class="form-group">
                     <label>ID turma</label>
-                    <input type="number" name="id_turma" value="${pagamentoAtualizacao.ano_ref}"
+                    <input type="number" name="id_turma" 
                            required class="form-control"/><br/> 
                 </div>
                 <div  class="form-group">
                     <label>Data Matricula</label>
-                    <input type="date" name="dt_matricula" value="${pagamentoAtualizacao.dt_pagamento}"
+                    <input type="date" name="dt_matricula" 
+                           required class="form-control"/><br/> 
+                </div>
+                <div  class="form-group">
+                    <label>Matricula</label>
+                    <input type="text" name="matricula" 
                            required class="form-control"/><br/> 
                 </div>
                 <div  class="form-group">
                     <label>Dia de Vencimento da Mensalidade</label>
-                    <input type="number" name="Dia_venc" value="${pagamentoAtualizacao.mes_ref}"
+                    <input type="number" name="Dia_venc" 
                            required class="form-control"/><br/> 
                 </div>
                 <div class="form-group">
-                    <c:if test="${empty pagamentoAtualizacao}">
                         <label>Situação</label>
                         <select name="situacao"
                                 class="form-control">
                             <option value="Sim">Ativo</option>
                             <option value="Não">Não Ativo</option>
                         </select>
-                    </c:if>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="Colaborador" 
