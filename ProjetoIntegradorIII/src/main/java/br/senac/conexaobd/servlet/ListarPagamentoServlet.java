@@ -23,7 +23,7 @@ public class ListarPagamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         try {
             List<Pagamento> PagamentoList = PagamentoDAO.getPagamento();
             request.setAttribute("listaPagamento", PagamentoList);

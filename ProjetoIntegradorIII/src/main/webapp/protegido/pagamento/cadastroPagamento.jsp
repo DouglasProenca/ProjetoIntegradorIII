@@ -17,6 +17,7 @@
         <c:import url="../uteis/header.jsp"/>
         <div>
             <br><br><br>
+            <c:if test="${empty pagamentoAtualizacao}">
             <h1><center>Alunos</center></h1>
             <table  class="table">
                 <thead>
@@ -41,6 +42,7 @@
                     </c:forEach>
                 </tbody>
             </table>
+            </c:if>
         </div>
 
         <div>

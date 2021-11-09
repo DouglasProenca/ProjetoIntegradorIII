@@ -89,7 +89,7 @@
                         <td>${pagamento.dt_pagamento}</td>
                         <td>${pagamento.ano_ref}</td>    
                         <td>${pagamento.mes_ref}</td>   
-                        <td><a href="../protegido/cliente/CadastroPagamentoServlet?idPagamento=${pagamento.id}&ope=1" >Atualizar</a></td>
+                        <td><a href="../cliente/CadastroPagamentoServlet?idPagamento=${pagamento.id}&ope=1" >Atualizar</a></td>
                         <td><button onclick="confirmarRemocao('${pagamento.nome}', '${pagamento.id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>

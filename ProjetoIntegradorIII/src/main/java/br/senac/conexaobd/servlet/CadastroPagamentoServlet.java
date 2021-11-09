@@ -79,6 +79,18 @@ public class CadastroPagamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String id = request.getParameter("idPagamento");
+        String ope = request.getParameter("ope");
+
+        if ("1".equals(ope)) {
+            try {
+                Pagamento pagamento = PagamentoDAO.getPagamentoPorID(id);
+                request.setAttribute("pagamentoAtualizacao", pagamento);
+                request.getRequestDispatcher("/protegido/pagamento/cadastroPagamento.jsp").forward(request, response);
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(CadastroPagamentoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         try {
             List<Cliente> clientes = ClienteDAO.getClientes();
@@ -86,7 +98,6 @@ public class CadastroPagamentoServlet extends HttpServlet {
             // RequestDispatcher reaproveita os objetos Request e Response
             String url = "/protegido/pagamento/cadastroPagamento.jsp";
             request.getRequestDispatcher(url).forward(request, response);
-
 
         } catch (ClassNotFoundException ex) {
             response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
@@ -96,5 +107,4 @@ public class CadastroPagamentoServlet extends HttpServlet {
             Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
