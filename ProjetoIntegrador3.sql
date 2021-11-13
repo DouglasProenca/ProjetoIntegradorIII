@@ -141,7 +141,7 @@ insert into RC_ALUNO values (null, 1,'Carla Moreira','Feminino', 'moreiracarla@h
 							 (null, 5,'Aline Campos da Cruz','Feminino','natashacald@terra.com.br','202.744.120-47','(28) 95286-0776', '(28) 4787-0665', 5);
 
 
-insert into RC_USUARIO values(null,1,'0bqE',1),
+insert into RC_USUARIO values(null,1,'$2a$08$FuP9/mh7YxiT0s8TfULcsO4J7r1WW/emkGo2q4gURb7lBGjySygBi',1),
 							 (null,2,'6OdG',1),
                              (null,3,'ejEl',1),
                              (null,4,'PGAL',1),
