@@ -20,11 +20,11 @@
                 cpfRemocao = CPF;
                 var paragrafoCliente = $("#campoTextoExclusao");
                 paragrafoCliente.html(nome + " - " + CPF);
-                
+
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.show();
             }
-            
+
             function fecharModal() {
                 var modalConfirmacao = $("#modalExclusao");
                 modalConfirmacao.hide();
@@ -38,9 +38,9 @@
                     console.log("Cliente removido!");
                     var alerta = $("#alerta");
                     alerta.css("display", "block");
-                    setTimeout(function(){
-                         alerta.css("display", "none");
-                         location.reload();
+                    setTimeout(function () {
+                        alerta.css("display", "none");
+                        location.reload();
                     }, 1000)
                 }).fail(function () {
                     console.log("Erro ao remover o cliente!");
@@ -52,7 +52,7 @@
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
-           Cliente removido com sucesso!
+            Cliente removido com sucesso!
         </div>
         <br>
         <br>
@@ -77,26 +77,26 @@
             </div>
         </div>
     <fildset>
-        <table class="table-bordered" aling="left" border="2px" width="100%">
+        <table class="table" aling="center">
             <thead>
             <td>Nome</td><td>Email</td><td>CPF</td><td>Sexo</td><td>Celular</td><td>Fixo</td>
-        </thead>
-        <tbody>
-            <c:forEach var="cliente" items="${listaClientes}">
-                <tr>
-                    <td>${cliente.nome}</td>
-                    <td>${cliente.email}</td>
-                    <td>${cliente.CPF}</td>
-                    <td>${cliente.sexo}</td>
-                    <td>${cliente.celular}</td>
-                    <td>${cliente.telResidencial}</td>
-                    <td><a href="../protegido/cliente/CadastroClienteServlet?CPFUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
-                    <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</fildset>
+            </thead>
+            <tbody>
+                <c:forEach var="cliente" items="${listaClientes}">
+                    <tr>
+                        <td>${cliente.nome}</td>
+                        <td>${cliente.email}</td>
+                        <td>${cliente.CPF}</td>
+                        <td>${cliente.sexo}</td>
+                        <td>${cliente.celular}</td>
+                        <td>${cliente.telResidencial}</td>
+                        <td><a href="../protegido/cliente/CadastroClienteServlet?CPFUsuario=${cliente.CPF}&ope=1" >Atualizar</a></td>
+                        <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.CPF}')" class="btn btn-link">Deletar</button></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </fildset>
 </body>
 <a href="${pageContext.request.contextPath}/protegido/index.jsp">Voltar</a>
 </html>

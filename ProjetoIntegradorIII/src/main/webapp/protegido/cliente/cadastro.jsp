@@ -18,12 +18,9 @@
     <body>
         <div class="container">
             <c:import url="../uteis/header.jsp"/>
-            <br>
-            <br>
-            <br>
+            <br><br><br>
             <h1><center>Cadastro de Pessoas</center></h1>
-            <br>
-            <br>
+            <br><br>
             <form class="col-md-6 offset-md-3 jumbotron" action="CadastroClienteServlet" method="POST">
 
                 <c:if test="${not empty clienteAtualizacao}">
@@ -32,21 +29,21 @@
                 <div  class="form-group">
                     <label>Nome</label>
                     <input type="text" name="nomeCliente" value="${clienteAtualizacao.nome}"
-                           required class="form-control"/><br/> 
+                           required class="form-control"/>
                 </div>
+                <br/>
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" name="emailCliente" value="${clienteAtualizacao.email}"
-                           required class="form-control"/><br/>
+                           required class="form-control"/>
                 </div>
+                <br/>
                 <div class="form-group">
                     <c:if test="${empty clienteAtualizacao}">
                         <label>CPF</label>
                         <input type="text" name="CPFCliente"
                                value="${clienteAtualizacao.CPF}" placeholder="000.000.000-00"
-                               required=""
-                               class="form-control"
-                               />
+                               required class="form-control"/>
                     </c:if>
                 </div>
                 <br>
@@ -55,8 +52,7 @@
                     <input type="text" name="CelularCliente"
                            value="${clienteAtualizacao.celular}" placeholder="(00)00000-0000"
                            required
-                           class="form-control"
-                           />        
+                           class="form-control"/>        
                 </div>
                 <br>
                 <div class="form-group">
@@ -64,8 +60,7 @@
                     <input type="text" name="ResidencialCliente"
                            value="${clienteAtualizacao.telResidencial}" placeholder="(00)0000-0000"
                            required
-                           class="form-control"
-                           />
+                           class="form-control"/>
                 </div>
                 <br>
                 <div class="form-group">
@@ -81,14 +76,12 @@
                 <div class="form-group">
                     <input type="hidden" name="Colaborador" 
                            value="${sessionScope.usuario.id_colaborador}" 
-                           class="form-control"
-                           />
+                           class="form-control"/>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="empr" 
                            value="${sessionScope.usuario.empr_id}" 
-                           class="form-control"
-                           />
+                           class="form-control"/>
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>

@@ -49,7 +49,7 @@
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-             <div id="alerta" class="alert alert-success" role="alert" style="display:none">
+        <div id="alerta" class="alert alert-success" role="alert" style="display:none">
             Colaborador(a) removido(a) com sucesso!
         </div>
         <br>
@@ -75,24 +75,27 @@
             </div>
         </div>
     <fildset>
-        <table class="table-bordered" aling="center" border="2px" width="80%">
+        <table class="table" aling="center">
             <thead>
             <td>empr_id</td><td>ID</td><td>Nome</td><td>Cargo</td><td>Setor</td><td>Salário</td><td>Data de admissão</td>
             </thead>
             <tbody>
                 <c:forEach var="colaborador" items="${listaColaboradores}">
                     <tr>
+                        <td>${colaborador.empr_id}</td>
                         <td>${colaborador.id}</td>
                         <td>${colaborador.nome}</td>
                         <td>${colaborador.cargo}</td>
                         <td>${colaborador.setor}</td>
-                        <td>${colaborador.salario}</td>                        
+                        <td>${colaborador.salario}</td>
+                        <td>${colaborador.data_ingresso}</td>                           
                         <td><a href="../protegido/cliente/CadastroColaboradorServlet?id=${colaborador.id}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${colaborador.nome}','${colaborador.id}')" class="btn btn-link">Deletar</button></td>
+                        <td><button onclick="confirmarRemocao('${colaborador.nome}', '${colaborador.id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
     </fildset>
-    </body>
+</body>
+<a href="${pageContext.request.contextPath}/protegido/index.jsp">Voltar</a>
 </html>

@@ -74,7 +74,7 @@
             </div>
         </div>
     <fildset>
-        <table class="table-bordered" aling="center" border="2px" width="80%">
+        <table class="table" aling="center">
             <thead>
             <td>ID</td><td>Nome</td><td>juros</td><td>Forma Pagamento</td><td>Valor Pago</td><td>Data Pagamento</td><td>Ano Ref.</td><td>Mês Ref.</td>
             </thead>

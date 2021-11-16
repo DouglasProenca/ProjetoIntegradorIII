@@ -41,7 +41,7 @@ public class CadastroClienteServlet extends HttpServlet {
         cliente.setId_colaborador(Integer.parseInt(colaborador));
         cliente.setSexo(sexo);
         cliente.setEmpr_id(Integer.parseInt(empr));
-
+        System.out.println(cpf);
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {
