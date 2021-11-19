@@ -34,6 +34,7 @@ public class CadastroColaboradorServlet extends HttpServlet {
             String salario = request.getParameter("salarioColaborador");
             String admissao = request.getParameter("admissaoColaborador");
             String idcolaborador = request.getParameter("Colaborador");
+            String id = request.getParameter("id");
             String empr = request.getParameter("empr");
 
             // Passo 2 - Inserir no BD
@@ -42,11 +43,11 @@ public class CadastroColaboradorServlet extends HttpServlet {
             colaborador.setCargo(cargo);
             colaborador.setSetor(setor);
             colaborador.setSalario(Float.parseFloat(salario));
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            Date dt_admissão = sdf.parse(admissao);
+            Date dt_admissão = new SimpleDateFormat("yyyy-MM-dd").parse(admissao);
             colaborador.setData_ingresso(dt_admissão);
             colaborador.setId_colaborador(Integer.parseInt(idcolaborador));
             colaborador.setEmpr_id(Integer.parseInt(empr));
+            colaborador.setId(Integer.parseInt(id));
 
             try {
                 // ope = 1 => Update

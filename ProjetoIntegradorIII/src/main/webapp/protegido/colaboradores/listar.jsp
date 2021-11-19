@@ -52,9 +52,7 @@
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
             Colaborador(a) removido(a) com sucesso!
         </div>
-        <br>
-        <br>
-        <br>
+        <br><br><br>
         <h1><center>Colaboradores</center></h1>
         <br>
         <div class="modal" tabindex="-1" role="dialog" id="modalExclusao">

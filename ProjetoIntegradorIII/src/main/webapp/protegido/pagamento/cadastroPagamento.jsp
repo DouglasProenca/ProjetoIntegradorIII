@@ -93,6 +93,10 @@
                     <input type="number" name="valorPago" value="${pagamentoAtualizacao.valor_pago}"
                            required class="form-control"/><br/> 
                 </div>
+                <div  class="form-group">
+                    <input type="hidden" name="id_matricula" value="${pagamentoAtualizacao.id_matricula}"
+                           required class="form-control"/><br/> 
+                </div>
                 <div class="form-group">
                     <input type="hidden" name="Colaborador" 
                            value="${sessionScope.usuario.id_colaborador}" 

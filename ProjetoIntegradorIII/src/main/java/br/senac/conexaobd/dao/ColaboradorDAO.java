@@ -131,7 +131,7 @@ public class ColaboradorDAO {
 
     public static boolean atualizarColaborador(Colaborador colaborador) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update rc_cargo nome=?,categoria=?,cargo=?, "
+        String query = "update rc_cargo set nome=?,categoria=?,cargo=?, "
                 + "salario=?,data_ingresso=? where id=?";
         Connection con = Conexao.abrirConexao();
         try {
@@ -140,11 +140,10 @@ public class ColaboradorDAO {
             ps.setString(2, colaborador.getSetor());
             ps.setString(3, colaborador.getCargo());
             ps.setFloat(4, colaborador.getSalario());
-            ps.setInt(5, colaborador.getId_colaborador());
-            ps.setDate(6, new java.sql.Date(colaborador.getData_ingresso().getTime()));
-            ps.setInt(7, colaborador.getId());
+            ps.setDate(5, new java.sql.Date(colaborador.getData_ingresso().getTime()));
+            ps.setInt(6, colaborador.getId());
             ps.executeUpdate();
-
+            System.out.println(colaborador.getId());
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class
                     .getName()).log(Level.SEVERE, null, ex);

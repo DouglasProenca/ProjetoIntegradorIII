@@ -138,10 +138,9 @@ public class ClienteDAO {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getEmail());
-            ps.setString(5, cliente.getCPF());
             ps.setString(3, cliente.getCelular());
             ps.setString(4, cliente.getTelResidencial());
-
+            ps.setString(5, cliente.getCPF());
             ps.executeUpdate();
 
         } catch (SQLException ex) {

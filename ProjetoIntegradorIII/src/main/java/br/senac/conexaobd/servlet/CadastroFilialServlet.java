@@ -46,6 +46,9 @@ public class CadastroFilialServlet extends HttpServlet {
             filial.setCidade(cidade);
             filial.setCep(cep);
             filial.setUf(uf);
+            if ("1".equals(ope)) {
+            filial.setEmpr_id(Integer.parseInt(empr));
+            }
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             Date dt_lc = sdf.parse(dt_admissao);
             filial.setData_lançamento(dt_lc);

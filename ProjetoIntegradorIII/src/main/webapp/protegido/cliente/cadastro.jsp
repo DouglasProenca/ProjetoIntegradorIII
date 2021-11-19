@@ -38,14 +38,14 @@
                            required class="form-control"/>
                 </div>
                 <br/>
-                <div class="form-group">
-                    <c:if test="${empty clienteAtualizacao}">
+                <c:if test="${empty clienteAtualizacao}">
+                    <div class="form-group">
                         <label>CPF</label>
                         <input type="text" name="CPFCliente"
                                value="${clienteAtualizacao.CPF}" placeholder="000.000.000-00"
                                required class="form-control"/>
-                    </c:if>
-                </div>
+                    </div>
+                </c:if>
                 <br>
                 <div class="form-group">
                     <label>Celular</label>
@@ -83,6 +83,13 @@
                            value="${sessionScope.usuario.empr_id}" 
                            class="form-control"/>
                 </div>
+                           <c:if test="${not empty clienteAtualizacao}">
+                               <input type="hidden" name="CPFCliente"
+                                      value="${clienteAtualizacao.CPF}" 
+                                      required
+                                      class="form-control"
+                                      />
+                           </c:if>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>

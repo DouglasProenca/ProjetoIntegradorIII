@@ -45,8 +45,7 @@ public class CadastroMatriculaServlet extends HttpServlet {
             matricula.setId(Integer.parseInt(idCliente));
             matricula.setId_turma(Integer.parseInt(idturma));
             matricula.setMatricula(matricula_);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            Date data_mat = sdf.parse(dt_matricula);
+            Date data_mat = new SimpleDateFormat("yyyy-MM-dd").parse(dt_matricula);
             matricula.setDt_matricula(data_mat);
             matricula.setDia_venc_mensalidade(Integer.parseInt(dia_venc));
             matricula.setAtivo(sit);

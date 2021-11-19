@@ -113,15 +113,16 @@ public class TurmaDAO {
 
     public static boolean atualizarTurma(Turma turma) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update rc_tuma set nome=?,data_inicio=?,data_fim=?, "
+        String query = "update rc_turma set nome=?,data_inicio=?,data_fim=?, "
                 + "valor=? where id=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, turma.getNome());
-            ps.setString(2, turma.getNumero());
-            ps.setDate(3, new java.sql.Date(turma.getData_inicio().getTime()));
-            ps.setDate(4, new java.sql.Date(turma.getData_fim().getTime()));
+            ps.setDate(2, new java.sql.Date(turma.getData_inicio().getTime()));
+            ps.setDate(3, new java.sql.Date(turma.getData_fim().getTime()));
+            ps.setFloat(4, turma.getValor());
+            ps.setInt(5, turma.getId());
             ps.executeUpdate();
 
         } catch (SQLException ex) {

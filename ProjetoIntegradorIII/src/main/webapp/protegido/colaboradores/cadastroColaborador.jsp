@@ -70,6 +70,13 @@
                        class="form-control"
                        />
             </div>
+            <c:if test="${not empty colaboradorAtualizacao}">
+                <input type="hidden" name="id"
+                       value="${colaboradorAtualizacao.id}" 
+                       required
+                       class="form-control"
+                       />
+            </c:if>
             <br>               
             <br>                                               
             <button type="submit" class="btn btn-primary">Enviar</button>

@@ -48,8 +48,7 @@ public class CadastroPagamentoServlet extends HttpServlet {
             pagamento.setId_matricula(Integer.parseInt(id_matricula));
             pagamento.setAno_ref(ano_ref);
             pagamento.setMes_ref(mes_ref);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            Date data_pagamento = sdf.parse(dt_pag);
+            Date data_pagamento = new SimpleDateFormat("yyyy-MM-dd").parse(dt_pag);
             pagamento.setDt_pagamento(data_pagamento);
             pagamento.setJuros(Float.parseFloat(juros));
             pagamento.setForma_pagamento(Forma_pagamento);
