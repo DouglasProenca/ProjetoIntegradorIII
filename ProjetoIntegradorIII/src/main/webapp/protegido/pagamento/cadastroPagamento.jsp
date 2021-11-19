@@ -44,7 +44,6 @@
             </table>
             </c:if>
         </div>
-
         <div>
             <h2><center>Cadastrar Pagamento</center></h2>
             <form class="col-md-6 offset-md-3 jumbotron" action="CadastroPagamentoServlet" method="POST">
@@ -93,15 +92,10 @@
                     <input type="number" name="valorPago" value="${pagamentoAtualizacao.valor_pago}"
                            required class="form-control"/><br/> 
                 </div>
-                <div  class="form-group">
-                    <input type="hidden" name="id_matricula" value="${pagamentoAtualizacao.id_matricula}"
-                           required class="form-control"/><br/> 
-                </div>
                 <div class="form-group">
                     <input type="hidden" name="Colaborador" 
                            value="${sessionScope.usuario.id_colaborador}" 
-                           class="form-control"
-                           />
+                           class="form-control"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Realizar Pagamento</button>
             </form> 

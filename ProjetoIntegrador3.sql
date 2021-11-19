@@ -123,8 +123,15 @@ insert into RC_MATRICULA values (null, 1, 1, 'PA1','Sim', 10,'2019-01-14',5),
 								(null, 2, 2, 'PC1','Não', 5,'2020-01-02',5),
 								(null, 1, 3, 'PA1','Sim', 15,'2019-02-03',5),
 								(null, 4, 4, 'PB1','Sim', 10,'2017-02-08',5),
-								(null, 2, 5, 'PC2','Não', 5,'2020-01-14',5);
-                                
+								(null, 2, 5, 'PC2','Sim', 5,'2020-01-14',5),
+                                (null, 2, 6, 'PC2','Sim', 5,'2020-01-14',5),
+                                (null, 2, 7, 'PC2','Sim', 5,'2020-01-14',5),
+                                (null, 1, 8, 'PC2','Sim', 10,'2020-01-14',5),
+                                (null, 2, 9, 'PC2','Sim', 5,'2020-01-14',5),
+                                (null, 4, 10, 'PC2','Sim', 5,'2020-01-14',5),
+                                (null, 2, 11, 'PC2','Sim', 10,'2020-01-14',5),
+                                (null, 2, 12, 'PC2','Sim', 5,'2020-01-14',5),
+                                (null, 2, 13, 'PC2','Sim', 5,'2020-01-14',5);
                                 
 insert into RC_ALUNO values (null, 1,'Carla Moreira','Feminino', 'moreiracarla@hotmail.com', '449.563.201-20', '(11) 98714-2390', '(11) 5615-1900',1),
 							 (null, 2,'Anita Dutra Ferraz','Feminino', 'dutraferraz@outlook.com', '309.274.029-71', '(45) 97150-2774', '(45) 1680-8896',2),
@@ -140,32 +147,31 @@ insert into RC_ALUNO values (null, 1,'Carla Moreira','Feminino', 'moreiracarla@h
 							 (null, 4,'Marcio Silva Santos','Masculino','abandrade@gmail.com','463.096.620-07','(61) 95286-0776', '(61) 6157-1800', 4),
 							 (null, 5,'Aline Campos da Cruz','Feminino','natashacald@terra.com.br','202.744.120-47','(28) 95286-0776', '(28) 4787-0665', 5);
 
-
-insert into RC_USUARIO values(null,1,'$2a$08$FuP9/mh7YxiT0s8TfULcsO4J7r1WW/emkGo2q4gURb7lBGjySygBi',1),
-							 (null,2,'6OdG',1),
-                             (null,3,'ejEl',1),
-                             (null,4,'PGAL',1),
-                             (null,5,'sblf',1),
-                             (null,6,'kRW4',1),
-                             (null,7,'UtoK',1),
-                             (null,8,'ryN8',1),
-                             (null,9,'uKwQ',1),
-                             (null,10,'Swk1',1),
-                             (null,11,'QX4Q',1),
-                             (null,12,'q1gu',1),
-                             (null,13,'TCab',1),
-                             (null,14,'qqC6',1),
-                             (null,15,'GBRD',1),
-                             (null,16,'WHaf',1),
-                             (null,17,'An2C',1),
-                             (null,18,'8jkx',1),
-                             (null,19,'bEE0',1),
-                             (null,20,'AiY5',1),
-                             (null,21,'DBmI',1),
-                             (null,22,'eGRF',1),
-                             (null,23,'wUxP',1),
-                             (null,24,'5hCa',1),
-                             (null,35,'pS8F',1);
+insert into RC_USUARIO values(null,1,'$2a$08$QG7ndncE.qAt2gjV/1GX1eQ8PLOAsKjCHRG9yb2uT.LjufZTXE8kG',1),
+							 (null,2,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,3,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,4,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,5,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,6,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,7,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,8,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,9,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,10,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,11,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,12,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,13,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,14,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,15,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,16,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,17,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,18,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,19,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,20,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,21,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,22,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,23,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,24,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1),
+                             (null,35,'$2a$08$PI.2RimnWuC5yYjNr.wa8.lGHYeN12cV2HW7AokZUz.Awvln6SpQW',1);
 							
 
 insert into rc_pagamento values (null,1, '2020', '04', '2020-04-12', 5, 'Dinheiro', '2500', 1),
@@ -199,3 +205,20 @@ alter table RC_MATRICULA add constraint FK_MATRICULA_COLABORADOR foreign key (ID
 -- site para gerar informações:
 -- https://www.4devs.com.br/
 
+-- Procedure para realizar pagamento 
+
+delimiter $
+
+create procedure sp_fazer_pagamento(id int, ano_ref varchar(10), mes_ref varchar(10), dt_pagamento date, juros float
+									, forma_pagamento varchar(10), valor_pago float,id_colaborador int)
+begin
+
+declare id_matricula int;
+
+set id_matricula = (select id from rc_matricula where id_pessoa = id);
+
+insert into rc_pagamento values (null,id_matricula,ano_ref,mes_ref,dt_pagamento,juros,forma_pagamento,valor_pago,id_colaborador);
+
+end $
+
+delimiter ;
