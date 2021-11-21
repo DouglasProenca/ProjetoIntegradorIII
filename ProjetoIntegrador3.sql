@@ -1,6 +1,6 @@
 -- criação da database
 create database if not exists ProjetoIntegrador3;
- 
+
 -- comando para usar a tabela
 use ProjetoIntegrador3;
 
