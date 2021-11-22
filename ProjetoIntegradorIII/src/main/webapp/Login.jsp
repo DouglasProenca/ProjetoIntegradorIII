@@ -24,6 +24,11 @@
             <form class="col-md-6 offset-md-3 jumbotron" action="LoginServlet" method="POST">
                 <h3>Login</h3>
                 <br>
+                <c:if test="${param.loginInvalido != null}">
+                    <div class="alert alert-danger" role="alert">
+                        Usuário/Senha inválidos
+                    </div>  
+                </c:if>
                 <!-- Endereço de email-->
                 <label for="exampleInputEmail1">Nome:</label>
                 <input type="text" class="form-control" name="nomeUsuario" placeholder="Nome">

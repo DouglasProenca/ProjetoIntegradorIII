@@ -122,17 +122,17 @@ public class FilialDAO {
     
     public static boolean atualizarFilial(Filial filial) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update rc_filial rua=?,numero=?,bairro=?, "
+        String query = "update rc_filial set rua=?,numero=?,bairro=?, "
                 + "cidade=?,CEP=? where empr_id=?";
         Connection con = Conexao.abrirConexao();
         try {
            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(2, filial.getRua());
-            ps.setString(3, filial.getNumero());
-            ps.setString(4, filial.getBairro());
-            ps.setString(5, filial.getCidade());
-            ps.setString(6, filial.getCep());
-            ps.setInt(8, filial.getEmpr_id());
+            ps.setString(1, filial.getRua());
+            ps.setString(2, filial.getNumero());
+            ps.setString(3, filial.getBairro());
+            ps.setString(4, filial.getCidade());
+            ps.setString(5, filial.getCep());
+            ps.setInt(6, filial.getEmpr_id());
             ps.executeUpdate();
 
         } catch (SQLException ex) {

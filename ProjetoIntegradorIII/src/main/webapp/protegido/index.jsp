@@ -21,59 +21,66 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aluno</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="cliente/cadastro.jsp">Cadastrar Aluno</a></button>
-                        <button class="dropdown-item"><a href="../cliente/ListarClienteServlet">Listar Aluno</a></button>
-                        <button class="dropdown-item"><a href="cliente/busca.jsp">Buscar Aluno</a></button>
-
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filial</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="filial/cadastroFilial.jsp">Cadastrar Filial</a></button>
-                        <button class="dropdown-item"><a href="../cliente/ListarFilialServlet">Listar Filial</a></button>
-                        <button class="dropdown-item"><a href="filial/buscaFilial.jsp">Buscar Filial</a></button>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Turma</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="turma/cadastroTurma.jsp">Cadastrar Turma</a></button>
-                        <button class="dropdown-item"><a href="../cliente/ListarTurmaServlet">Listar Turmas</a></button>
-                        <button class="dropdown-item"><a href="turma/buscarTurma.jsp">Buscar Turmas</a></button>
-                        <button class="dropdown-item"><a href="turma/matricularAluno.jsp">Matricular Aluno</a></button>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pagamento</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="pagamento/cadastroPagamento.jsp">Novo Pagamento</a></button>
-                        <button class="dropdown-item"><a href="../cliente/ListarPagamentoServlet">Listar Pagamento</a></button>
-                        <button class="dropdown-item"><a href="pagamento/buscar.jsp">Buscar Pagamentos</a></button>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Colaboradores</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="colaboradores/cadastroColaborador.jsp">Cadastrar Colaboradores</a></button>
-                        <button class="dropdown-item"><a href="../cliente/ListarColaboradorServlet">Listar Colaboradores</a></button>                        
-                        <button class="dropdown-item"><a href="colaboradores/buscaColaborador.jsp">Buscar Colaboradores</a></button> 
-                    </div>
-
-                </li>
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <button class="dropdown-item"><a href="#">Relatório Analitico</a></button>
-                        <button class="dropdown-item"><a href="#">Relatório Sintetico</a></button>                        
-                    </div>
-
-                </li>
+                <c:if test="${sessionScope.usuario.isVendas() || sessionScope.usuario.isTI() || sessionScope.usuario.isServico()}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aluno</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <button class="dropdown-item"><a href="cliente/cadastro.jsp">Cadastrar Aluno</a></button>
+                            <button class="dropdown-item"><a href="../cliente/ListarClienteServlet">Listar Aluno</a></button>
+                            <button class="dropdown-item"><a href="cliente/busca.jsp">Buscar Aluno</a></button>
+                        </div>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.usuario.isEX() || sessionScope.usuario.isTI()}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filial</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <button class="dropdown-item"><a href="filial/cadastroFilial.jsp">Cadastrar Filial</a></button>
+                            <button class="dropdown-item"><a href="../cliente/ListarFilialServlet">Listar Filial</a></button>
+                            <button class="dropdown-item"><a href="filial/buscaFilial.jsp">Buscar Filial</a></button>
+                        </div>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.usuario.isServico() || sessionScope.usuario.isTI()}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Turma</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <button class="dropdown-item"><a href="turma/cadastroTurma.jsp">Cadastrar Turma</a></button>
+                            <button class="dropdown-item"><a href="../cliente/ListarTurmaServlet">Listar Turmas</a></button>
+                            <button class="dropdown-item"><a href="turma/buscarTurma.jsp">Buscar Turmas</a></button>
+                            <button class="dropdown-item"><a href="../cliente/CadastroMatriculaServlet">Matricular Aluno</a></button>
+                        </div>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.usuario.isAdministrativo() || sessionScope.usuario.isEX() || sessionScope.usuario.isTI()}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pagamento</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <button class="dropdown-item"><a href="../cliente/CadastroPagamentoServlet">Novo Pagamento</a></button>
+                            <button class="dropdown-item"><a href="../cliente/ListarPagamentoServlet">Listar Pagamento</a></button>
+                            <button class="dropdown-item"><a href="pagamento/buscar.jsp">Buscar Pagamentos</a></button>
+                        </div>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.usuario.isEX() || sessionScope.usuario.isTI()}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Colaboradores</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <button class="dropdown-item"><a href="colaboradores/cadastroColaborador.jsp">Cadastrar Colaboradores</a></button>
+                            <button class="dropdown-item"><a href="../cliente/ListarColaboradorServlet">Listar Colaboradores</a></button>                        
+                            <button class="dropdown-item"><a href="colaboradores/buscaColaborador.jsp">Buscar Colaboradores</a></button> 
+                        </div>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.usuario.isEX() || sessionScope.usuario.isTI()}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <button class="dropdown-item"><a href="relatorios/analitico.jsp">Relatório Analitico</a></button>
+                            <button class="dropdown-item"><a href="relatorios/sintetico.jsp">Relatório Sintetico</a></button>                        
+                        </div>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </nav>

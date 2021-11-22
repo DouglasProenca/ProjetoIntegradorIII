@@ -50,7 +50,7 @@
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-             <div id="alerta" class="alert alert-success" role="alert" style="display:none">
+        <div id="alerta" class="alert alert-success" role="alert" style="display:none">
             Turma removida com sucesso!
         </div>
         <br>
@@ -76,7 +76,7 @@
             </div>
         </div>
     <fildset>
-        <table class="table-bordered" aling="center" border="2px" width="80%">
+        <table class="table" aling="center">
             <thead>
             <td>empr_id</td><td>ID</td><td>Turma</td><td>Data de inicio</td><td>Data de conclusão</td><td>Valor curso</td>
             </thead>
@@ -90,12 +90,12 @@
                         <td>${turma.data_fim}</td>
                         <td>${turma.valor}</td>                        
                         <td><a href="../protegido/cliente/CadastroTurmaServlet?idTurma=${turma.id}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${turma.nome}','${turma.id}')" class="btn btn-link">Deletar</button></td>
+                        <td><button onclick="confirmarRemocao('${turma.nome}', '${turma.id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
     </fildset>
-    </body>
-    <a href="${pageContext.request.contextPath}/protegido/index.jsp">Voltar</a>
+</body>
+<a href="${pageContext.request.contextPath}/protegido/index.jsp">Voltar</a>
 </html>

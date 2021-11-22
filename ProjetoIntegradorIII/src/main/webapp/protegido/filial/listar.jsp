@@ -77,7 +77,7 @@
             </div>
         </div>
     <fildset>
-        <table class="table-bordered" aling="center" border="2px" width="80%">
+        <table class="table" aling="center">
             <thead>
             <td>ID</td><td>Rua</td><td>Numero</td><td>Bairro</td><td>Cidade</td><td>UF</td>
             </thead>
@@ -91,7 +91,7 @@
                         <td>${filial.cidade}</td>
                         <td>${filial.uf}</td>
                         <td><a href="../protegido/cliente/CadastroFilialServlet?idFilial=${filial.empr_id}&ope=1" >Atualizar</a></td>
-                        <td><button onclick="confirmarRemocao('${filial.cidade}','${filial.empr_id}')" class="btn btn-link">Deletar</button></td>
+                        <td><button onclick="confirmarRemocao('${filial.cidade}', '${filial.empr_id}')" class="btn btn-link">Deletar</button></td>
                     </tr>
                 </c:forEach>
             </tbody>

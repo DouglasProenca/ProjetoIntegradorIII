@@ -34,25 +34,27 @@ public class CadastroTurmaServlet extends HttpServlet {
             String valor = request.getParameter("valorCliente");
             String colaborador = request.getParameter("Colaborador");
             String empr = request.getParameter("empr");
-
+            String id = request.getParameter("id");
             // Passo 2 - Inserir no BD
             Turma turma = new Turma();
             turma.setNome(nome);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            Date data_inicial = sdf.parse(dt_ini);
-            Date data_final = sdf.parse(dt_fim);
+            Date data_inicial = new SimpleDateFormat("yyyy-MM-dd").parse(dt_ini);
+            Date data_final = new SimpleDateFormat("yyyy-MM-dd").parse(dt_fim);
             turma.setData_inicio(data_inicial);
             turma.setData_fim(data_final);
             turma.setValor(Float.parseFloat(valor));
             turma.setId_colaborador(Integer.parseInt(colaborador));
             turma.setEmpr_id(Integer.parseInt(empr));
             
+            if ("1".equals(ope)) {
+            turma.setId(Integer.parseInt(id));
+            }
+            
             // ope = 1 => Update
             if ("1".equals(ope)) {
                 try {
                     TurmaDAO.atualizarTurma(turma);
                 } catch (ClassNotFoundException ex) {
-                    //Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println(ex);
                 }
             } else {
@@ -89,6 +91,7 @@ public class CadastroTurmaServlet extends HttpServlet {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
+                
                 Logger.getLogger(CadastroFilialServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

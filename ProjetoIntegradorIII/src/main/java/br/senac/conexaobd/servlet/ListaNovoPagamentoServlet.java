@@ -33,8 +33,10 @@ public class ListaNovoPagamentoServlet extends HttpServlet {
 
 
         } catch (ClassNotFoundException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

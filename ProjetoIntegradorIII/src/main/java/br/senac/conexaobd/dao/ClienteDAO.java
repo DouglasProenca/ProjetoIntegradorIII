@@ -33,7 +33,7 @@ public class ClienteDAO {
             ps.setString(6, cliente.getCelular());
             ps.setString(7, cliente.getTelResidencial());
             ps.setInt(8, cliente.getId_colaborador());
-            
+
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,9 +97,10 @@ public class ClienteDAO {
                 String email = rs.getString("email");
                 String celular = rs.getString("celular");
                 String telResidencial = rs.getString("tel_residencial");
+                String CPF = rs.getString("cpf");
                 cliente.setNome(nome);
                 cliente.setEmail(email);
-                cliente.setCPF(cpf);
+                cliente.setCPF(CPF);
                 cliente.setCelular(celular);
                 cliente.setTelResidencial(telResidencial);
 
@@ -130,20 +131,16 @@ public class ClienteDAO {
 
     public static boolean atualizarCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "update rc_aluno set nome=?,email=?,celular=?,tel_residencial=?, "
-                + "tel_comercial=?where cpf=?";
+        String query = "update rc_aluno set nome=?,email=?,celular=?,tel_residencial=?"
+                + "where cpf=?";
         Connection con = Conexao.abrirConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            //ps.setInt(1, cliente.getId_filial());
-            //ps.setInt(2, cliente.getId_colaborador()); 
             ps.setString(1, cliente.getNome());
-            //ps.setString(2, cliente.getSexo());
             ps.setString(2, cliente.getEmail());
-            ps.setString(7, cliente.getCPF());
             ps.setString(3, cliente.getCelular());
             ps.setString(4, cliente.getTelResidencial());
-
+            ps.setString(5, cliente.getCPF());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -155,18 +152,18 @@ public class ClienteDAO {
         return ok;
     }
 
-     public static List<Cliente> getClientePorNome(String nomeParam) throws ClassNotFoundException, SQLException {
-       nomeParam = nomeParam.toUpperCase();
-       List<Cliente> clientes = new ArrayList<>();
-       String query = "select * from rc_aluno where nome like ?";
-       
-       Connection con = Conexao.abrirConexao(); 
-       try {
-           PreparedStatement ps = con.prepareStatement(query);
-           ps.setString(1, nomeParam+"%");
-           ResultSet rs = ps.executeQuery();
-           while (rs.next()) {
-               Cliente cliente = new Cliente();
+    public static List<Cliente> getClientePorNome(String nomeParam) throws ClassNotFoundException, SQLException {
+        nomeParam = nomeParam.toUpperCase();
+        List<Cliente> clientes = new ArrayList<>();
+        String query = "select * from rc_aluno where nome like ?";
+
+        Connection con = Conexao.abrirConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nomeParam + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
                 int id = rs.getInt("id");
                 int id_filial = rs.getInt("id_filial");
                 int id_colaborador = rs.getInt("id_colaborador");
@@ -187,11 +184,11 @@ public class ClienteDAO {
                 cliente.setCelular(celular);
                 cliente.setTelResidencial(telResidencial);
                 clientes.add(cliente);
-           }
-       } catch (SQLException ex) {
-           Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       return clientes;
-       
-   }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clientes;
+
+    }
 }

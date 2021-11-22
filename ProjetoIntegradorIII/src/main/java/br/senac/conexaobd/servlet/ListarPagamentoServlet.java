@@ -23,7 +23,7 @@ public class ListarPagamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         try {
             List<Pagamento> PagamentoList = PagamentoDAO.getPagamento();
             request.setAttribute("listaPagamento", PagamentoList);
@@ -34,8 +34,10 @@ public class ListarPagamentoServlet extends HttpServlet {
             //sendRedirect sempre cria um novo request/response
             //response.sendRedirect("listar.jsp");
         } catch (ClassNotFoundException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

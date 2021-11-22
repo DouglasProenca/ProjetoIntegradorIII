@@ -201,19 +201,18 @@ public class PagamentoDAO {
     public static void inserirPagamento(Pagamento pagamento) throws SQLException {
         try {
             boolean ok = true;
-            String query = "insert into rc_pagamento values (null,?,?,?,?,?,?,?,?)";
+            String query = "call sp_fazer_pagamento (?,?,?,?,?,?,?,?);";
             Connection con = Conexao.abrirConexao();
             PreparedStatement ps;
             ps = con.prepareStatement(query);
             ps.setInt(1, pagamento.getId());
-            ps.setInt(2, pagamento.getId_matricula());
-            ps.setString(3, pagamento.getAno_ref());
-            ps.setString(4, pagamento.getMes_ref());
-            ps.setDate(5, new java.sql.Date(pagamento.getDt_pagamento().getTime()));
-            ps.setFloat(6, pagamento.getJuros());
-            ps.setString(7, pagamento.getForma_pagamento());
-            ps.setFloat(8, pagamento.getValor_pago());
-            ps.setInt(9, pagamento.getId_colaborador());
+            ps.setString(2, pagamento.getAno_ref());
+            ps.setString(3, pagamento.getMes_ref());
+            ps.setDate(4, new java.sql.Date(pagamento.getDt_pagamento().getTime()));
+            ps.setFloat(5, pagamento.getJuros());
+            ps.setString(6, pagamento.getForma_pagamento());
+            ps.setFloat(7, pagamento.getValor_pago());
+            ps.setInt(8, pagamento.getId_colaborador());
             ps.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

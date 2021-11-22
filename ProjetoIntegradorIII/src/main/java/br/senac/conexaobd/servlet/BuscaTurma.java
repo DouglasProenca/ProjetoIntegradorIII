@@ -30,6 +30,7 @@ public class BuscaTurma extends HttpServlet {
         try {
             turmas = TurmaDAO.getTurmaPorNome(nomeTurma);
         } catch (ClassNotFoundException | SQLException ex) {
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
             Logger.getLogger(BuscaFilial.class.getName()).log(Level.SEVERE, null, ex);
         }
         String jsonTurmas = new Gson().toJson(turmas);

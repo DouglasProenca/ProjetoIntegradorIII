@@ -41,13 +41,14 @@ public class CadastroClienteServlet extends HttpServlet {
         cliente.setId_colaborador(Integer.parseInt(colaborador));
         cliente.setSexo(sexo);
         cliente.setEmpr_id(Integer.parseInt(empr));
-
+        System.out.println(cpf);
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {
                 try {
                     ClienteDAO.atualizarCliente(cliente);
                 } catch (ClassNotFoundException ex) {
+                    response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
                     Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {

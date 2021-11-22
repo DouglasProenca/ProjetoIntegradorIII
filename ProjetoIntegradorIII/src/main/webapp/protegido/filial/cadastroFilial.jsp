@@ -106,6 +106,13 @@
                            class="form-control"
                            />
                 </div>
+                <c:if test="${not empty filialAtualizacao}">
+                    <input type="hidden" name="empr"
+                           value="${filialAtualizacao.empr_id}" 
+                           required
+                           class="form-control"
+                           />
+                </c:if>
                 <br/>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>

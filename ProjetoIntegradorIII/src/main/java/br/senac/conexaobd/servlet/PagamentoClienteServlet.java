@@ -84,11 +84,9 @@ public class PagamentoClienteServlet extends HttpServlet {
 
                 //resp.sendRedirect(req.getContextPath() + "/cliente/BuscarClienteServlet");
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-
+                Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);              
             } catch (SQLException ex) {
                 Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-
             }
         }
 

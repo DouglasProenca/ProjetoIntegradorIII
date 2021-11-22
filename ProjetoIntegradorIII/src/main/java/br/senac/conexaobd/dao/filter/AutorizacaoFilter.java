@@ -47,9 +47,6 @@ public class AutorizacaoFilter implements Filter {
         //Passo 2 - Usuario Não tem Permissão
         Usuario usuarioSistema = (Usuario) usuario;
         String url = httpServletRequest.getRequestURI();
-        if(url.contains("/protegido/cliente/cadastro.jsp") && usuarioSistema.isAdministrativo()){
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
-        }
         if(url.contains("/protegido/filial/") && usuarioSistema.isVendas()){
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
         }
@@ -59,8 +56,42 @@ public class AutorizacaoFilter implements Filter {
         if(url.contains("/protegido/colaboradores/") && usuarioSistema.isVendas()){
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
         }
-        //Depois colocar if do vendedor na turma para cadastro 
-        System.out.println(url);
+        if(url.contains("/protegido/relatorios/") && usuarioSistema.isVendas()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/turmas/") && usuarioSistema.isVendas()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/relatorios/") && usuarioSistema.isAdministrativo()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/turma/") && usuarioSistema.isAdministrativo()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/filial/") && usuarioSistema.isAdministrativo()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/cliente/") && usuarioSistema.isEX()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/turma/") && usuarioSistema.isEX()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/pagamento/") && usuarioSistema.isEX()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/pagamento/") && usuarioSistema.isServico()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/relatorios/") && usuarioSistema.isServico()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/filial/") && usuarioSistema.isServico()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
+        if(url.contains("/protegido/colaboradores/") && usuarioSistema.isServico()){
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/acessoNaoAutorizado.jsp");
+        }
     }    
     
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
