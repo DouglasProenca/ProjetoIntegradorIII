@@ -35,7 +35,7 @@
                     jsonSintetico.forEach(function (relatorio) {
                         $("#tabelaRelatorio").find('tbody')
                                 .append($('<tr>')
-                                        .append($('<td>').append(relatorio.nome))
+                                        .append($('<td>').append(relatorio.Nome))
                                         .append($('<td>').append(relatorio.dtCompra))
                                         .append($('<td>').append(relatorio.valorContrato))
                                         .append($('<td>').append(relatorio.tempoCurso))

@@ -28,7 +28,7 @@
                     jsonAnalitico.forEach(function (relatorio) {
                         $("#tabelaRelatorio").find('tbody')
                                 .append($('<tr>')
-                                        .append($('<td>').append(relatorio.nome))
+                                        .append($('<td>').append(relatorio.Nome))
                                         .append($('<td>').append(relatorio.CPF))
                                         .append($('<td>').append(relatorio.turma))
                                         .append($('<td>').append(relatorio.valorContrato))

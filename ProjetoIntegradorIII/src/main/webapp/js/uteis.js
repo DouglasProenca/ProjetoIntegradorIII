@@ -27,7 +27,7 @@ function buscar() {
             jsonClientes.forEach(function (cliente) {
                 $("#tabelaClientes").find('tbody')
                         .append($('<tr>')
-                                .append($('<td>').append(cliente.nome))
+                                .append($('<td>').append(cliente.Nome))
                                 .append($('<td>').append(cliente.email))
                                 .append($('<td>').append(cliente.CPF))
                                 .append($('<td>').append(cliente.sexo))

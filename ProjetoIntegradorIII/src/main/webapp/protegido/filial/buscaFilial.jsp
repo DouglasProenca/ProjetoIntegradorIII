@@ -35,9 +35,13 @@
                         jsonClientes.forEach(function (filial) {
                             $("#tabelaClientes").find('tbody')
                                     .append($('<tr>')
-                                            .append($('<td>').append(filial.empr_id))
-                                            .append($('<td>').append(filial.nome))
+                                            .append($('<td>').append(filial.Empr_id))
                                             .append($('<td>').append(filial.rua))
+                                            .append($('<td>').append(filial.numero))
+                                            .append($('<td>').append(filial.bairro))
+                                            .append($('<td>').append(filial.cidade))
+                                            .append($('<td>').append(filial.cep))
+                                            .append($('<td>').append(filial.uf))
                                             );
                         })
 
@@ -77,8 +81,12 @@
         <table id="tabelaClientes" class="table">
             <thead>
             <th>ID</th>
-            <th>Nome</th>
             <th>Rua</th>
+            <th>Nº</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>CEP</th>
+            <th>UF</th>
         </thead>
         <tbody>
 

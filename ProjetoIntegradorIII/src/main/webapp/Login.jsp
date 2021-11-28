@@ -12,6 +12,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Login</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     </head>
 
     <body>
@@ -30,19 +33,20 @@
                     </div>  
                 </c:if>
                 <!-- Endereço de email-->
-                <label for="exampleInputEmail1">Nome:</label>
-                <input type="text" class="form-control" name="nomeUsuario" placeholder="Nome">
-
+                <div style="margin-bottom: 50px" class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" class="form-control" name="nomeUsuario" placeholder="Nome">
+                </div>
                 <br>
-                <!--senha-->
-                <label for="exampleInputPassword1">Senha:</label>
-                <input type="password" class="form-control" name="senhaUsuario" placeholder="Senha">
-                <!-- Botao para entrar -->
+                <div style="margin-bottom: 50px" class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="password" class="form-control" name="senhaUsuario" placeholder="Senha">
+                </div>
                 <br>
                 <br>
                 <br>
                 <center>
-                    <button type="submit" value="Enviar" class="btn btn-primary">Login</button>
+                    <button type="submit" value="Enviar" class="btn btn-primary">Entrar</button>
                 </center>
                 <br>
             </form>

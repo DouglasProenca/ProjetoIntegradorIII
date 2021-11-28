@@ -36,7 +36,7 @@
                             $("#tabelaColaboradores").find('tbody')
                                     .append($('<tr>')
                                             .append($('<td>').append(colaborador.id))
-                                            .append($('<td>').append(colaborador.nome))
+                                            .append($('<td>').append(colaborador.Nome))
                                             .append($('<td>').append(colaborador.cargo))
                                             .append($('<td>').append(colaborador.setor))
                                             .append($('<td>').append(colaborador.salario))

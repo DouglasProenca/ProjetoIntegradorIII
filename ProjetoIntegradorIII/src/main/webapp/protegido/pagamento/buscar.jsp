@@ -36,7 +36,7 @@
                             $("#tabelaPagamento").find('tbody')
                                     .append($('<tr>')
                                             .append($('<td>').append(pagamento.id))
-                                            .append($('<td>').append(pagamento.nome))
+                                            .append($('<td>').append(pagamento.Nome))
                                             .append($('<td>').append(pagamento.juros))
                                             .append($('<td>').append(pagamento.forma_pagamento))
                                             .append($('<td>').append(pagamento.valor_pago))

@@ -164,7 +164,7 @@ public class FilialDAO {
      public static List<Filial> getFilialPorNome(String nomeParam) throws ClassNotFoundException, SQLException {
        nomeParam = nomeParam.toUpperCase();
        List<Filial> Filiais = new ArrayList<>();
-       String query = "select * from rc_filial where nome like ?";
+       String query = "select * from rc_filial where cidade like ?";
        
        Connection con = Conexao.abrirConexao(); 
        try {
