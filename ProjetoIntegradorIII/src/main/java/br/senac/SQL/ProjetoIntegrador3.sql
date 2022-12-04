@@ -1,8 +1,8 @@
 -- criação da database
-create database if not exists ProjetoIntegrador3;
+CREATE DATABASE IF NOT EXISTS ProjetoIntegrador3;
  
 -- comando para usar a tabela
-use ProjetoIntegrador3;
+USE ProjetoIntegrador3;
 
 -- criação da tabelas
 create table if not exists RC_FILIAL(
